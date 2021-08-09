@@ -6,7 +6,7 @@ Radio Javan Downloader for NodeJs
 A simple function to get type of a link.  
  example:
 ```js
-var rj = require('./node-rjdl')
+var rj = require('node-rjdl')
 
 const type = rj.type('https://www.radiojavan.com/mp3s/album/Zedbazi-Zakhar-Nameh?index=3');
 console.log(type)
@@ -26,7 +26,7 @@ valid outputs:
 Getting the download link of a Song , Podcast & Video.   
  example:
 ```js
-var rj = require('./node-rjdl')
+var rj = require('node-rjdl')
 
 const dl = await rj.getDownloadLink('https://www.radiojavan.com/mp3s/album/Zedbazi-Zakhar-Nameh?index=3' , 'low')
 console.log(dl)
@@ -38,7 +38,7 @@ https://host1.rj-mw1.com/media/mp3/mp3-256/Zedbazi-Nabayad-Vaysim.mp3
 the mp3Only can be set true if you dont want the .mp4 at all and only want to get mp3 versions of videos
 > ⚠ warning : Be careful using mp3only! some videos don't have an MP3 version on radio javan and the returned value would be NULL
 ```js
-var rj = require('./node-rjdl')
+var rj = require('node-rjdl')
 
 const dl = await rj.getDownloadLink('https://www.radiojavan.com/videos/video/sepehr-khalse-fekro-khial' , 'low' , true)
 console.log(dl)
@@ -59,7 +59,7 @@ Getting info from the links of the types blow:
 
 Song example:
 ```js
-var rj = require('./node-rjdl')
+var rj = require('node-rjdl')
 
 const info = await rj.getInfo('https://www.radiojavan.com/mp3s/mp3/Behzad-Leito-Sepehr-Khalse-Dast-Foroush-(Ft-Siavash-Rad-Anita)');
 console.log(info)
