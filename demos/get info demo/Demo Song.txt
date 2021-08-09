@@ -1,0 +1,12 @@
+input : https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)
+
+output :
+
+{
+    "title": "Abnormal (Ft Arta & Montiego)",
+    "artist": "Koorosh",
+    "artwork": "https://assets.rjassets.com/static/mp3/koorosh-abnormal-(ft-arta-montiego)/1e3cd7f1402539b.jpg",
+    "plays": 13975557,
+    "likes": 10458,
+    "date": "jun  4, 2019"
+}

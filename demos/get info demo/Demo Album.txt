@@ -1,0 +1,84 @@
+input : https://www.radiojavan.com/mp3s/album/Koorosh-420
+
+output : 
+
+{
+    "title": "420",
+    "artist": "Koorosh",
+    "songs": 12,
+    "image": "https://assets.rjassets.com/static/mp3/koorosh-yebaram-man-(ft-arta-behzad-leito-raha)/5cdfcb379855c7e.jpg",
+    "tracks": [
+        {
+            "title": "Yebaram Man (Ft Arta, Behzad Leito, & Raha)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=0",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-yebaram-man-(ft-arta-behzad-leito-raha)/5cdfcb379855c7e-thumb.jpg"
+        },
+        {
+            "title": "Jerzan (Ft Sami Low, Sijal, & Arta)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=1",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-jerzan-(ft-sami-low-sijal-arta)/e6226a76f5056b6-thumb.jpg"
+        },
+        {
+            "title": "Un Momento (Ft Raha)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=2",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-un-momento-(ft-raha)/ea53c812ea5033f-thumb.jpg"
+        },
+        {
+            "title": "Abnormal (Ft Arta & Montiego)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-abnormal-(ft-arta-montiego)/1e3cd7f1402539b-thumb.jpg"
+        },
+        {
+            "title": "Bet",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=4",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-bet/7b365d66bb92d8c-thumb.jpg"
+        },
+        {
+            "title": "Greenwich (Ft Salaar)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=5",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-greenwich-(ft-salaar)/06d2906b9508e11-thumb.jpg"
+        },
+        {
+            "title": "Maroochia (Ft Sepehr Khalse, Sami Low, Arta, & DJ Tricks)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=6",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-maroochia-(ft-sepehr-khalse-sami-low-arta-dj-ricks)/ef6d439ce478772-thumb.jpg"
+        },
+        {
+            "title": "Zood Dir Shod (Ft Sami Low & Raha)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=7",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-zood-dir-shod-(ft-sami-low-raha)/b692903325795bb-thumb.jpg"
+        },
+        {
+            "title": "Hichja Nistam (Ft Behzad Leito & Arta)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=8",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-hichja-nistam-(ft-behzad-leito-arta)/e38f79bfca8f88c-thumb.jpg"
+        },
+        {
+            "title": "Behesh Begid (Ft Arta, Sepehr Khalse, & PDC)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=9",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-behesh-begid-(ft-arta-sepehr-khalse-pdc)mp3/24da48db13773fe-thumb.jpg"
+        },
+        {
+            "title": "Inja Kojas (Ft Vinak & Ali T)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=10",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-inja-kojas-(ft-vinak-ali-t)/4da097c640943df-thumb.jpg"
+        },
+        {
+            "title": "Maroochia (Club Remix)",
+            "artist": "Koorosh",
+            "link": "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=11",
+            "artwork": "https://assets.rjassets.com/static/mp3/koorosh-maroochia-(club-version)/5ef56d8c50878e3-thumb.jpg"
+        }
+    ]
+}
