@@ -1,0 +1,15 @@
+{
+  "name": "rjdl",
+  "version": "1.0.0",
+  "description": "Nodejs Radio Javan downloader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "keivan",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
