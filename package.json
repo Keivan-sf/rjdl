@@ -1,5 +1,5 @@
 {
-  "name": "rjdl",
+  "name": "node-rjdl",
   "version": "1.0.0",
   "description": "Nodejs Radio Javan downloader",
   "main": "index.js",
