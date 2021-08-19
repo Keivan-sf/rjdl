@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "keivan",
+  "keywords" : ["Radio Javan" , "rj" , "RadioJavan" , "RadioJavan Downloader"],
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
