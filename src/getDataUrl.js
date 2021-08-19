@@ -104,7 +104,7 @@ function sourceCode(url){
 
         // Checking if the link is valid or not : 
 
-        if(finalVal.startsWith('undefined')) console.log("rjdl : src > getDataUrl.js >> download() : Coudln't create the link \n The wrong link : " + finalVal)
+        if(finalVal.startsWith('undefined')) console.log("rjdl : src > getDataUrl.js >> download() : Coudln't create the link \nThe wrong link : " + finalVal)
 
         // resolving the link whether it is correct or not. ( The validation of the link will be ckecked on index.js >> getDownloadLink() )
 
@@ -135,6 +135,7 @@ function seperator(codeData , du=true){
     var likes = strlikes.includes(',') ? parseInt(strlikes.split(',').join('')) : parseInt(strlikes)
     var date = $('[pubdate="pubdate"]').html().toLowerCase().split('date added: ')[1]
     var artwork = artworkHtml.split('src="')[1].split('"')[0];
+    artwork = artwork.includes('cdn-cgi') ? 'https://' + artwork.split('https://')[2] : artwork;
     var mp3Description = $('.mp3Description').html();
     var unknownArgs;
     var result = {};
@@ -201,8 +202,9 @@ function playlistInfo(codeData){
   var playlistCode = $(".songInfo").html();
   var title = playlistCode.split("<h2 class=\"title\">")[1].split('</h2>')[0];
   var creator = playlistCode.split('<span class="label radius secondary">')[1].split('</span>')[0];
-  var songsSplit = playlistCode.split(' songs</span> | <span id="follower_count">')[0].split('<span>');
-  var songsCount = parseInt(songsSplit[songsSplit.length - 1]);
+  /* var songsSplit = playlistCode.split(' songs</span> | <span id="follower_count">')[0].split('<span>');
+     var songsCount = parseInt(songsSplit[songsSplit.length - 1]); */
+  var songsCount = $('.sidePanel').html().split('</li>').length - 1;
   var followersStr = $('#follower_count').html().split(' followers')[0];
   var followers = followersStr.includes(',') ? parseInt(followersStr.split(',').join('')) : parseInt(followersStr);
   var tracks = [];
@@ -211,7 +213,8 @@ function playlistInfo(codeData){
     var songLink = 'https://www.radiojavan.com' + song.split('<a href="')[1].split('">')[0];
     var songName = song.split('<span class="song" title="')[1].split('"')[0];
     var artistName = song.split('<span class="artist" title="')[1].split('"')[0];
-    var songArt = song.split('" src="')[1].split('"')[0];
+    var songArt = song.split('data-src="')[1].split('"')[0];
+    songArt = songArt.includes('cdn-cgi') ? 'https://' + songArt.split('https://')[2] : songArt;
     tracks[i-1] = {
       'title' : songName,
       'artist' : artistName,
@@ -236,6 +239,7 @@ function albumInfo(codeData){
   // Getting Album data
   // Extracting data we want from the SourceCode using cheerio (jquery simulator for node.js)
 
+
   var cd = codeData.split('<div id="breadcrumbs_container" class="">')[0] + '<div class="webPlayer">' +codeData.split('<div class="webPlayer">')[1];
   const $ = cheerio.load(cd);
   var playlistCode = $(".songInfo").html();
@@ -251,7 +255,8 @@ function albumInfo(codeData){
     var songLink = 'https://www.radiojavan.com' + song.split('<a href="')[1].split('">')[0];
     var songName = song.split('<span class="song" title="')[1].split('"')[0];
     var artistName = song.split('<span class="artist" title="')[1].split('"')[0];
-    var songArt = song.split('" src="')[1].split('"')[0];
+    var songArt = song.split(' data-src="')[1].split('"')[0];
+    songArt = songArt.includes('cdn-cgi') ? 'https://' + songArt.split('https://')[2] : songArt;
     tracks[i-1] = {
       'title' : songName,
       'artist' : artistName,
@@ -266,6 +271,7 @@ function albumInfo(codeData){
     'image' : albumArtWork,
     'tracks' : tracks
   }
+  console.log(res)
   return res;
 }
 
@@ -277,6 +283,8 @@ function podcastInfo(codeData){
   const $ = cheerio.load(codeData);
   var artworkContainer = $('.artworkContainer').html();
   var podcastArt = artworkContainer.includes('src="') ? artworkContainer.split('src="')[1].split('"')[0] : null;
+  podcastArt = podcastArt.includes('cdn-cgi') ? 'https://' + podcastArt.split('https://')[2] : podcastArt;
+  console.log(podcastArt)
   var title = artworkContainer.split('class="artist">')[1].split('</span>')[0];
   var artist = artworkContainer.split('class="song">')[1].split('</span>')[0];
   var likesStr = $('#podcast_likes').html().split('class="rating">')[1].split(' likes')[0];
