@@ -271,7 +271,6 @@ function albumInfo(codeData){
     'image' : albumArtWork,
     'tracks' : tracks
   }
-  console.log(res)
   return res;
 }
 
