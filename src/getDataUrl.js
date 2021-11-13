@@ -12,8 +12,7 @@ async function getInfoFromLink(url , type='mp3' , fix = true){
   // Checking if the url was invalid and it lead us to the RadioJavan main page :
 
   if((!source || source.includes('id="mp3s"')) && type != 'video'){
-    console.log(`rjdl : src > getDataUrl.js >> getInfoFromLink() : error getting information from the link : '${url}'`)
-    return null;
+    throw new Error(`rjdl : src > getDataUrl.js >> getInfoFromLink() : error getting information from the link : '${url}'`)
   }
 
   // Checking if the link was for a video and also it had a song in Radio Javan :
@@ -65,8 +64,7 @@ function sourceCode(url){
           resolve(res.data)
         })
         .catch(error => {
-          reject(flase)
-          console.log('This video dosent have any mp3 version')
+          reject('This video dosent have any mp3 version')
         })
     })
 
@@ -75,7 +73,6 @@ function sourceCode(url){
  async function download(data , quality , url){
     var namePost = url.name;
     var urlType = url.type;
-
     // Checking if the url is from a playlist song 
     // Because playlist songs' url are completely defferent & the data program needs cannot be found only on url
     // And in that case , for making a download link , we need to get its data with a request to the song page
@@ -100,19 +97,22 @@ function sourceCode(url){
 
         // Creating the link with the host domain recieved : 
 
-        var finalVal = links.createLink(host, namePost , urlType , quality) + '\n';
-
+        var finalVal = links.createLink(host, namePost , urlType , quality);
         // Checking if the link is valid or not : 
+        var linkTocheck = finalVal.low ? finalVal.low : finalVal;
 
-        if(finalVal.startsWith('undefined')) console.log("rjdl : src > getDataUrl.js >> download() : Coudln't create the link \nThe wrong link : " + finalVal)
+        if(linkTocheck.startsWith('undefined')){
+          reject("The link couldn't be created! This likely happens for the videos without an mp3 version of themself in Radiojavan and mp3only being enabled as well")
+        }else{
+          resolve(finalVal)
+        }
 
         // resolving the link whether it is correct or not. ( The validation of the link will be ckecked on index.js >> getDownloadLink() )
 
-        resolve(finalVal)
+        
       })
       .catch(error => {
-        console.log('err getting host url')
-        reject(error)
+        reject('Error getting host url')
       })
       })
     
@@ -283,7 +283,6 @@ function podcastInfo(codeData){
   var artworkContainer = $('.artworkContainer').html();
   var podcastArt = artworkContainer.includes('src="') ? artworkContainer.split('src="')[1].split('"')[0] : null;
   podcastArt = podcastArt.includes('cdn-cgi') ? 'https://' + podcastArt.split('https://')[2] : podcastArt;
-  console.log(podcastArt)
   var title = artworkContainer.split('class="artist">')[1].split('</span>')[0];
   var artist = artworkContainer.split('class="song">')[1].split('</span>')[0];
   var likesStr = $('#podcast_likes').html().split('class="rating">')[1].split(' likes')[0];
