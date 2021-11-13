@@ -5,6 +5,7 @@
 var info  = require('./src/getDataUrl.js')
 const axios = require('axios')
 const cheerio = require('cheerio');
+const { replaceWith } = require('cheerio/lib/api/manipulation');
 let validKeys = [
   'radiojavan.com/mp3s/mp3/',
   'radiojavan.com/playlists/playlist/mp3/',
@@ -21,6 +22,14 @@ let validTypes = [
   'song',
   'album'
 ]
+
+/**
+ * 
+ * @param {String} data Target Link
+ * @param {String} quality "low" or "high"
+ * @param {Boolean} mp3only Be carefull using mp3Only, Some videos dont provide an MP3 version!
+ * @returns Download link
+ */
 
 async function getDownloadLink(data , quality , mp3only = false){
   
@@ -52,11 +61,18 @@ async function getDownloadLink(data , quality , mp3only = false){
   const res = await info.download(urlwoq , quality , urlDataType);
   var output = res;
 
-  // Checking if the link is valid or the function should return NULL :
-
-  if(res.startsWith('undefined')) output = null;
+  // Checking if the link is valid:
+  let linkToCheck = res.low ? res.low : res;
+  if(linkToCheck.startsWith('undefined')) throw new Error("The link couldn't be created")
   return output;
 }
+
+
+/**
+ * 
+ * @param {String} data Target Link
+ * @returns Link info on radio javan
+ */
 
 async function getInfo(data){
 
@@ -64,8 +80,7 @@ async function getInfo(data){
 
  var Gotkeys =  hasKey(data);
  if(!Gotkeys){
-   console.log('The url is invalid')
-   return null;
+   throw new Error('The url is invalid');
  }
  var url = urlData(data);
 
@@ -141,6 +156,12 @@ function hasKey(data, type = false , videoLink = true){
     return false;
   }
 }
+
+/**
+ * 
+ * @param {String} data Target Link
+ * @returns {String} link type on radio javan
+ */
 
 function type(data){
 
