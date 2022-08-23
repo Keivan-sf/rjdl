@@ -1,1 +1,6 @@
-export type LinkType = "music" | "playlist" | "video" | "podcast";
+export enum LinkType {
+    Music,
+    Playlist,
+    Video,
+    Podcast,
+}
