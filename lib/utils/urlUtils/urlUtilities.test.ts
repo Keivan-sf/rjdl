@@ -87,6 +87,16 @@ describe("Radio javan url utils", () => {
             };
             expect(type).toStrictEqual(expected);
         });
+        test("Should Playlist Track type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
+            );
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0",
+                type: LinkTypes.PlaylistTrack,
+            };
+            expect(type).toStrictEqual(expected);
+        });
         test("Should return Tv type", () => {
             const type = getLinkType("https://www.radiojavan.com/tv");
             const expected = {
@@ -100,8 +110,18 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420/"
             );
             const expected = {
-                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420",
+                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420/",
                 type: LinkTypes.Album,
+            };
+            expect(type).toStrictEqual(expected);
+        });
+        test("Should return Album Track type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3"
+            );
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3",
+                type: LinkTypes.AlbumTrack,
             };
             expect(type).toStrictEqual(expected);
         });

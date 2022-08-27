@@ -3,8 +3,10 @@ export const radioJavanLinkRegex =
 export const typeRegex = {
     Music: /radiojavan\.com\/mp3s\/mp3\/[^\/]+/g,
     Video: /radiojavan\.com\/videos\/video\/[^\/]+/g,
-    Album: /radiojavan\.com\/mp3s\/album\/[^\/]+/g,
+    Album: /radiojavan\.com\/mp3s\/album\/[^\/\?]+(?!\?index)[\/]?$/gm,
+    AlbumTrack: /radiojavan\.com\/mp3s\/album\/[^\/]+\/?index=[0-9]+/g,
     Podcast: /radiojavan\.com\/podcasts\/podcast\/[^\/]+/g,
     Playlist: /radiojavan\.com\/playlists\/playlist\/mp3\/[^\/]+/g,
+    PlaylistTrack: /radiojavan\.com\/mp3s\/playlist_start\?id=[^\/]+/g,
     TV: /radiojavan\.com\/tv$/g,
 };
