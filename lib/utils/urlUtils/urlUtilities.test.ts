@@ -39,7 +39,7 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
             );
             const expected = {
-                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
+                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas/",
                 type: LinkTypes.Music,
             };
             expect(type).toStrictEqual(expected);
@@ -47,7 +47,7 @@ describe("Radio javan url utils", () => {
         test("Should return music type without prefixes", () => {
             const type = getLinkType("radiojavan.com/mp3s/mp3/Anita-Nafas");
             const expected = {
-                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
+                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas/",
                 type: LinkTypes.Music,
             };
             expect(type).toStrictEqual(expected);
@@ -57,7 +57,7 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
             );
             const expected = {
-                link: "https://www.radiojavan.com/videos/video/puzzle-shab-neshin",
+                link: "https://www.radiojavan.com/videos/video/puzzle-shab-neshin/",
                 type: LinkTypes.Video,
             };
             expect(type).toStrictEqual(expected);
@@ -72,7 +72,7 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
             );
             const expected = {
-                link: "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123",
+                link: "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123/",
                 type: LinkTypes.Podcast,
             };
             expect(type).toStrictEqual(expected);
@@ -82,7 +82,7 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
             );
             const expected = {
-                link: "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74",
+                link: "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74/",
                 type: LinkTypes.Playlist,
             };
             expect(type).toStrictEqual(expected);
@@ -92,7 +92,17 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
             );
             const expected = {
-                link: "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0",
+                link: "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/",
+                type: LinkTypes.PlaylistTrack,
+            };
+            expect(type).toStrictEqual(expected);
+        });
+        test("Should Playlist Track type without slash", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0"
+            );
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/",
                 type: LinkTypes.PlaylistTrack,
             };
             expect(type).toStrictEqual(expected);
@@ -100,7 +110,7 @@ describe("Radio javan url utils", () => {
         test("Should return Tv type", () => {
             const type = getLinkType("https://www.radiojavan.com/tv");
             const expected = {
-                link: "https://www.radiojavan.com/tv",
+                link: "https://www.radiojavan.com/tv/",
                 type: LinkTypes.TV,
             };
             expect(type).toStrictEqual(expected);
@@ -117,10 +127,20 @@ describe("Radio javan url utils", () => {
         });
         test("Should return Album Track type", () => {
             const type = getLinkType(
-                "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3"
+                "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
             const expected = {
-                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3",
+                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/",
+                type: LinkTypes.AlbumTrack,
+            };
+            expect(type).toStrictEqual(expected);
+        });
+        test("Should return Album Track type without slash", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
+            );
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/",
                 type: LinkTypes.AlbumTrack,
             };
             expect(type).toStrictEqual(expected);

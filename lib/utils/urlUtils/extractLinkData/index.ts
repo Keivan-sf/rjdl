@@ -15,8 +15,11 @@ export const getRadioJavanLink = (url: string): string => {
 export const getLinkType = (url: string): linkType => {
     for (const type in typeRegex) {
         let match = url.match(typeRegex[type]);
-        if (match && match.length > 0)
-            return { link: "https://www." + match[0], type: LinkTypes[type] };
+        if (match && match.length > 0) {
+            let url = "https://www." + match[0];
+            url = url.endsWith("/") ? url : url + "/";
+            return { link: url, type: LinkTypes[type] };
+        }
     }
     throw new Error("INVALID_TYPE");
 };
