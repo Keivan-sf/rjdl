@@ -5,6 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "ts-node index.ts",
+        "style": "npx prettier . --write",
         "test": "jest"
     },
     "author": "keivan",
