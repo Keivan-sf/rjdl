@@ -95,6 +95,16 @@ describe("Radio javan url utils", () => {
             };
             expect(type).toStrictEqual(expected);
         });
+        test("Should return album type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/mp3s/album/Koorosh-420/"
+            );
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/album/Koorosh-420",
+                type: LinkTypes.Album,
+            };
+            expect(type).toStrictEqual(expected);
+        });
     });
     describe("Name extractor", () => {
         test("Should return music name", () => {

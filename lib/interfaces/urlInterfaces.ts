@@ -1,7 +1,9 @@
 export enum LinkTypes {
     Music,
     Playlist,
+    Album,
     PlaylistTrack,
+    AlbumTrack,
     Video,
     Podcast,
     TV,
@@ -10,6 +12,7 @@ export enum LinkTypes {
 export enum Types {
     Music,
     Playlist,
+    Album,
     Video,
     Podcast,
     TV,
