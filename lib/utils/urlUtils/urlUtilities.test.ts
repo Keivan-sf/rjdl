@@ -1,4 +1,4 @@
-import { Types } from "../../interfaces/urlInterfaces";
+import { LinkTypes } from "../../interfaces/urlInterfaces";
 import {
     getRadioJavanLink,
     getLinkType,
@@ -40,7 +40,7 @@ describe("Radio javan url utils", () => {
             );
             const expected = {
                 link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
-                type: Types.Music,
+                type: LinkTypes.Music,
             };
             expect(type).toStrictEqual(expected);
         });
@@ -48,7 +48,7 @@ describe("Radio javan url utils", () => {
             const type = getLinkType("radiojavan.com/mp3s/mp3/Anita-Nafas");
             const expected = {
                 link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
-                type: Types.Music,
+                type: LinkTypes.Music,
             };
             expect(type).toStrictEqual(expected);
         });
@@ -58,7 +58,7 @@ describe("Radio javan url utils", () => {
             );
             const expected = {
                 link: "https://www.radiojavan.com/videos/video/puzzle-shab-neshin",
-                type: Types.Video,
+                type: LinkTypes.Video,
             };
             expect(type).toStrictEqual(expected);
         });
@@ -73,7 +73,7 @@ describe("Radio javan url utils", () => {
             );
             const expected = {
                 link: "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123",
-                type: Types.Podcast,
+                type: LinkTypes.Podcast,
             };
             expect(type).toStrictEqual(expected);
         });
@@ -83,7 +83,7 @@ describe("Radio javan url utils", () => {
             );
             const expected = {
                 link: "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74",
-                type: Types.Playlist,
+                type: LinkTypes.Playlist,
             };
             expect(type).toStrictEqual(expected);
         });
@@ -91,7 +91,7 @@ describe("Radio javan url utils", () => {
             const type = getLinkType("https://www.radiojavan.com/tv");
             const expected = {
                 link: "https://www.radiojavan.com/tv",
-                type: Types.TV,
+                type: LinkTypes.TV,
             };
             expect(type).toStrictEqual(expected);
         });

@@ -1,9 +1,9 @@
-import { Types } from "../../../interfaces/urlInterfaces";
+import { LinkTypes } from "../../../interfaces/urlInterfaces";
 import { radioJavanLinkRegex, typeRegex } from "./regexes";
 
 type linkType = {
     link: string;
-    type: Types;
+    type: LinkTypes;
 };
 
 export const getRadioJavanLink = (url: string): string => {
@@ -16,7 +16,7 @@ export const getLinkType = (url: string): linkType => {
     for (const type in typeRegex) {
         let match = url.match(typeRegex[type]);
         if (match && match.length > 0)
-            return { link: "https://www." + match[0], type: Types[type] };
+            return { link: "https://www." + match[0], type: LinkTypes[type] };
     }
     throw new Error("INVALID_TYPE");
 };
