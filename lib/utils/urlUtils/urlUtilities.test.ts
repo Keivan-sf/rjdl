@@ -1,8 +1,12 @@
 import { Types } from "../../interfaces/urlInterfaces";
-import { getRadioJavanLink, getLinkType } from "./extractLinkData";
+import {
+    getRadioJavanLink,
+    getLinkType,
+    getMusicNameFromURL,
+} from "./extractLinkData";
 
 describe("Radio javan url utils", () => {
-    describe("Radio Javan Link validator", () => {
+    describe("Link validator", () => {
         test("Should get the core url with https+www", () => {
             expect(getRadioJavanLink("https://www.radiojavan.com/")).toBe(
                 "https://www.radiojavan.com/"
@@ -29,7 +33,7 @@ describe("Radio javan url utils", () => {
             );
         });
     });
-    describe("Radio Javan Link Type Identifier", () => {
+    describe("Link Type Identifier", () => {
         test("Should return music type", () => {
             const type = getLinkType(
                 "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
@@ -90,6 +94,29 @@ describe("Radio javan url utils", () => {
                 type: Types.TV,
             };
             expect(type).toStrictEqual(expected);
+        });
+    });
+    describe("Name extractor", () => {
+        test("Should return music name", () => {
+            const name = getMusicNameFromURL(
+                "https://www.radiojavan.com/mp3s/mp3/Sogand-Tehran"
+            );
+            expect(name).toBe("Sogand-Tehran");
+        });
+        test("Should throw with invalid music link", () => {
+            expect(() => getMusicNameFromURL("bla")).toThrow();
+        });
+        test("Should return music name", () => {
+            const name = getMusicNameFromURL(
+                "https://www.radiojavan.com/mp3s/mp3/Sogand-Tehran"
+            );
+            expect(name).toBe("Sogand-Tehran");
+        });
+        test("Should return music name with query-included url", () => {
+            const name = getMusicNameFromURL(
+                "https://www.radiojavan.com/mp3s/mp3/Sogand-Baroon?start=109320&index=2"
+            );
+            expect(name).toBe("Sogand-Baroon");
         });
     });
 });

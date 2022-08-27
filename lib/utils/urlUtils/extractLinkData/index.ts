@@ -20,3 +20,10 @@ export const getLinkType = (url: string): linkType => {
     }
     throw new Error("INVALID_TYPE");
 };
+
+export const getMusicNameFromURL = (url: string): string => {
+    let name = url.split("/mp3s/mp3/")[1];
+    name = name.includes("/") ? name.split("/")[0] : name;
+    name = name.includes("?") ? name.split("?")[0] : name;
+    return name;
+};
