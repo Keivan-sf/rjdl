@@ -1,4 +1,4 @@
-import { LinkTypes, linkType } from "../../../interfaces/urlInterfaces";
+import { LinkTypes, linkAndType } from "../../../interfaces/urlInterfaces";
 import { radioJavanLinkRegex, typeRegex } from "./regexes";
 
 export const getRadioJavanLink = (url: string): string => {
@@ -7,7 +7,7 @@ export const getRadioJavanLink = (url: string): string => {
     return matches[0];
 };
 
-export const getTypeFromValidURL = (url: string): linkType => {
+export const getTypeFromValidURL = (url: string): linkAndType => {
     for (const type in typeRegex) {
         let match = url.match(typeRegex[type]);
         if (match && match.length > 0) {

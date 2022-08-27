@@ -18,7 +18,7 @@ export enum Types {
     TV,
 }
 
-export type linkType = {
+export type linkAndType = {
     link: string;
     type: LinkTypes;
 };
