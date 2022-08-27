@@ -40,5 +40,14 @@ describe("Radio javan url utils", () => {
             const type = getLinkType("radiojavan.com/mp3s/mp3/Anita-Nafas");
             expect(type).toBe(LinkType.Music);
         });
+        test("Should return video type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
+            );
+            expect(type).toBe(LinkType.Video);
+        });
+        test("Should throw invalid type", () => {
+            expect(() => getLinkType("test/video/puzzle-shab-neshin")).toThrow("INVALID_TYPE");
+        });
     });
 });

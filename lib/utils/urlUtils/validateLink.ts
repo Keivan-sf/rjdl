@@ -1,5 +1,5 @@
 import { LinkType } from "../../interfaces/urlInterfaces";
-import { radioJavanLinkRegex , mp3LinkRegex } from "./regexes";
+import { radioJavanLinkRegex , typeRegex } from "./regexes";
 
 export const getRadioJavanLink = (url: string): string => {
     const matches = url.match(radioJavanLinkRegex);
@@ -8,7 +8,9 @@ export const getRadioJavanLink = (url: string): string => {
 };
 
 export const getLinkType = (url:string): LinkType => {
-    const matches = url.match(mp3LinkRegex);
-    if (matches && matches.length > 0) return LinkType.Music;
+    for(const type in typeRegex){
+        let match = url.match(typeRegex[type]);
+        if (match && match.length > 0) return LinkType[type];
+    }
     throw new Error("INVALID_TYPE");
 }
