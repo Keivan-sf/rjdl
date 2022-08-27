@@ -47,7 +47,27 @@ describe("Radio javan url utils", () => {
             expect(type).toBe(LinkType.Video);
         });
         test("Should throw invalid type", () => {
-            expect(() => getLinkType("test/video/puzzle-shab-neshin")).toThrow("INVALID_TYPE");
+            expect(() => getLinkType("test/video/puzzle-shab-neshin")).toThrow(
+                "INVALID_TYPE"
+            );
+        });
+        test("Should return podcast type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
+            );
+            expect(type).toBe(LinkType.Podcast);
+        });
+        test("Should return playlist type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
+            );
+            expect(type).toBe(LinkType.Playlist);
+        });
+        test("Should return Tv type", () => {
+            const type = getLinkType(
+                "https://www.radiojavan.com/tv"
+            );
+            expect(type).toBe(LinkType.TV);
         });
     });
 });

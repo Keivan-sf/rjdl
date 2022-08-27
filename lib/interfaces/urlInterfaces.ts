@@ -3,4 +3,5 @@ export enum LinkType {
     Playlist,
     Video,
     Podcast,
+    TV,
 }
