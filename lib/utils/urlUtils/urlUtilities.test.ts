@@ -1,4 +1,4 @@
-import { LinkType } from "../../interfaces/urlInterfaces";
+import { Types } from "../../interfaces/urlInterfaces";
 import { getRadioJavanLink, getLinkType } from "./validateLink";
 
 describe("Radio javan url utils", () => {
@@ -34,17 +34,29 @@ describe("Radio javan url utils", () => {
             const type = getLinkType(
                 "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
             );
-            expect(type).toBe(LinkType.Music);
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
+                type: Types.Music,
+            };
+            expect(type).toStrictEqual(expected);
         });
         test("Should return music type without prefixes", () => {
             const type = getLinkType("radiojavan.com/mp3s/mp3/Anita-Nafas");
-            expect(type).toBe(LinkType.Music);
+            const expected = {
+                link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas",
+                type: Types.Music,
+            };
+            expect(type).toStrictEqual(expected);
         });
         test("Should return video type", () => {
             const type = getLinkType(
                 "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
             );
-            expect(type).toBe(LinkType.Video);
+            const expected = {
+                link: "https://www.radiojavan.com/videos/video/puzzle-shab-neshin",
+                type: Types.Video,
+            };
+            expect(type).toStrictEqual(expected);
         });
         test("Should throw invalid type", () => {
             expect(() => getLinkType("test/video/puzzle-shab-neshin")).toThrow(
@@ -55,19 +67,29 @@ describe("Radio javan url utils", () => {
             const type = getLinkType(
                 "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
             );
-            expect(type).toBe(LinkType.Podcast);
+            const expected = {
+                link: "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123",
+                type: Types.Podcast,
+            };
+            expect(type).toStrictEqual(expected);
         });
         test("Should return playlist type", () => {
             const type = getLinkType(
                 "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
             );
-            expect(type).toBe(LinkType.Playlist);
+            const expected = {
+                link: "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74",
+                type: Types.Playlist,
+            };
+            expect(type).toStrictEqual(expected);
         });
         test("Should return Tv type", () => {
-            const type = getLinkType(
-                "https://www.radiojavan.com/tv"
-            );
-            expect(type).toBe(LinkType.TV);
+            const type = getLinkType("https://www.radiojavan.com/tv");
+            const expected = {
+                link: "https://www.radiojavan.com/tv",
+                type: Types.TV,
+            };
+            expect(type).toStrictEqual(expected);
         });
     });
 });
