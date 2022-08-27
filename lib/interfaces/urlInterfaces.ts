@@ -5,7 +5,3 @@ export enum Types {
     Podcast,
     TV,
 }
-export type linkType = {
-    link: string;
-    type: Types;
-};

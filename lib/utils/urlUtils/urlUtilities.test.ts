@@ -1,5 +1,5 @@
 import { Types } from "../../interfaces/urlInterfaces";
-import { getRadioJavanLink, getLinkType } from "./validateLink";
+import { getRadioJavanLink, getLinkType } from "./extractLinkData";
 
 describe("Radio javan url utils", () => {
     describe("Radio Javan Link validator", () => {
