@@ -2,7 +2,7 @@ import { LinkType } from "../../interfaces/urlInterfaces";
 import { getRadioJavanLink, getLinkType } from "./validateLink";
 
 describe("Radio javan url utils", () => {
-    describe("Radio Javan Link validation", () => {
+    describe("Radio Javan Link validator", () => {
         test("Should get the core url with https+www", () => {
             expect(getRadioJavanLink("https://www.radiojavan.com/")).toBe(
                 "https://www.radiojavan.com/"
