@@ -1,7 +1,8 @@
+import { validateURL } from ".";
 import { LinkTypes } from "../../interfaces/urlInterfaces";
 import {
     getRadioJavanLink,
-    getLinkType,
+    getTypeFromValidURL,
     getMusicNameFromURL,
 } from "./extractLinkData";
 
@@ -32,10 +33,28 @@ describe("Radio javan url utils", () => {
                 "https://www.radiojavan.com/random"
             );
         });
+        test("Should validate the link and return true", () => {
+            expect(
+                validateURL("https://www.radiojavan.com/mp3s/mp3/Anita-Nafas")
+            ).toBe(true);
+        });
+        test("Should validate the link and return true", () => {
+            expect(
+                validateURL(
+                    "radiojavan.com/playlists/playlist/mp3/1249011caf74"
+                )
+            ).toBe(true);
+        });
+        test("Should validate the link and return false", () => {
+            expect(validateURL("https://www.radiojavan.com/")).toBe(false);
+        });
+        test("Should validate the link and return false", () => {
+            expect(validateURL("ss")).toBe(false);
+        });
     });
     describe("Link Type Identifier", () => {
         test("Should return music type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
             );
             const expected = {
@@ -45,7 +64,9 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return music type without prefixes", () => {
-            const type = getLinkType("radiojavan.com/mp3s/mp3/Anita-Nafas");
+            const type = getTypeFromValidURL(
+                "radiojavan.com/mp3s/mp3/Anita-Nafas"
+            );
             const expected = {
                 link: "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas/",
                 type: LinkTypes.Music,
@@ -53,7 +74,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return video type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
             );
             const expected = {
@@ -63,12 +84,12 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should throw invalid type", () => {
-            expect(() => getLinkType("test/video/puzzle-shab-neshin")).toThrow(
-                "INVALID_TYPE"
-            );
+            expect(() =>
+                getTypeFromValidURL("test/video/puzzle-shab-neshin")
+            ).toThrow("INVALID_TYPE");
         });
         test("Should return podcast type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
             );
             const expected = {
@@ -78,7 +99,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return playlist type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
             );
             const expected = {
@@ -88,7 +109,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should Playlist Track type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
             );
             const expected = {
@@ -98,7 +119,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should Playlist Track type without slash", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0"
             );
             const expected = {
@@ -108,7 +129,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return Tv type", () => {
-            const type = getLinkType("https://www.radiojavan.com/tv");
+            const type = getTypeFromValidURL("https://www.radiojavan.com/tv");
             const expected = {
                 link: "https://www.radiojavan.com/tv/",
                 type: LinkTypes.TV,
@@ -116,7 +137,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return album type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420/"
             );
             const expected = {
@@ -126,7 +147,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return Album Track type", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
             const expected = {
@@ -136,7 +157,7 @@ describe("Radio javan url utils", () => {
             expect(type).toStrictEqual(expected);
         });
         test("Should return Album Track type without slash", () => {
-            const type = getLinkType(
+            const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
             const expected = {

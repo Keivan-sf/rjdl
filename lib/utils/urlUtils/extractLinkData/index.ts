@@ -1,10 +1,5 @@
-import { LinkTypes } from "../../../interfaces/urlInterfaces";
+import { LinkTypes, linkType } from "../../../interfaces/urlInterfaces";
 import { radioJavanLinkRegex, typeRegex } from "./regexes";
-
-type linkType = {
-    link: string;
-    type: LinkTypes;
-};
 
 export const getRadioJavanLink = (url: string): string => {
     const matches = url.match(radioJavanLinkRegex);
@@ -12,7 +7,7 @@ export const getRadioJavanLink = (url: string): string => {
     return matches[0];
 };
 
-export const getLinkType = (url: string): linkType => {
+export const getTypeFromValidURL = (url: string): linkType => {
     for (const type in typeRegex) {
         let match = url.match(typeRegex[type]);
         if (match && match.length > 0) {
