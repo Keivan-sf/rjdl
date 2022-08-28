@@ -1,5 +1,5 @@
 import { linkAndType } from "../../interfaces/urlInterfaces";
-import { getRadioJavanLink, getTypeFromValidURL } from "./extractLinkData";
+import { getRadioJavanLink, getTypeFromValidURL } from "./getUrlType";
 
 export const getLinkType = (url: string): linkAndType => {
     const RadioJavanURL = getRadioJavanLink(url);
