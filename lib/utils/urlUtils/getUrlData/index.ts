@@ -1,41 +1,19 @@
-export const getMusicNameFromURL = (url: string): string => {
-    let name = url.split("/mp3s/mp3/")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("?") ? name.split("?")[0] : name;
-    return name;
-};
+import { nameExtractorRegexes } from "./regexes";
 
-export const getVideoNameFromURL = (url: string): string => {
-    let name = url.split("/videos/video/")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("?") ? name.split("?")[0] : name;
-    return name;
-};
+export const getMusicNameFromURL = (url: string): string =>
+    url.match(nameExtractorRegexes.musicName)![0];
 
-export const getAlbumNameFromURL = (url: string): string => {
-    let name = url.split("/mp3s/album/")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("?") ? name.split("?")[0] : name;
-    return name;
-};
+export const getVideoNameFromURL = (url: string): string =>
+    url.match(nameExtractorRegexes.videoName)![0];
 
-export const getIdFromPlaylistURL = (url: string): string => {
-    let name = url.split("/playlists/playlist/mp3/")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("?") ? name.split("?")[0] : name;
-    return name;
-};
+export const getAlbumNameFromURL = (url: string): string =>
+    url.match(nameExtractorRegexes.albumName)![0];
 
-export const getIDFromPlaylistTrackURL = (url: string): string => {
-    let name = url.split("/mp3s/playlist_start?id=")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("&") ? name.split("&")[0] : name;
-    return name;
-};
+export const getIdFromPlaylistURL = (url: string): string =>
+    url.match(nameExtractorRegexes.playlistName)![0];
 
-export const getPodcastNameFromURL = (url: string): string => {
-    let name = url.split("/podcasts/podcast/")[1];
-    name = name.includes("/") ? name.split("/")[0] : name;
-    name = name.includes("?") ? name.split("?")[0] : name;
-    return name;
-};
+export const getIDFromPlaylistTrackURL = (url: string): string =>
+    url.match(nameExtractorRegexes.playlistNameFromTrack)![0];
+
+export const getPodcastNameFromURL = (url: string): string =>
+    url.match(nameExtractorRegexes.podcastName)![0];
