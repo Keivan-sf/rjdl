@@ -6,7 +6,9 @@
     "scripts": {
         "start": "ts-node index.ts",
         "style": "npx prettier . --write",
-        "test": "jest"
+        "test": "jest",
+        "e2eTest": "jest -c jest.config.e2e.ts",
+        "unitTest": "jest -c jest.config.unit.ts"
     },
     "author": "keivan",
     "keywords": [
