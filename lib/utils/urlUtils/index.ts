@@ -1,4 +1,4 @@
-import { linkAndType } from "../../interfaces/urlInterfaces";
+import { linkAndType } from "./interfaces";
 import { getRadioJavanLink, getTypeFromValidURL } from "./getUrlType";
 export * from "./getUrlData";
 

@@ -1,4 +1,4 @@
-import { LinkTypes, linkAndType } from "../../../interfaces/urlInterfaces";
+import { LinkTypes, linkAndType } from "../interfaces";
 import { radioJavanLinkRegex, typeRegex } from "./regexes";
 
 export const getRadioJavanLink = (url: string): string => {
