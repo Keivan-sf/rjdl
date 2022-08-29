@@ -1,4 +1,4 @@
-export interface MusicInfo {
+interface MusicAndVideoCommonInfo {
     title: string;
     artist: string;
     likes: number;
@@ -6,3 +6,5 @@ export interface MusicInfo {
     date: Date;
     url: string;
 }
+export interface MusicInfo extends MusicAndVideoCommonInfo {}
+export interface VideoInfo extends MusicAndVideoCommonInfo {}
