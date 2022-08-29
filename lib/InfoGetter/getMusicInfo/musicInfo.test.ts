@@ -6,7 +6,7 @@ const mockSourceCode = `
     <div class="song">testName</div>
     <div class="artist">testArtistName</div>
 </div>
-<div class="rating">331 likes</div>
+<div class="rating">331,122,199 likes</div>
 <div class="views">Plays: 107,541,122</div>
 <div class="dateAdded">Date Added: Aug 22, 2022</div>
 `;
@@ -17,7 +17,7 @@ describe("Get music info", () => {
         expect(results).toStrictEqual({
             name: "testName",
             artist: "testArtistName",
-            likes: 331,
+            likes: 331122199,
             plays: 107541122,
             date: new Date("Aug 22, 2022"),
         });
