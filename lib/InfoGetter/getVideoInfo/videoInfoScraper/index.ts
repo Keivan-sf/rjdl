@@ -1,15 +1,15 @@
 import { MusicAndVideoScraper } from "../../utils";
 
-class MusicInfoScraper extends MusicAndVideoScraper {
+class VideoInfoScraper extends MusicAndVideoScraper {
     constructor(public document: Document) {
         super(document);
     }
     public getDate = (): Date =>
         new Date(
             this.document
-                .querySelector(".dateAdded")!
-                .innerHTML.split("Date Added: ")[1]
+                .querySelector(".date_added")!
+                .innerHTML.split("Date added: ")[1]
         );
 }
 
-export default MusicInfoScraper;
+export default VideoInfoScraper;

@@ -18,13 +18,6 @@ class MusicAndVideoScraper {
             .querySelector(".views")!
             .innerHTML.split("Plays: ")[1]
             .replace(/,/g, "");
-
-    public getDate = (): Date =>
-        new Date(
-            this.document
-                .querySelector(".dateAdded")!
-                .innerHTML.split("Date Added: ")[1]
-        );
 }
 
 export { MusicAndVideoScraper };
