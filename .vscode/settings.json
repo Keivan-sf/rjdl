@@ -1,4 +1,4 @@
 {
-    "cSpell.words": ["Regexes"],
+    "cSpell.words": ["Regexes", "rjdl"],
     "jestrunner.codeLensSelector": "**/*.{test,spec,test.e2e}.{js,jsx,ts,tsx}"
 }
