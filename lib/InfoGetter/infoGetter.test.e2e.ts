@@ -5,13 +5,13 @@ describe("Info getters", () => {
             "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan"
         );
         const staticInfo = {
-            name: info.name,
+            title: info.title,
             artist: info.artist,
             date: info.date,
             url: info.url,
         };
         expect(staticInfo).toStrictEqual({
-            name: "Daad Nazan",
+            title: "Daad Nazan",
             artist: "Sogand",
             date: new Date("Aug 11, 2022"),
             url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan",
