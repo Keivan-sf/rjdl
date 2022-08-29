@@ -15,7 +15,7 @@ describe("Get music info", () => {
         const DOM = new JSDOM(mockSourceCode).window.document;
         const results = getMusicInfoFromDOM(DOM);
         expect(results).toStrictEqual({
-            name: "testName",
+            title: "testName",
             artist: "testArtistName",
             likes: 331122199,
             plays: 107541122,

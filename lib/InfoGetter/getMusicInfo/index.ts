@@ -2,12 +2,12 @@ import MusicInfoScraper from "./musicInfoScraper";
 
 export const getMusicInfoFromDOM = (document: Document) => {
     const infoScraper = new MusicInfoScraper(document);
-    const { artist, name } = infoScraper.getSongAndArtistName();
+    const { artist, title } = infoScraper.getTitleAndArtist();
     const likes = infoScraper.getLikes();
     const plays = infoScraper.getPlays();
     const date = infoScraper.getDate();
     return {
-        name,
+        title,
         artist,
         likes,
         plays,

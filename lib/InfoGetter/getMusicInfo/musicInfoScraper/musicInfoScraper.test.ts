@@ -8,8 +8,8 @@ describe("Music info scraper", () => {
         </div>`;
         const DOM = new JSDOM(mockSource).window.document;
         const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getSongAndArtistName()).toStrictEqual({
-            name: "testName",
+        expect(scraper.getTitleAndArtist()).toStrictEqual({
+            title: "testName",
             artist: "testArtistName",
         });
     });
