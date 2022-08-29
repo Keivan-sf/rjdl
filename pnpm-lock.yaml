@@ -4,11 +4,13 @@ specifiers:
     "@babel/core": ^7.18.10
     "@babel/preset-env": ^7.18.10
     "@babel/preset-typescript": ^7.18.6
+    "@types/he": ^1.1.2
     "@types/jest": ^28.1.7
     "@types/jsdom": ^20.0.0
     "@types/node": ^18.7.6
     axios: ^0.21.4
     cheerio: ^1.0.0-rc.10
+    he: ^1.2.0
     jest: ^28.1.3
     jsdom: ^20.0.0
     prettier: ^2.7.1
@@ -17,11 +19,13 @@ specifiers:
     typescript: ^4.7.4
 
 dependencies:
+    "@types/he": 1.1.2
     "@types/jest": 28.1.7
     "@types/jsdom": 20.0.0
     "@types/node": 18.7.6
     axios: 0.21.4
     cheerio: 1.0.0-rc.12
+    he: 1.2.0
     jest: 28.1.3_425ddaf5b82c39dacbb9979464266ace
     jsdom: 20.0.0
     ts-node: 10.9.1_cf70e3757dc410dac2206eb46863551a
@@ -1983,6 +1987,13 @@ packages:
             "@types/node": 18.7.6
         dev: false
 
+    /@types/he/1.1.2:
+        resolution:
+            {
+                integrity: sha512-kSJPcLO1x+oolc0R89pUl2kozldQ/fVQ1C1p5mp8fPoLdF/ZcBvckaTC2M8xXh3GYendXvCpy5m/a2eSbfgNgw==,
+            }
+        dev: false
+
     /@types/istanbul-lib-coverage/2.0.4:
         resolution:
             {
@@ -3238,6 +3249,14 @@ packages:
         engines: { node: ">= 0.4.0" }
         dependencies:
             function-bind: 1.1.1
+
+    /he/1.2.0:
+        resolution:
+            {
+                integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==,
+            }
+        hasBin: true
+        dev: false
 
     /html-encoding-sniffer/3.0.0:
         resolution:

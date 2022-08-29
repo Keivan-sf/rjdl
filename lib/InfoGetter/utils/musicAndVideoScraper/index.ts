@@ -1,9 +1,12 @@
+import * as he from "he";
 class MusicAndVideoScraper {
     constructor(public document: Document) {}
     public getTitleAndArtist = (): { title: string; artist: string } => {
         const songInfoDiv = this.document.querySelector(".songInfo")!;
-        const title = songInfoDiv?.querySelector(".song")!.innerHTML;
-        const artist = songInfoDiv?.querySelector(".artist")!.innerHTML;
+        const title = he.decode(songInfoDiv?.querySelector(".song")!.innerHTML);
+        const artist = he.decode(
+            songInfoDiv?.querySelector(".artist")!.innerHTML
+        );
         return { title, artist };
     };
 
