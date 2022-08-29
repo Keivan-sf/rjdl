@@ -6,7 +6,7 @@ describe("Radio javan link type utils", () => {
     describe("Get valid link", () => {
         test("Should get the core url with https+www", () => {
             expect(getRadioJavanLink("https://www.radiojavan.com/")).toBe(
-                "https://www.radiojavan.com/"
+                "https://radiojavan.com/"
             );
         });
         test("Should get the core url with https", () => {
@@ -16,17 +16,17 @@ describe("Radio javan link type utils", () => {
         });
         test("Should get the core url with http", () => {
             expect(getRadioJavanLink("http://radiojavan.com/")).toBe(
-                "http://radiojavan.com/"
+                "https://radiojavan.com/"
             );
         });
         test("Should get the core url without prefix", () => {
             expect(getRadioJavanLink("radiojavan.com/")).toBe(
-                "radiojavan.com/"
+                "https://radiojavan.com/"
             );
         });
         test("Should get a random url with the origin of RadioJavan", () => {
             expect(getRadioJavanLink("https://www.radiojavan.com/random")).toBe(
-                "https://www.radiojavan.com/random"
+                "https://radiojavan.com/random"
             );
         });
     });
