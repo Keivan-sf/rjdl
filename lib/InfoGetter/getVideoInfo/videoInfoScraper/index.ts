@@ -16,6 +16,11 @@ class VideoInfoScraper extends MusicAndVideoScraper {
         this.document
             .querySelector("#playlist_item_permlink")!
             .getAttribute("value")!;
+
+    public getThumbnail = (): string =>
+        this.document
+            .querySelector("meta[property='og:image']")!
+            .getAttribute("content")!;
 }
 
 export default VideoInfoScraper;

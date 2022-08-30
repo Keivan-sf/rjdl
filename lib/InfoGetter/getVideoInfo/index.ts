@@ -10,5 +10,6 @@ export const getVideoInfoFromDOM = (document: Document) => {
         likes: infoScraper.getLikes(),
         plays: infoScraper.getPlays(),
         date: infoScraper.getDate(),
+        thumbnail: infoScraper.getThumbnail(),
     };
 };

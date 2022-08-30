@@ -37,6 +37,14 @@ describe("Video info scraper", () => {
         const mockSource = `<input type="hidden" name="playlist_item_permlink" id="playlist_item_permlink" value="donya-bye-bye-bye" />`;
         const DOM = new JSDOM(mockSource).window.document;
         const id = new VideoInfoScraper(DOM).getId();
-        expect(id).toStrictEqual("donya-bye-bye-bye");
+        expect(id).toBe("donya-bye-bye-bye");
+    });
+    test("Should return video thumbnail", () => {
+        const mockSource = `<meta property="og:image" content="https://assets.rjassets.com/static/musicvideos/images/1860382b80a06ed-original-larger.jpeg" />`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const thumbnail = new VideoInfoScraper(DOM).getThumbnail();
+        expect(thumbnail).toBe(
+            "https://assets.rjassets.com/static/musicvideos/images/1860382b80a06ed-original-larger.jpeg"
+        );
     });
 });
