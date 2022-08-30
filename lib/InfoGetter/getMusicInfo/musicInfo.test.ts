@@ -3,7 +3,7 @@ import { JSDOM } from "jsdom";
 import { getSourceCodeDOMDocument } from "../utils";
 const mockSourceCode = `
 <div class="artwork">
-<img alt="Donya" class="" src="testImage">
+<img alt="Donya" class="" src="https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg">
 </div>
 <div class="songInfo">
     <div class="song">testName</div>
@@ -18,11 +18,13 @@ describe("Get music info", () => {
         const DOM = new JSDOM(mockSourceCode).window.document;
         const results = getMusicInfoFromDOM(DOM);
         expect(results).toStrictEqual({
+            id: "donya-bye-bye-bye",
             title: "testName",
             artist: "testArtistName",
             likes: 331122199,
             plays: 107541122,
-            artwork: "testImage",
+            artwork:
+                "https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg",
             date: new Date("Aug 22, 2022"),
         });
     });

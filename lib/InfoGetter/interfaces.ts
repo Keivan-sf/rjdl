@@ -8,5 +8,6 @@ interface MusicAndVideoCommonInfo {
 }
 export interface MusicInfo extends MusicAndVideoCommonInfo {
     artwork: string;
+    id: string;
 }
 export interface VideoInfo extends MusicAndVideoCommonInfo {}
