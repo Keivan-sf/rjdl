@@ -9,6 +9,10 @@ class PlaylistTrackInfoScraper {
             artist,
         };
     };
+    public getUrl = (): string => {
+        let url = this.trackContainer.querySelector("a")!.getAttribute("href")!;
+        return "https://www.radiojavan.com" + url;
+    };
 }
 
 export default PlaylistTrackInfoScraper;
