@@ -8,7 +8,7 @@ export const getMusicInfo = async (url: string): Promise<MusicInfo> => {
     url = getRadioJavanLink(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getMusicInfoFromDOM(document);
-    const infoAndUrl = {
+    const infoAndUrl: MusicInfo = {
         ...info,
         url,
     };

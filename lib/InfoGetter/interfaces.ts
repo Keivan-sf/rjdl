@@ -6,5 +6,7 @@ interface MusicAndVideoCommonInfo {
     date: Date;
     url: string;
 }
-export interface MusicInfo extends MusicAndVideoCommonInfo {}
+export interface MusicInfo extends MusicAndVideoCommonInfo {
+    artwork: string;
+}
 export interface VideoInfo extends MusicAndVideoCommonInfo {}

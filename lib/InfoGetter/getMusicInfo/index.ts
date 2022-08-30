@@ -6,11 +6,13 @@ export const getMusicInfoFromDOM = (document: Document) => {
     const likes = infoScraper.getLikes();
     const plays = infoScraper.getPlays();
     const date = infoScraper.getDate();
+    const artwork = infoScraper.getArtwork();
     return {
         title,
         artist,
         likes,
         plays,
         date,
+        artwork,
     };
 };

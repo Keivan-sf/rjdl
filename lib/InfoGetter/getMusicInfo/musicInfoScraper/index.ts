@@ -10,6 +10,8 @@ class MusicInfoScraper extends MusicAndVideoScraper {
                 .querySelector(".dateAdded")!
                 .innerHTML.split("Date Added: ")[1]
         );
+    public getArtwork = (): string =>
+        this.document.querySelector(".artwork img")!.getAttribute("src")!;
 }
 
 export default MusicInfoScraper;

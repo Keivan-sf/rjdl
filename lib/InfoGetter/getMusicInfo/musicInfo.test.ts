@@ -2,6 +2,9 @@ import { getMusicInfoFromDOM } from ".";
 import { JSDOM } from "jsdom";
 import { getSourceCodeDOMDocument } from "../utils";
 const mockSourceCode = `
+<div class="artwork">
+<img alt="Donya" class="" src="testImage">
+</div>
 <div class="songInfo">
     <div class="song">testName</div>
     <div class="artist">testArtistName</div>
@@ -19,6 +22,7 @@ describe("Get music info", () => {
             artist: "testArtistName",
             likes: 331122199,
             plays: 107541122,
+            artwork: "testImage",
             date: new Date("Aug 22, 2022"),
         });
     });

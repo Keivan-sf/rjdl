@@ -9,12 +9,15 @@ describe("Info getters", () => {
             artist: info.artist,
             date: info.date,
             url: info.url,
+            artwork: info.artwork,
         };
         expect(staticInfo).toStrictEqual({
             title: "Daad Nazan",
             artist: "Sogand",
             date: new Date("Aug 11, 2022"),
             url: "https://radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan",
+            artwork:
+                "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20.jpg",
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");

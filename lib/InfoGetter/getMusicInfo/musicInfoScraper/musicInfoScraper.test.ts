@@ -31,4 +31,17 @@ describe("Music info scraper", () => {
         const scraper = new MusicInfoScraper(DOM);
         expect(scraper.getDate()).toStrictEqual(new Date("Aug 22, 2022"));
     });
+    test("Should get music artwork", () => {
+        const mockSource = `<div class="artwork">
+        <img alt="Donya - Bye Bye Bye Song | دنیا بای بای بای'" class="" src="https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg">
+        <div class="songInfo">
+        <span class="artist">Donya</span><span class="song">Bye Bye Bye</span>
+        <div style="padding-top: 20px" class="farsiText"><h1><span class="artist">دنیا</span><br>
+        <span class="song" dir="rtl">بای بای بای</span></h1></div></div></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getArtwork()).toBe(
+            "https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg"
+        );
+    });
 });
