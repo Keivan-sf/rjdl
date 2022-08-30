@@ -13,6 +13,8 @@ class PlaylistTrackInfoScraper {
         let url = this.trackContainer.querySelector("a")!.getAttribute("href")!;
         return "https://www.radiojavan.com" + url;
     };
+    public getArtwork = (): string =>
+        this.trackContainer.querySelector("img")!.getAttribute("data-src")!;
 }
 
 export default PlaylistTrackInfoScraper;
