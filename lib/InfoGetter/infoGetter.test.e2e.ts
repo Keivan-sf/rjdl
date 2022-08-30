@@ -3,7 +3,7 @@ describe("Info getters", () => {
     jest.setTimeout(15000);
     test("Should return music info with url", async () => {
         const info = await getMusicInfo(
-            "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan"
+            "https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)"
         );
         const staticInfo = {
             id: info.id,
@@ -15,14 +15,14 @@ describe("Info getters", () => {
             video: info.video,
         };
         expect(staticInfo).toStrictEqual({
-            id: "sogand-daad-nazan",
-            title: "Daad Nazan",
-            artist: "Sogand",
-            date: new Date("Aug 11, 2022"),
-            url: "https://radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan",
+            id: "koorosh-abnormal-(ft-arta-montiego)",
+            title: "Abnormal (Ft Arta & Montiego)",
+            artist: "Koorosh",
+            date: new Date("Jun 4, 2019"),
+            url: "https://radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)",
             artwork:
-                "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20.jpg",
-            video: null,
+                "https://assets.rjassets.com/static/mp3/koorosh-abnormal-(ft-arta-montiego)/1e3cd7f1402539b.jpg",
+            video: "https://www.radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)",
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");
