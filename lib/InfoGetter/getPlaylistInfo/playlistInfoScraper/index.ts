@@ -4,6 +4,9 @@ import PlaylistTrackInfoScraper from "./playlistTrackInfoScraper";
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
 
+    public getName = (): string =>
+        this.document.querySelector(".songInfo .title")!.innerHTML;
+
     public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);

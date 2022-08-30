@@ -2,6 +2,10 @@ import { JSDOM } from "jsdom";
 import PlaylistInfoScraper from ".";
 
 const mockSourceCode = `
+<div class="songInfo">
+<h2 class="title">Dahe 90</h2>
+<span>Created by <span class="label radius secondary">Radio Javan</span> |
+<span>100 songs</span> | <span id="follower_count">13,221 followers</span></span></div>
 <div class="sidePanel"><ul class="listView">
 <li>
 <a href="/mp3s/playlist_start?id=14af15307e15&amp;index=0">
@@ -26,9 +30,9 @@ const mockSourceCode = `
 </ul></div>
 `;
 describe("playlist info scraper", () => {
+    const DOM = new JSDOM(mockSourceCode).window.document;
+    const playlistScraper = new PlaylistInfoScraper(DOM);
     test("Should return track list of playlist", () => {
-        const DOM = new JSDOM(mockSourceCode).window.document;
-        const playlistScraper = new PlaylistInfoScraper(DOM);
         expect(playlistScraper.getTracks()).toStrictEqual([
             {
                 title: "Baroon Delam Khast",
@@ -47,5 +51,8 @@ describe("playlist info scraper", () => {
                 url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=1",
             },
         ]);
+    });
+    test("Should return playlist name", () => {
+        expect(playlistScraper.getName()).toBe("Dahe 90");
     });
 });
