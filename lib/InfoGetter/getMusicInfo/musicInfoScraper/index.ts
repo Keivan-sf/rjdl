@@ -18,15 +18,7 @@ class MusicInfoScraper extends MusicAndVideoScraper {
                 .innerHTML.split("Date Added: ")[1]
         );
 
-    public getVideoVersion = (): string | null => {
-        let url =
-            this.document
-                .querySelector("#download.watch")
-                ?.querySelector("a")
-                ?.getAttribute("href") ?? null;
-        if (!url) return url;
-        return "https://www.radiojavan.com" + url;
-    };
+    public getVideoVersion = (): string | null => this.getAltVersion();
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;

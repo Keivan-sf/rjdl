@@ -21,6 +21,16 @@ class MusicAndVideoScraper {
             .querySelector(".views")!
             .innerHTML.split("Plays: ")[1]
             .replace(/,/g, "");
+
+    protected getAltVersion = (): string | null => {
+        let url =
+            this.document
+                .querySelector("#download")
+                ?.querySelector("a")
+                ?.getAttribute("href") ?? null;
+        if (!url) return url;
+        return "https://www.radiojavan.com" + url;
+    };
 }
 
 export { MusicAndVideoScraper };
