@@ -11,5 +11,6 @@ export const getVideoInfoFromDOM = (document: Document) => {
         plays: infoScraper.getPlays(),
         date: infoScraper.getDate(),
         thumbnail: infoScraper.getThumbnail(),
+        song: infoScraper.getMusicVersion(),
     };
 };

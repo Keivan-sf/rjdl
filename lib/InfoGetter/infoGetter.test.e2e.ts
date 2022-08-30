@@ -40,6 +40,7 @@ describe("Info getters", () => {
             date: info.date,
             url: info.url,
             thumbnail: info.thumbnail,
+            song: info.song,
         };
         expect(staticInfo).toStrictEqual({
             id: "koorosh-abnormal-(ft-arta-montiego)",
@@ -49,6 +50,7 @@ describe("Info getters", () => {
             url: "https://radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)",
             thumbnail:
                 "https://assets.rjassets.com/static/musicvideos/images/cad8a3f0821dc46-original-larger.jpeg",
+            song: "https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)",
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");

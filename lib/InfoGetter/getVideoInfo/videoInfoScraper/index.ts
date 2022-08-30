@@ -21,6 +21,16 @@ class VideoInfoScraper extends MusicAndVideoScraper {
         this.document
             .querySelector("meta[property='og:image']")!
             .getAttribute("content")!;
+
+    public getMusicVersion = (): string | null => {
+        let url =
+            this.document
+                .querySelector("#download")
+                ?.querySelector("a")
+                ?.getAttribute("href") ?? null;
+        if (!url) return url;
+        return "https://www.radiojavan.com" + url;
+    };
 }
 
 export default VideoInfoScraper;

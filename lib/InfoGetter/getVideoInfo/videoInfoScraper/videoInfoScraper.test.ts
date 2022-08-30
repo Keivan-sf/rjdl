@@ -47,4 +47,21 @@ describe("Video info scraper", () => {
             "https://assets.rjassets.com/static/musicvideos/images/1860382b80a06ed-original-larger.jpeg"
         );
     });
+    test("Should return music version", () => {
+        const mockSource = `<div id="download">
+        <a class="button textButton" href="/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="plusIcon icon">
+        <path d="" id="path-1"></path></svg></a></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const song = new VideoInfoScraper(DOM).getMusicVersion();
+        expect(song).toBe(
+            "https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)"
+        );
+    });
+    test("Should return null for a video without music version", () => {
+        const mockSource = `<div></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const song = new VideoInfoScraper(DOM).getMusicVersion();
+        expect(song).toBe(null);
+    });
 });
