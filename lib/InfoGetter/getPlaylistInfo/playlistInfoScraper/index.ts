@@ -7,6 +7,12 @@ class PlaylistInfoScraper {
     public getName = (): string =>
         this.document.querySelector(".songInfo .title")!.innerHTML;
 
+    public getFollowers = (): number =>
+        +this.document
+            .querySelector("#follower_count")!
+            .innerHTML.split(" followers")[0]
+            .replace(/,/g, "");
+
     public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);

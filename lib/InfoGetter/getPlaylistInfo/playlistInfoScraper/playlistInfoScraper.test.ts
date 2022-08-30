@@ -55,4 +55,7 @@ describe("playlist info scraper", () => {
     test("Should return playlist name", () => {
         expect(playlistScraper.getName()).toBe("Dahe 90");
     });
+    test("Should return playlist followers", () => {
+        expect(playlistScraper.getFollowers()).toBe(13221);
+    });
 });
