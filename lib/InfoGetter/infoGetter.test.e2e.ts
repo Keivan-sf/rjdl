@@ -1,5 +1,6 @@
 import { getMusicInfo, getVideoInfo } from ".";
 describe("Info getters", () => {
+    jest.setTimeout(15000);
     test("Should return music info with url", async () => {
         const info = await getMusicInfo(
             "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan"
