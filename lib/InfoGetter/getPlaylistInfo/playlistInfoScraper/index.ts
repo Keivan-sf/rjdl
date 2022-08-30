@@ -1,9 +1,10 @@
+import { PlaylistTrack } from "../../interfaces";
 import PlaylistTrackInfoScraper from "./playlistTrackInfoScraper";
 
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
 
-    public getTracks = () => {
+    public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
     };
@@ -28,7 +29,7 @@ class PlaylistInfoScraper {
 
     private getTrackInfoFromTrackScraper = (
         tracks: PlaylistTrackInfoScraper[]
-    ) =>
+    ): PlaylistTrack[] =>
         tracks.map((track) => {
             const { title, artist } = track.getSongAndArtistName();
             return {

@@ -15,3 +15,10 @@ export interface VideoInfo extends MusicAndVideoCommonInfo {
     thumbnail: string;
     song: string | null;
 }
+export interface PlaylistTrack {
+    id: string;
+    title: string;
+    artist: string;
+    artwork: string;
+    url: string;
+}
