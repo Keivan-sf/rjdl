@@ -10,12 +10,14 @@ const mockSourceCode = `
 <div class="views">Plays: 538,580</div>
 <span class="rating">12,487 likes</span>
 <div pubdate="pubdate" class="date_added">Date added: Aug 27, 2022</div>
+<input type="hidden" name="playlist_item_permlink" id="playlist_item_permlink" value="donya-bye-bye-bye" />
 `;
 describe("Get video info", () => {
     test("Get video info from dom", () => {
         const DOM = new JSDOM(mockSourceCode).window.document;
         const results = getVideoInfoFromDOM(DOM);
         expect(results).toStrictEqual({
+            id: "donya-bye-bye-bye",
             title: "Bye Bye Bye",
             artist: "Donya",
             likes: 12487,

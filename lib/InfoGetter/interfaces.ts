@@ -1,4 +1,5 @@
 interface MusicAndVideoCommonInfo {
+    id: string;
     title: string;
     artist: string;
     likes: number;
@@ -8,6 +9,5 @@ interface MusicAndVideoCommonInfo {
 }
 export interface MusicInfo extends MusicAndVideoCommonInfo {
     artwork: string;
-    id: string;
 }
 export interface VideoInfo extends MusicAndVideoCommonInfo {}

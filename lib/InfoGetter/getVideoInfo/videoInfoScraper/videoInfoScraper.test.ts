@@ -33,4 +33,10 @@ describe("Video info scraper", () => {
         const date = new VideoInfoScraper(DOM).getDate();
         expect(date).toStrictEqual(new Date("Aug 27, 2022"));
     });
+    test("Should return video ID", () => {
+        const mockSource = `<input type="hidden" name="playlist_item_permlink" id="playlist_item_permlink" value="donya-bye-bye-bye" />`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const id = new VideoInfoScraper(DOM).getId();
+        expect(id).toStrictEqual("donya-bye-bye-bye");
+    });
 });

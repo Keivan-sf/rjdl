@@ -32,12 +32,14 @@ describe("Info getters", () => {
             "https://www.radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)"
         );
         const staticInfo = {
+            id: info.id,
             title: info.title,
             artist: info.artist,
             date: info.date,
             url: info.url,
         };
         expect(staticInfo).toStrictEqual({
+            id: "koorosh-abnormal-(ft-arta-montiego)",
             title: "Abnormal (Ft Arta & Montiego)",
             artist: "Koorosh",
             date: new Date("Sep 21, 2019"),
