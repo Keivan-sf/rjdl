@@ -46,4 +46,14 @@ describe("Playlist track info scraper", () => {
             "https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg"
         );
     });
+    test("Should get song id", () => {
+        const mockedSourceCode = `<li>
+        <img src="images/blank.gif" data-src="https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg" alt="Shadmehr Aghili - &#39;Baroon Delam Khast&#39;" class="lazyload" />
+        </li>`;
+        const containerElement = new JSDOM(
+            mockedSourceCode
+        ).window.document.querySelector("li")!;
+        const scraper = new PlaylistTrackInfoScraper(containerElement);
+        expect(scraper.getId()).toBe("shadmehr-aghili-baroon-delam-khast");
+    });
 });
