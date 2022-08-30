@@ -12,6 +12,7 @@ describe("Info getters", () => {
             date: info.date,
             url: info.url,
             artwork: info.artwork,
+            video: info.video,
         };
         expect(staticInfo).toStrictEqual({
             id: "sogand-daad-nazan",
@@ -21,6 +22,7 @@ describe("Info getters", () => {
             url: "https://radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan",
             artwork:
                 "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20.jpg",
+            video: null,
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");

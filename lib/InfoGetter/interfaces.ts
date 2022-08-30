@@ -9,6 +9,7 @@ interface MusicAndVideoCommonInfo {
 }
 export interface MusicInfo extends MusicAndVideoCommonInfo {
     artwork: string;
+    video: string | null;
 }
 export interface VideoInfo extends MusicAndVideoCommonInfo {
     thumbnail: string;

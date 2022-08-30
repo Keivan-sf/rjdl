@@ -55,4 +55,20 @@ describe("Music info scraper", () => {
         const scraper = new MusicInfoScraper(DOM);
         expect(scraper.getId()).toBe("sogand-halet-khube");
     });
+    test("Should get music video", () => {
+        const mockSource = `<div id="download" class="watch">
+        <a href="/videos/video/koorosh-abnormal-(ft-arta-montiego)" class="button textButton">
+        <i class="fa fa-video-camera">&nbsp;&nbsp;Video</i></a></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getVideoVersion()).toBe(
+            "https://www.radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)"
+        );
+    });
+    test("Should return null for a music without music video", () => {
+        const mockSource = `<div></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getVideoVersion()).toBeNull();
+    });
 });
