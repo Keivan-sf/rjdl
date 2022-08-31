@@ -58,4 +58,7 @@ describe("playlist info scraper", () => {
     test("Should return playlist followers", () => {
         expect(playlistScraper.getFollowers()).toBe(13221);
     });
+    test("Should return playlist creator", () => {
+        expect(playlistScraper.getCreator()).toBe("Radio Javan");
+    });
 });

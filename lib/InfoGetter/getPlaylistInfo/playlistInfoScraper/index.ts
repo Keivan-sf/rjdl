@@ -13,6 +13,9 @@ class PlaylistInfoScraper {
             .innerHTML.split(" followers")[0]
             .replace(/,/g, "");
 
+    public getCreator = (): string =>
+        this.document.querySelectorAll(".songInfo > span > span")[0].innerHTML;
+
     public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
