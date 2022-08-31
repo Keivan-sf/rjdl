@@ -20,6 +20,7 @@ class PlaylistInfoScraper {
         this.document
             .querySelector(".artworkContainer #playlist_image")!
             .getAttribute("src")!;
+
     public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
