@@ -16,6 +16,10 @@ class PlaylistInfoScraper {
     public getCreator = (): string =>
         this.document.querySelectorAll(".songInfo > span > span")[0].innerHTML;
 
+    public getArtwork = (): string =>
+        this.document
+            .querySelector(".artworkContainer #playlist_image")!
+            .getAttribute("src")!;
     public getTracks = (): PlaylistTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
