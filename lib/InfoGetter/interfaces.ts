@@ -25,6 +25,7 @@ export interface PlaylistTrack {
 }
 
 export interface PlaylistInfo {
+    id: string;
     title: string;
     creator: string;
     followers: number;
