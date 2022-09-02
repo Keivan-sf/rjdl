@@ -1,6 +1,7 @@
 import { LinkTypes } from "./interfaces";
 import { formatURL, getTypeFromValidURL } from "./getUrlType";
 export * from "./getUrlData";
+export { formatURL };
 
 export const getLinkType = (url: string): LinkTypes => {
     const RadioJavanURL = formatURL(url);

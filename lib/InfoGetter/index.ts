@@ -1,4 +1,4 @@
-import { formatURL } from "../utils/urlUtils/getUrlType";
+import { formatURL } from "../utils/urlUtils";
 import { getMusicInfoFromDOM } from "./getMusicInfo";
 import { getVideoInfoFromDOM } from "./getVideoInfo";
 import { getAlbumInfoFromDOM } from "./getAlbumInfo";
