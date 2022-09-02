@@ -1,1 +1,2 @@
-console.log("Hello there");
+export * from "./lib/InfoGetter";
+export { formatURL, getLinkType, validateURL } from "./lib/utils/urlUtils";
