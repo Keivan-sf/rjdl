@@ -18,6 +18,6 @@ export const getPodcastHost = (id: string): Promise<string> =>
 
 async function getHost(id: string, type: DownloadableTypes) {
     const response = await axios.post(hostProviders[type], { id });
-    if (!response.data.host) throw new Error("ERR_GETTING_HOST");
+    if (!response.data?.host) throw new Error("ERR_GETTING_HOST");
     return response.data.host as string;
 }
