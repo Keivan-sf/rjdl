@@ -2,6 +2,7 @@ import {
     getMusicDownloadLinksViaID,
     getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaID,
+    getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaID,
     getVideoDownloadLinksViaURL,
 } from ".";
@@ -15,6 +16,7 @@ jest.mock("./getHost", () => ({
 jest.mock("./getId", () => ({
     getMusicID: (url: string) => Promise.resolve(url.split("/").pop()),
     getVideoID: (url: string) => url.split("/").pop(),
+    getPodcastID: (url: string) => url.split("/").pop(),
 }));
 describe("Get download link", () => {
     describe("Get download links via id", () => {
@@ -67,6 +69,17 @@ describe("Get download link", () => {
                     "https://host2.rj-mw1.com/media/music_video/lq/donya-bye-bye-bye.mp4",
                 highQuality:
                     "https://host2.rj-mw1.com/media/music_video/hq/donya-bye-bye-bye.mp4",
+            });
+        });
+        test("Get podcast download links via url", async () => {
+            const links = await getPodcastDownloadLinksViaURL(
+                "https://www.radiojavan.com/podcasts/podcast/TranceForm-114"
+            );
+            expect(links).toStrictEqual({
+                midQuality:
+                    "https://host2.rj-mw1.com/media/podcast/mp3-256/TranceForm-114.mp3",
+                highQuality:
+                    "https://host2.rj-mw1.com/media/podcast/mp3-320/TranceForm-114.mp3",
             });
         });
     });

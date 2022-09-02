@@ -1,5 +1,5 @@
 import { getMusicHost, getPodcastHost, getVideoHost } from "./getHost";
-import { getMusicID, getVideoID } from "./getId";
+import { getMusicID, getPodcastID, getVideoID } from "./getId";
 import { DownloadLinks } from "./interfaces";
 
 export const getMusicDownloadLinksViaURL = async (
@@ -14,6 +14,13 @@ export const getVideoDownloadLinksViaURL = (
 ): Promise<DownloadLinks> => {
     const id = getVideoID(url);
     return getVideoDownloadLinksViaID(id);
+};
+
+export const getPodcastDownloadLinksViaURL = (
+    url: string
+): Promise<DownloadLinks> => {
+    const id = getPodcastID(url);
+    return getPodcastDownloadLinksViaID(id);
 };
 
 export const getMusicDownloadLinksViaID = async (
