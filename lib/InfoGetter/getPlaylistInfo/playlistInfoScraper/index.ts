@@ -1,5 +1,5 @@
-import { PlaylistTrack } from "../../interfaces";
-import PlaylistTrackInfoScraper from "./playlistTrackInfoScraper";
+import { Track } from "../../interfaces";
+import { TrackInfoScraper } from "../../utils";
 
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
@@ -24,7 +24,7 @@ class PlaylistInfoScraper {
             .querySelector(".artworkContainer #playlist_image")!
             .getAttribute("src")!;
 
-    public getTracks = (): PlaylistTrack[] => {
+    public getTracks = (): Track[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
     };
@@ -41,15 +41,15 @@ class PlaylistInfoScraper {
 
     private convertTrackElementsToScraper = (
         elements: NodeListOf<HTMLLIElement>
-    ): PlaylistTrackInfoScraper[] => {
-        const scrapers: PlaylistTrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new PlaylistTrackInfoScraper(e)));
+    ): TrackInfoScraper[] => {
+        const scrapers: TrackInfoScraper[] = [];
+        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
         return scrapers;
     };
 
     private getTrackInfoFromTrackScraper = (
-        tracks: PlaylistTrackInfoScraper[]
-    ): PlaylistTrack[] =>
+        tracks: TrackInfoScraper[]
+    ): Track[] =>
         tracks.map((track) => {
             const { title, artist } = track.getSongAndArtistName();
             return {

@@ -16,7 +16,7 @@ export interface VideoInfo extends MusicAndVideoCommonInfo {
     song: string | null;
 }
 
-export interface PlaylistTrack {
+export interface Track {
     id: string;
     title: string;
     artist: string;
@@ -30,5 +30,5 @@ export interface PlaylistInfo {
     creator: string;
     followers: number;
     artwork: string;
-    tracks: PlaylistTrack[];
+    tracks: Track[];
 }

@@ -1,4 +1,4 @@
-class PlaylistTrackInfoScraper {
+class TrackInfoScraper {
     constructor(public trackContainer: Element) {}
 
     public getSongAndArtistName = (): { title: string; artist: string } => {
@@ -31,4 +31,4 @@ class PlaylistTrackInfoScraper {
     };
 }
 
-export default PlaylistTrackInfoScraper;
+export { TrackInfoScraper };
