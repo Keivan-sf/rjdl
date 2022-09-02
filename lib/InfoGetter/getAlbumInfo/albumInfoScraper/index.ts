@@ -1,4 +1,4 @@
-import { Track } from "../../interfaces";
+import { AlbumTrack, Track } from "../../interfaces";
 import AlbumTrackInfoScraper from "./albumTrackInfoScraper";
 
 class AlbumInfoScraper {
@@ -46,7 +46,7 @@ class AlbumInfoScraper {
 
     private getTrackInfoFromTrackScraper = (
         tracks: AlbumTrackInfoScraper[]
-    ): Track[] =>
+    ): AlbumTrack[] =>
         tracks.map((track) => {
             const { title, artist } = track.getSongAndArtistName();
             return {

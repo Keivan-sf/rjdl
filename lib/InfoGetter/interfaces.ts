@@ -24,6 +24,10 @@ export interface Track {
     url: string;
 }
 
+export interface AlbumTrack extends Track {
+    index: number;
+}
+
 export interface PlaylistInfo {
     id: string;
     title: string;
