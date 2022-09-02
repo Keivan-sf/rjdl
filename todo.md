@@ -1,6 +1,5 @@
 To do:
 
--   Get album info
 -   Get podcast info
 -   Get download link
 -   Get stream
