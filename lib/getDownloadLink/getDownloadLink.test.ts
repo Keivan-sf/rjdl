@@ -3,6 +3,7 @@ import {
     getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaID,
     getVideoDownloadLinksViaID,
+    getVideoDownloadLinksViaURL,
 } from ".";
 import * as hostGetters from "./getHost";
 import * as idGetters from "./getId";
@@ -13,6 +14,7 @@ jest.mock("./getHost", () => ({
 }));
 jest.mock("./getId", () => ({
     getMusicID: (url: string) => Promise.resolve(url.split("/").pop()),
+    getVideoID: (url: string) => url.split("/").pop(),
 }));
 describe("Get download link", () => {
     describe("Get download links via id", () => {
@@ -54,6 +56,17 @@ describe("Get download link", () => {
                     "https://host2.rj-mw1.com/media/mp3/mp3-256/test-id-2.mp3",
                 highQuality:
                     "https://host2.rj-mw1.com/media/mp3/mp3-320/test-id-2.mp3",
+            });
+        });
+        test("Get video download links via url", async () => {
+            const links = await getVideoDownloadLinksViaURL(
+                "https://www.radiojavan.com/videos/video/donya-bye-bye-bye"
+            );
+            expect(links).toStrictEqual({
+                midQuality:
+                    "https://host2.rj-mw1.com/media/music_video/lq/donya-bye-bye-bye.mp4",
+                highQuality:
+                    "https://host2.rj-mw1.com/media/music_video/hq/donya-bye-bye-bye.mp4",
             });
         });
     });
