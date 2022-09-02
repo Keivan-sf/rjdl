@@ -9,8 +9,8 @@ const mockSourceCode = `
 <span>Created by <span class="label radius secondary">Radio Javan</span> |
 <span>45 songs</span> | <span id="follower_count">65,239 followers</span>
 </span></div>
+<a href="javascript:void(0)" class="follow_container button textButton light" id="follow_playlist" item="3a3047f210c4"></a>
 </div>
-<a href="javascript:void(0)" class="follow_container button textButton light" id="follow_playlist" item="3a3047f210c4">
 <div class="sidePanel"><ul class="listView">
 <li>
 <a href="/mp3s/playlist_start?id=14af15307e15&amp;index=0">
