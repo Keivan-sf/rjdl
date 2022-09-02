@@ -46,3 +46,7 @@ export interface AlbumInfo {
     tracks: AlbumTrack[];
     url: string;
 }
+
+export interface PodcastInfo extends MusicAndVideoCommonInfo {
+    artwork: string;
+}
