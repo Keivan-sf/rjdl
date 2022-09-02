@@ -3,7 +3,14 @@ import { getMusicInfoFromDOM } from "./getMusicInfo";
 import { getVideoInfoFromDOM } from "./getVideoInfo";
 import { getAlbumInfoFromDOM } from "./getAlbumInfo";
 import { getPlaylistInfoFromDOM } from "./getPlaylistInfo";
-import { AlbumInfo, MusicInfo, PlaylistInfo, VideoInfo } from "./interfaces";
+import { getPodcastInfoFromDOM } from "./getPodcastInfo";
+import {
+    AlbumInfo,
+    MusicInfo,
+    PlaylistInfo,
+    PodcastInfo,
+    VideoInfo,
+} from "./interfaces";
 import { getSourceCodeDOMDocument } from "./utils";
 
 export const getMusicInfo = async (url: string): Promise<MusicInfo> => {
@@ -43,6 +50,17 @@ export const getAlbumInfo = async (url: string): Promise<AlbumInfo> => {
     url = formatURL(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getAlbumInfoFromDOM(document);
+    const infoAndUrl = {
+        ...info,
+        url,
+    };
+    return infoAndUrl;
+};
+
+export const getPodcastInfo = async (url: string): Promise<PodcastInfo> => {
+    url = formatURL(url);
+    const document = await getSourceCodeDOMDocument(url);
+    const info = getPodcastInfoFromDOM(document);
     const infoAndUrl = {
         ...info,
         url,
