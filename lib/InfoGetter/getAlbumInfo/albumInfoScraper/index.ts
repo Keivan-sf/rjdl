@@ -21,7 +21,7 @@ class AlbumInfoScraper {
             .querySelector(".artworkContainer .artwork img")!
             .getAttribute("src")!;
 
-    public getTracks = (): Track[] => {
+    public getTracks = (): AlbumTrack[] => {
         const tracks = this.getTrackElementScrapers();
         return this.getTrackInfoFromTrackScraper(tracks);
     };
@@ -32,9 +32,7 @@ class AlbumInfoScraper {
     };
 
     private getTrackElements = () =>
-        this.document
-            .querySelector(".listView")!
-            .querySelectorAll("li")!;
+        this.document.querySelector(".listView")!.querySelectorAll("li")!;
 
     private convertTrackElementsToScraper = (
         elements: NodeListOf<HTMLLIElement>

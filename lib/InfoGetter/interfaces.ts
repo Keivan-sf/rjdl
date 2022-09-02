@@ -36,3 +36,11 @@ export interface PlaylistInfo {
     artwork: string;
     tracks: Track[];
 }
+
+export interface AlbumInfo {
+    id: string;
+    title: string;
+    artist: string;
+    artwork: string;
+    tracks: AlbumTrack[];
+}
