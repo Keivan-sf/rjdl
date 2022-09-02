@@ -14,7 +14,7 @@ class PodcastInfoScraper extends BaseInfoScraper {
     public getDate = (): Date =>
         new Date(
             this.document
-                .querySelector(".date_added")!
+                .querySelector(".dateAdded")!
                 .innerHTML.split("Date added: ")[1]
         );
 
