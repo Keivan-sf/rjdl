@@ -1,4 +1,4 @@
-import { getMusicInfo } from "../../InfoGetter";
+import { getMusicInfo } from "../../InfoScraper";
 import {
     getMusicIdFromURL,
     getPodcastIdFromURL,
