@@ -35,6 +35,7 @@ export interface PlaylistInfo {
     followers: number;
     artwork: string;
     tracks: Track[];
+    url: string;
 }
 
 export interface AlbumInfo {
@@ -43,4 +44,5 @@ export interface AlbumInfo {
     artist: string;
     artwork: string;
     tracks: AlbumTrack[];
+    url: string;
 }

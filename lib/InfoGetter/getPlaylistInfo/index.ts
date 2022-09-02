@@ -1,7 +1,7 @@
 import { PlaylistInfo } from "../interfaces";
 import PlaylistInfoScraper from "./playlistInfoScraper";
 
-export const getPlaylistInfoFromDOM = (document: Document): PlaylistInfo => {
+export const getPlaylistInfoFromDOM = (document: Document) => {
     const infoScraper = new PlaylistInfoScraper(document);
     return {
         id: infoScraper.getId(),

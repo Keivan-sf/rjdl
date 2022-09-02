@@ -1,9 +1,8 @@
-import { AlbumInfo } from "../interfaces";
 import AlbumInfoScraper from "./albumInfoScraper";
 
-export const getAlbumInfoFromDOM = (document: Document): AlbumInfo => {
+export const getAlbumInfoFromDOM = (document: Document) => {
     const infoScraper = new AlbumInfoScraper(document);
-    const info: AlbumInfo = {
+    const info = {
         id: infoScraper.getId(),
         title: infoScraper.getName(),
         artist: infoScraper.getArtist(),
