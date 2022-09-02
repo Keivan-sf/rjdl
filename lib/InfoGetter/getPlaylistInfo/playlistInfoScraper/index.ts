@@ -1,5 +1,6 @@
 import { Track } from "../../interfaces";
 import { TrackInfoScraper } from "../../utils";
+import * as he from "he";
 
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
@@ -8,7 +9,7 @@ class PlaylistInfoScraper {
         this.document.querySelector("#follow_playlist")!.getAttribute("item")!;
 
     public getName = (): string =>
-        this.document.querySelector(".songInfo .title")!.innerHTML;
+        he.decode(this.document.querySelector(".songInfo .title")!.innerHTML);
 
     public getFollowers = (): number =>
         +this.document
@@ -17,7 +18,10 @@ class PlaylistInfoScraper {
             .replace(/,/g, "");
 
     public getCreator = (): string =>
-        this.document.querySelectorAll(".songInfo > span > span")[0].innerHTML;
+        he.decode(
+            this.document.querySelectorAll(".songInfo > span > span")[0]
+                .innerHTML
+        );
 
     public getArtwork = (): string =>
         this.document

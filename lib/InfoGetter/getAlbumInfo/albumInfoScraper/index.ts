@@ -1,5 +1,6 @@
-import { AlbumTrack, Track } from "../../interfaces";
+import { AlbumTrack } from "../../interfaces";
 import AlbumTrackInfoScraper from "./albumTrackInfoScraper";
+import * as he from "he";
 
 class AlbumInfoScraper {
     constructor(public document: Document) {}
@@ -11,10 +12,10 @@ class AlbumInfoScraper {
             .match(/(?<=\/mp3s\/album\/)[^\/]+/g)![0];
 
     public getName = (): string =>
-        this.document.querySelector(".songInfo .album")!.innerHTML;
+        he.decode(this.document.querySelector(".songInfo .album")!.innerHTML);
 
     public getArtist = (): string =>
-        this.document.querySelector(".songInfo .artist")!.innerHTML;
+        he.decode(this.document.querySelector(".songInfo .artist")!.innerHTML);
 
     public getArtwork = (): string =>
         this.document
