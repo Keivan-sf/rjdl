@@ -8,3 +8,4 @@ To do:
 -   Get related songs and videos
 -   Get music lyrics if available
 -   Accept app links
+-   Get music tags
