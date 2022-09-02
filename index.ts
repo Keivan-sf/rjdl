@@ -1,11 +1,18 @@
-import * as infoGetters from "./lib/InfoGetter";
 import { formatURL, getLinkType, validateURL } from "./lib/utils/urlUtils";
+import {
+    getMusicDownloadLinksViaURL,
+    getPodcastDownloadLinksViaURL,
+    getVideoDownloadLinksViaURL,
+} from "./lib/DownloadLinkGetter";
 
-const Rj = {
-    ...infoGetters,
+export {
     formatURL,
     getLinkType,
     validateURL,
+    getMusicDownloadLinksViaURL,
+    getPodcastDownloadLinksViaURL,
+    getVideoDownloadLinksViaURL,
 };
-
-export { Rj };
+export * from "./lib/InfoGetter/interfaces";
+export * from "./lib/InfoGetter";
+export { LinkType } from "./lib/utils/urlUtils/interfaces";
