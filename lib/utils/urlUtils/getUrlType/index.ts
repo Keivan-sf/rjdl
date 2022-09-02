@@ -1,7 +1,7 @@
-import { LinkTypes, linkAndType } from "../interfaces";
+import { LinkTypes, linkAndType, LinkTypeInString } from "../interfaces";
 import { radioJavanLinkRegex, typeRegex } from "./regexes";
 
-export const getRadioJavanLink = (url: string): string => {
+export const formatURL = (url: string): string => {
     const matches = url.match(radioJavanLinkRegex);
     if (!matches || matches?.length < 1) throw new Error("Invalid url");
     const standardURL = [
@@ -13,11 +13,12 @@ export const getRadioJavanLink = (url: string): string => {
 
 export const getTypeFromValidURL = (url: string): linkAndType => {
     for (const type in typeRegex) {
-        let match = url.match(typeRegex[type]);
+        const linkType = type as LinkTypeInString;
+        let match = url.match(typeRegex[linkType]);
         if (match && match.length > 0) {
             let url = "https://www." + match[0];
             url = url.endsWith("/") ? url : url + "/";
-            return { link: url, type: LinkTypes[type] };
+            return { link: url, type: LinkTypes[linkType] };
         }
     }
     throw new Error("INVALID_TYPE");

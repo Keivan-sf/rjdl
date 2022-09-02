@@ -1,4 +1,4 @@
-import { getRadioJavanLink } from "../utils/urlUtils/getUrlType";
+import { formatURL } from "../utils/urlUtils/getUrlType";
 import { getMusicInfoFromDOM } from "./getMusicInfo";
 import { getVideoInfoFromDOM } from "./getVideoInfo";
 import { getAlbumInfoFromDOM } from "./getAlbumInfo";
@@ -7,7 +7,7 @@ import { AlbumInfo, MusicInfo, PlaylistInfo, VideoInfo } from "./interfaces";
 import { getSourceCodeDOMDocument } from "./utils";
 
 export const getMusicInfo = async (url: string): Promise<MusicInfo> => {
-    url = getRadioJavanLink(url);
+    url = formatURL(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getMusicInfoFromDOM(document);
     const infoAndUrl: MusicInfo = {
@@ -18,7 +18,7 @@ export const getMusicInfo = async (url: string): Promise<MusicInfo> => {
 };
 
 export const getVideoInfo = async (url: string): Promise<VideoInfo> => {
-    url = getRadioJavanLink(url);
+    url = formatURL(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getVideoInfoFromDOM(document);
     const infoAndUrl = {
@@ -29,7 +29,7 @@ export const getVideoInfo = async (url: string): Promise<VideoInfo> => {
 };
 
 export const getPlaylistInfo = async (url: string): Promise<PlaylistInfo> => {
-    url = getRadioJavanLink(url);
+    url = formatURL(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getPlaylistInfoFromDOM(document);
     const infoAndUrl = {
@@ -40,7 +40,7 @@ export const getPlaylistInfo = async (url: string): Promise<PlaylistInfo> => {
 };
 
 export const getAlbumInfo = async (url: string): Promise<AlbumInfo> => {
-    url = getRadioJavanLink(url);
+    url = formatURL(url);
     const document = await getSourceCodeDOMDocument(url);
     const info = getAlbumInfoFromDOM(document);
     const infoAndUrl = {

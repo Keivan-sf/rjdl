@@ -1,16 +1,16 @@
 import { linkAndType } from "./interfaces";
-import { getRadioJavanLink, getTypeFromValidURL } from "./getUrlType";
+import { formatURL, getTypeFromValidURL } from "./getUrlType";
 export * from "./getUrlData";
 
 export const getLinkType = (url: string): linkAndType => {
-    const RadioJavanURL = getRadioJavanLink(url);
+    const RadioJavanURL = formatURL(url);
     const type = getTypeFromValidURL(RadioJavanURL);
     return type;
 };
 
 export const validateURL = (url: string) => {
     try {
-        const RadioJavanURL = getRadioJavanLink(url);
+        const RadioJavanURL = formatURL(url);
         getTypeFromValidURL(RadioJavanURL);
         return true;
     } catch (err) {

@@ -9,6 +9,16 @@ export enum LinkTypes {
     TV,
 }
 
+export type LinkTypeInString =
+    | "Music"
+    | "Playlist"
+    | "Album"
+    | "PlaylistTrack"
+    | "AlbumTrack"
+    | "Video"
+    | "Podcast"
+    | "TV";
+
 export enum Types {
     Music,
     Playlist,
