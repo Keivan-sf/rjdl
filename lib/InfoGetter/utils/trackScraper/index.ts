@@ -1,10 +1,12 @@
+import * as he from "he";
+
 class TrackInfoScraper {
     constructor(public trackContainer: Element) {}
 
     public getSongAndArtistName = (): { title: string; artist: string } => {
         const songInfo = this.trackContainer.querySelector(".songInfo")!;
-        const title = songInfo.querySelector(".song")!.innerHTML;
-        const artist = songInfo.querySelector(".artist")!.innerHTML;
+        const title = he.decode(songInfo.querySelector(".song")!.innerHTML);
+        const artist = he.decode(songInfo.querySelector(".artist")!.innerHTML);
         return {
             title,
             artist,
