@@ -1,4 +1,4 @@
-import { LinkTypes } from "../interfaces";
+import { LinkType } from "../interfaces";
 import { formatURL, getTypeFromValidURL } from "./index";
 
 describe("Radio javan link type utils", () => {
@@ -34,19 +34,19 @@ describe("Radio javan link type utils", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
             );
-            expect(type).toBe(LinkTypes.Music);
+            expect(type).toBe(LinkType.Music);
         });
         test("Should return music type without prefixes", () => {
             const type = getTypeFromValidURL(
                 "radiojavan.com/mp3s/mp3/Anita-Nafas"
             );
-            expect(type).toBe(LinkTypes.Music);
+            expect(type).toBe(LinkType.Music);
         });
         test("Should return video type", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
             );
-            expect(type).toBe(LinkTypes.Video);
+            expect(type).toBe(LinkType.Video);
         });
         test("Should throw invalid type", () => {
             expect(() =>
@@ -57,47 +57,47 @@ describe("Radio javan link type utils", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
             );
-            expect(type).toBe(LinkTypes.Podcast);
+            expect(type).toBe(LinkType.Podcast);
         });
         test("Should return playlist type", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
             );
-            expect(type).toBe(LinkTypes.Playlist);
+            expect(type).toBe(LinkType.Playlist);
         });
-        test("Should Playlist Track type", () => {
+        test("Should Playlist Track type as Music", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
             );
-            expect(type).toBe(LinkTypes.PlaylistTrack);
+            expect(type).toBe(LinkType.Music);
         });
-        test("Should Playlist Track type without slash", () => {
+        test("Should Playlist Track type as Music without slash", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0"
             );
-            expect(type).toBe(LinkTypes.PlaylistTrack);
+            expect(type).toBe(LinkType.Music);
         });
         test("Should return Tv type", () => {
             const type = getTypeFromValidURL("https://www.radiojavan.com/tv");
-            expect(type).toBe(LinkTypes.TV);
+            expect(type).toBe(LinkType.TV);
         });
         test("Should return album type", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420/"
             );
-            expect(type).toBe(LinkTypes.Album);
+            expect(type).toBe(LinkType.Album);
         });
-        test("Should return Album Track type", () => {
+        test("Should return Album Track type as Music", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
-            expect(type).toBe(LinkTypes.AlbumTrack);
+            expect(type).toBe(LinkType.Music);
         });
-        test("Should return Album Track type without slash", () => {
+        test("Should return Album Track type as Music without slash", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
-            expect(type).toBe(LinkTypes.AlbumTrack);
+            expect(type).toBe(LinkType.Music);
         });
     });
 });

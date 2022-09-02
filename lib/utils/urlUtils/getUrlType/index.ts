@@ -1,5 +1,5 @@
-import { LinkTypes, LinkTypeInString } from "../interfaces";
-import { radioJavanLinkRegex, typeRegex } from "./regexes";
+import { ExtendedLinkTypes, ExtendedLinkType, LinkType } from "../interfaces";
+import { radioJavanLinkRegex, typeRegexes } from "./regexes";
 
 export const formatURL = (url: string): string => {
     const matches = url.match(radioJavanLinkRegex);
@@ -11,11 +11,14 @@ export const formatURL = (url: string): string => {
     return standardURL;
 };
 
-export const getTypeFromValidURL = (url: string): LinkTypes => {
-    for (const type in typeRegex) {
-        const linkType = type as LinkTypeInString;
-        let match = url.match(typeRegex[linkType]);
-        if (match && match.length > 0) return LinkTypes[linkType];
+export const getTypeFromValidURL = (url: string): LinkType => {
+    for (let type of ExtendedLinkTypes) {
+        const match = url.match(typeRegexes[type]);
+        if (match) return LinkType[simplifyLinkType(type)];
     }
     throw new Error("INVALID_TYPE");
 };
+
+function simplifyLinkType(type: ExtendedLinkType) {
+    return type === "AlbumTrack" || type === "PlaylistTrack" ? "Music" : type;
+}

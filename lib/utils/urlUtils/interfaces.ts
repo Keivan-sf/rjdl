@@ -1,25 +1,4 @@
-export enum LinkTypes {
-    Music,
-    Playlist,
-    Album,
-    PlaylistTrack,
-    AlbumTrack,
-    Video,
-    Podcast,
-    TV,
-}
-
-export type LinkTypeInString =
-    | "Music"
-    | "Playlist"
-    | "Album"
-    | "PlaylistTrack"
-    | "AlbumTrack"
-    | "Video"
-    | "Podcast"
-    | "TV";
-
-export enum Types {
+export enum LinkType {
     Music,
     Playlist,
     Album,
@@ -27,3 +6,16 @@ export enum Types {
     Podcast,
     TV,
 }
+
+export const ExtendedLinkTypes = [
+    "Music",
+    "Playlist",
+    "PlaylistTrack",
+    "Album",
+    "AlbumTrack",
+    "Video",
+    "Podcast",
+    "TV",
+] as const;
+
+export type ExtendedLinkType = typeof ExtendedLinkTypes[number];

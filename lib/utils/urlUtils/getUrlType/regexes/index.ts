@@ -1,6 +1,9 @@
+import { ExtendedLinkType } from "../../interfaces";
+
 export const radioJavanLinkRegex =
     /^(https:\/\/|http:\/\/)?(www\.)?(radiojavan\.com)\/.*/g;
-export const typeRegex = {
+
+export const typeRegexes: { [key in ExtendedLinkType]: RegExp } = {
     Music: /radiojavan\.com\/mp3s\/mp3\/[^\/]+[\/]?$/g,
     Video: /radiojavan\.com\/videos\/video\/[^\/]+[\/]?$/g,
     Album: /radiojavan\.com\/mp3s\/album\/[^\/\?]+(?!\?index)[\/]?$/gm,

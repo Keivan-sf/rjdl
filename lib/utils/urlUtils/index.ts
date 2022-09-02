@@ -1,11 +1,11 @@
-import { LinkTypes } from "./interfaces";
+import { LinkType } from "./interfaces";
 import { formatURL, getTypeFromValidURL } from "./getUrlType";
 export * from "./getUrlData";
 export { formatURL };
 
-export const getLinkType = (url: string): LinkTypes => {
+export const getLinkType = (url: string): LinkType => {
     const RadioJavanURL = formatURL(url);
-    const type = getTypeFromValidURL(RadioJavanURL);
+    let type = getTypeFromValidURL(RadioJavanURL);
     return type;
 };
 
