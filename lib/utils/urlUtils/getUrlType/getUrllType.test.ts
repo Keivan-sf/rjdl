@@ -1,5 +1,9 @@
 import { LinkType } from "../interfaces";
-import { formatURL, getExtendedTypeFromValidURL, getTypeFromValidURL } from "./index";
+import {
+    formatURL,
+    getExtendedTypeFromValidURL,
+    getTypeFromValidURL,
+} from "./index";
 
 describe("Radio javan link type utils", () => {
     describe("Get valid link", () => {
