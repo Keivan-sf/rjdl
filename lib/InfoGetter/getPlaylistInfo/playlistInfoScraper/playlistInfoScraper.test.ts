@@ -10,6 +10,7 @@ const mockSourceCode = `
 <span>45 songs</span> | <span id="follower_count">65,239 followers</span>
 </span></div>
 </div>
+<a href="javascript:void(0)" class="follow_container button textButton light" id="follow_playlist" item="3a3047f210c4">
 <div class="sidePanel"><ul class="listView">
 <li>
 <a href="/mp3s/playlist_start?id=14af15307e15&amp;index=0">
@@ -69,5 +70,8 @@ describe("playlist info scraper", () => {
         expect(playlistScraper.getArtwork()).toBe(
             "https://assets.rjassets.com/static/playlist/6628501/608623aeb3b83b6.jpg"
         );
+    });
+    test("Should return playlist id", () => {
+        expect(playlistScraper.getId()).toBe("3a3047f210c4");
     });
 });

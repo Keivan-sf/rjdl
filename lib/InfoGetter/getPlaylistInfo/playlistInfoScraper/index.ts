@@ -4,6 +4,9 @@ import PlaylistTrackInfoScraper from "./playlistTrackInfoScraper";
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
 
+    public getId = (): string =>
+        this.document.querySelector("#follow_playlist")!.getAttribute("item")!;
+
     public getName = (): string =>
         this.document.querySelector(".songInfo .title")!.innerHTML;
 
