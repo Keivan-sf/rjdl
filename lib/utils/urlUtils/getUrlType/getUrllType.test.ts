@@ -1,5 +1,5 @@
 import { LinkType } from "../interfaces";
-import { formatURL, getTypeFromValidURL } from "./index";
+import { formatURL, getExtendedTypeFromValidURL, getTypeFromValidURL } from "./index";
 
 describe("Radio javan link type utils", () => {
     describe("Get valid link", () => {
@@ -65,11 +65,17 @@ describe("Radio javan link type utils", () => {
             );
             expect(type).toBe(LinkType.Playlist);
         });
-        test("Should Playlist Track type as Music", () => {
+        test("Should return Playlist Track type as Music", () => {
             const type = getTypeFromValidURL(
                 "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
             );
             expect(type).toBe(LinkType.Music);
+        });
+        test("Should return Playlist Track type", () => {
+            const type = getExtendedTypeFromValidURL(
+                "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=0/"
+            );
+            expect(type).toBe("PlaylistTrack");
         });
         test("Should Playlist Track type as Music without slash", () => {
             const type = getTypeFromValidURL(
@@ -92,6 +98,12 @@ describe("Radio javan link type utils", () => {
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
             expect(type).toBe(LinkType.Music);
+        });
+        test("Should return Album Track type", () => {
+            const type = getExtendedTypeFromValidURL(
+                "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
+            );
+            expect(type).toBe("AlbumTrack");
         });
         test("Should return Album Track type as Music without slash", () => {
             const type = getTypeFromValidURL(

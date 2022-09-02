@@ -22,3 +22,11 @@ export const getTypeFromValidURL = (url: string): LinkType => {
 function simplifyLinkType(type: ExtendedLinkType) {
     return type === "AlbumTrack" || type === "PlaylistTrack" ? "Music" : type;
 }
+
+export const getExtendedTypeFromValidURL = (url: string): ExtendedLinkType => {
+    for (let type of ExtendedLinkTypes) {
+        const match = url.match(typeRegexes[type]);
+        if (match) return type;
+    }
+    throw new Error("INVALID_TYPE");
+};
