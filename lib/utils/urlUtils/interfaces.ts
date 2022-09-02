@@ -27,8 +27,3 @@ export enum Types {
     Podcast,
     TV,
 }
-
-export type linkAndType = {
-    link: string;
-    type: LinkTypes;
-};
