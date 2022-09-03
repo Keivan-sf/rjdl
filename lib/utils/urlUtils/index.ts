@@ -23,7 +23,7 @@ export const getLinkType = (url: string): LinkType => {
  * Used to check whether the url is valid or not
  *
  * Only the urls which their type is recognizable are considered valid
- * 
+ *
  * Recognizable types are defiled in {@link LinkType}
  *
  * @param {string} url

@@ -53,7 +53,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
 
 /**
  * Music details
- * 
+ *
  * @interface MusicInfo
  * @prop {string} id
  * @prop {string} title
@@ -97,7 +97,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
 
 /**
  * Track details
- * 
+ *
  * @interface Track
  * @prop {string} id
  * @prop {string} title
@@ -108,7 +108,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
 
 /**
  * Album Track details
- * 
+ *
  * @interface AlbumTrack
  * @prop {string} id
  * @prop {string} title
@@ -120,7 +120,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
 
 /**
  * Playlist details
- * 
+ *
  * @interface PlaylistInfo
  * @prop {string} id
  * @prop {string} title
@@ -133,7 +133,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
 
 /**
  * Album details
- * 
+ *
  * @interface AlbumInfo
  * @prop {string} id
  * @prop {string} title
@@ -142,4 +142,3 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {AlbumTrack[]} tracks
  * @prop {string} url
  */
-

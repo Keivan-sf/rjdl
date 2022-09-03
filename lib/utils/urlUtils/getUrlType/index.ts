@@ -1,7 +1,6 @@
 import { ExtendedLinkTypes, ExtendedLinkType, LinkType } from "../interfaces";
 import { radioJavanLinkRegex, typeRegexes } from "./regexes";
 
-
 /**
  * Used to format a radio javan url into a standard form
  *
