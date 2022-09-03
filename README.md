@@ -2,13 +2,37 @@
 
 Radio javan scraper / downloader
 
+**Docs [keivan-sf.github.io/rjdl](https://keivan-sf.github.io/rjdl)**
+
 ## Usage
 
 Here's a quick guide to start
 
+```ts
+import * as Rj from "node-rjdl";
+
+const rjType = Rj.getLinkType(
+    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+);
+
+if (rjType === Rj.LinkType.Music) {
+    const links = await Rj.getMusicDownloadLinksViaURL(
+        "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+    );
+
+    console.log(links.midQuality);
+
+    const songInfo = await Rj.getMusicInfo(
+        "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+    );
+
+    console.log(songInfo.title);
+}
+```
+
 ### Getting link type
 
--   Supported for `Playlists` , `Albums` , `Podcasts` , `Videos` , `Musics` , `TV`
+Supported for `Playlists` , `Albums` , `Podcasts` , `Videos` , `Musics` , `TV`
 
 ```ts
 import * as Rj from "node-rjdl";
@@ -21,7 +45,7 @@ console.log(rjType === Rj.LinkType.Music); // true
 
 ### Getting input info
 
--   Supported for `Playlists` , `Albums` , `Podcasts` , `Musics` , `Videos`
+Supported for `Playlists` , `Albums` , `Podcasts` , `Musics` , `Videos`
 
 ```ts
 import * as Rj from "node-rjdl";
@@ -34,7 +58,7 @@ const songInfo = await Rj.getMusicInfo(
 
 Download links will be provided in mid and high qualities.
 
--   Supported for `Musics` , `Podcasts` , `Videos`
+Supported for `Musics` , `Podcasts` , `Videos`
 
 ```ts
 import * as Rj from "node-rjdl";
