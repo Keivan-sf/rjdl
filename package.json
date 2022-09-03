@@ -6,10 +6,10 @@
     "types": "dist/index.d.ts",
     "scripts": {
         "build": "tsc",
-        "style": "npx prettier . --write",
-        "test": "jest",
-        "e2eTest": "jest -c jest.config.e2e.ts",
-        "unitTest": "jest -c jest.config.unit.ts"
+        "style": "npx prettier ./src --write",
+        "test": "jest src",
+        "e2eTest": "jest src -c jest.config.e2e.ts",
+        "unitTest": "jest src -c jest.config.unit.ts"
     },
     "author": "keivan",
     "keywords": [
