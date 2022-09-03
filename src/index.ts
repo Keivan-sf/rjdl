@@ -4,6 +4,7 @@ import {
     getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
 } from "./lib/Downloader";
+import { DownloadLinks } from "./lib/Downloader/interfaces";
 
 export {
     formatURL,
@@ -12,6 +13,7 @@ export {
     getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
+    DownloadLinks,
 };
 export * from "./lib/InfoScraper/interfaces";
 export * from "./lib/InfoScraper";
