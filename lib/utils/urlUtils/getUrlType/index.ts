@@ -1,6 +1,16 @@
 import { ExtendedLinkTypes, ExtendedLinkType, LinkType } from "../interfaces";
 import { radioJavanLinkRegex, typeRegexes } from "./regexes";
 
+
+/**
+ * Used to format a radio javan url into a standard form
+ *
+ * @example
+ * const formatted = Rj.formatURL("www.radiojavan.com/mp3s");
+ * console.log(formatted) // https://radiojavan.com/mp3s
+ * @param {string} url
+ * @returns {string} Formatted url
+ */
 export const formatURL = (url: string): string => {
     const matches = url.match(radioJavanLinkRegex);
     if (!matches || matches?.length < 1) throw new Error("Invalid url");

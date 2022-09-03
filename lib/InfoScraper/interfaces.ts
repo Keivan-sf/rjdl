@@ -50,3 +50,96 @@ export interface AlbumInfo {
 export interface PodcastInfo extends MusicAndVideoCommonInfo {
     artwork: string;
 }
+
+/**
+ * Music details
+ * 
+ * @interface MusicInfo
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} artwork
+ * @prop {number} likes
+ * @prop {number} plays
+ * @prop {Date} date  When the music was added to Radio javan
+ * @prop {string} url
+ * @prop {string|null} video Music video link if there is any
+ */
+
+/**
+ * Podcast details
+ *
+ * @interface PodcastInfo
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} artwork
+ * @prop {number} likes
+ * @prop {number} plays
+ * @prop {Date} date  When the music was added to Radio javan
+ * @prop {string} url
+ */
+
+/**
+ * Video details
+ *
+ * @interface VideoInfo
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} thumbnail
+ * @prop {number} likes
+ * @prop {number} plays
+ * @prop {Date} date When the video was added to Radio javan
+ * @prop {string} url
+ * @prop {string|null} song Song link if there is any
+ */
+
+/**
+ * Track details
+ * 
+ * @interface Track
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} artwork
+ * @prop {string} url
+ */
+
+/**
+ * Album Track details
+ * 
+ * @interface AlbumTrack
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} artwork
+ * @prop {number} index Track index in the album
+ * @prop {string} url
+ */
+
+/**
+ * Playlist details
+ * 
+ * @interface PlaylistInfo
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} creator
+ * @prop {number} followers
+ * @prop {string} artwork
+ * @prop {Track[]} tracks
+ * @prop {string} url
+ */
+
+/**
+ * Album details
+ * 
+ * @interface AlbumInfo
+ * @prop {string} id
+ * @prop {string} title
+ * @prop {string} artist
+ * @prop {string} artwork
+ * @prop {AlbumTrack[]} tracks
+ * @prop {string} url
+ */
+
