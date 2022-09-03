@@ -4,6 +4,12 @@ Radio javan scraper / downloader
 
 **Docs [keivan-sf.github.io/rjdl](https://keivan-sf.github.io/rjdl)**
 
+## Install
+
+```bash
+npm i node-rjdl
+```
+
 ## Usage
 
 Here's a quick guide to start
@@ -84,4 +90,40 @@ Rj.validateURL("https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"); // true
 Rj.validateURL("https://google.com"); // false
 
 Rj.validateURL("https://radiojavan.com"); // false
+```
+
+## Scripts
+
+### Building
+
+To get started install the packages
+
+```bash
+npm install
+```
+
+Then you'll be able to use the build script
+
+```
+npm run build
+```
+
+### Testing
+
+For all tests
+
+```
+npm test
+```
+
+For unit and integration tests
+
+```bash
+npm run unitTest
+```
+
+For end to end tests (ending with `.test.e2e.ts`)
+
+```
+npm run e2eTest
 ```
