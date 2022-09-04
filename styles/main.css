@@ -10,3 +10,11 @@ body {
     background: linear-gradient(93deg, rgba(0, 0, 0, 1) 0%, rgba(90, 1, 1, 1) 62%, rgba(163, 1, 1, 1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#a30101", GradientType=1);
 }
+
+.content-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
