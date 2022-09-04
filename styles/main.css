@@ -70,6 +70,7 @@ h1 {
     align-items: center;
     margin: 40px auto;
     font-size: 13pt;
+    cursor: pointer;
 }
 
 .btn-container {
