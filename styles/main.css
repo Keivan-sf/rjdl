@@ -71,6 +71,40 @@ h1 {
     margin: 40px auto;
     font-size: 13pt;
     cursor: pointer;
+    position: relative;
+}
+
+.install-box-animation {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 100px;
+    z-index: -1;
+    background-color: #D50D0D;
+    opacity: 0;
+    filter: blur(0px);
+    transform: scale(1);
+}
+
+.animation-stats {
+    animation-name: install-animation;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    animation-play-state: running;
+}
+
+@keyframes install-animation {
+    from {
+        opacity: 0.5;
+        filter: blur(0px);
+        transform: scale(1);
+    }
+
+    to {
+        opacity: 0;
+        filter: blur(10px);
+        transform: scale(2);
+    }
 }
 
 .btn-container {
