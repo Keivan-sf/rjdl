@@ -1,7 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 body {
@@ -47,7 +47,13 @@ h1 {
     position: relative;
     display: block;
     color: #fff;
-    margin: 40px 0px;
+    margin: 30px 0px 20px;
     letter-spacing: 1.2px;
-    font-size: 30pt;
+    font-size: 35pt;
+}
+
+.description {
+    color: #fff;
+    text-align: center;
+    font-size: 15pt;
 }
