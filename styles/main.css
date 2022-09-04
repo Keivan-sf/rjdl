@@ -71,3 +71,49 @@ h1 {
     margin: 40px auto;
     font-size: 13pt;
 }
+
+.btn-container {
+    width: 180px;
+    margin: auto;
+    height: auto;
+}
+
+.action-btn {
+    float: right;
+    font-size: 13pt;
+    text-decoration: none;
+    color: #000;
+}
+
+.action-btn:active {
+    text-decoration: none;
+    color: #000;
+}
+
+.action-btn div {
+    background-color: #fff;
+    height: 58px;
+    border-radius: 100px;
+    box-shadow: 0px 0px;
+    transition: 0.2s;
+}
+
+.action-btn.docs div {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-btn.github div {
+    width: 58px;
+    background-image: url("../images/gh.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px;
+    margin-right: 22px;
+}
+
+.action-btn:hover div {
+    box-shadow: 0px 0px 20px 2px rgba(255, 255, 255, 0.2);
+}
