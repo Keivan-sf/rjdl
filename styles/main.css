@@ -18,3 +18,19 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.rj-logo {
+    width: 220px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 30px 14px rgba(214, 13, 13, 0.18);
+}
+
+.rj-logo img {
+    width: 220px;
+    height: 220px;
+}
