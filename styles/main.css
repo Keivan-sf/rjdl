@@ -1,6 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
+    font-family: 'Raleway', sans-serif;
 }
 
 body {
@@ -11,7 +12,7 @@ body {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000", endColorstr="#a30101", GradientType=1);
 }
 
-.content-container {
+header {
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -19,7 +20,13 @@ body {
     align-items: center;
 }
 
+.container {
+    width: auto;
+    height: auto;
+}
+
 .rj-logo {
+    margin: auto;
     width: 220px;
     height: 220px;
     overflow: hidden;
@@ -33,4 +40,14 @@ body {
 .rj-logo img {
     width: 220px;
     height: 220px;
+}
+
+h1 {
+    text-align: center;
+    position: relative;
+    display: block;
+    color: #fff;
+    margin: 40px 0px;
+    letter-spacing: 1.2px;
+    font-size: 30pt;
 }
