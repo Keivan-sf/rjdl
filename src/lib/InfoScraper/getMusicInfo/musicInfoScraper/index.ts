@@ -6,8 +6,8 @@ class MusicInfoScraper extends MusicAndVideoScraper {
     }
 
     public getId = (): string => {
-        const artworkURL = this.getArtwork();
-        const id = this.getIdFromArtworkURL(artworkURL);
+        const { title, artist } = this.getTitleAndArtist();
+        const id = this.getIdFromCredentials(title, artist);
         return id;
     };
 
@@ -26,6 +26,14 @@ class MusicInfoScraper extends MusicAndVideoScraper {
     private getIdFromArtworkURL = (artworkURL: string): string => {
         const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
         return artworkURL.match(idSelectorRegex)![0];
+    };
+
+    private getIdFromCredentials = (title: string, artist: string) => {
+        const artistAndName = artist + " " + title;
+        let id = artistAndName
+            .replace(/[^a-zA-Z\d\s\(\)]/g, "")
+            .replace(/\s+/g, "-");
+        return id;
     };
 }
 

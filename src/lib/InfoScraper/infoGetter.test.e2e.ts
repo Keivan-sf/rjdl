@@ -15,7 +15,7 @@ describe("Info getters", () => {
             video: info.video,
         };
         expect(staticInfo).toStrictEqual({
-            id: "koorosh-abnormal-(ft-arta-montiego)",
+            id: "Koorosh-Abnormal-(Ft-Arta-Montiego)",
             title: "Abnormal (Ft Arta & Montiego)",
             artist: "Koorosh",
             date: new Date("Jun 4, 2019"),

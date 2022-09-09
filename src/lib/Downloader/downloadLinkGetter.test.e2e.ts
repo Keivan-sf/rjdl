@@ -23,9 +23,9 @@ describe("Download link getter e2e test", () => {
         );
         expect(links).toStrictEqual({
             midQuality:
-                "https://host2.rj-mw1.com/media/mp3/mp3-256/koorosh-bet.mp3",
+                "https://host2.rj-mw1.com/media/mp3/mp3-256/Koorosh-Bet.mp3",
             highQuality:
-                "https://host2.rj-mw1.com/media/mp3/mp3-320/koorosh-bet.mp3",
+                "https://host2.rj-mw1.com/media/mp3/mp3-320/Koorosh-Bet.mp3",
         });
     });
     test("Should get video download links", async () => {
