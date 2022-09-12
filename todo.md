@@ -6,4 +6,4 @@ To do:
 -   Get music lyrics if available
 -   Accept app links
 -   Get music tags
--   Find out why this link contains the word `mp3` : `https://assets.rjassets.com/static/mp3/koorosh-behesh-begid-(ft-arta-sepehr-khalse-pdc)mp3/24da48db13773fe-thumb.jpg`
+-   Improve error handling system
