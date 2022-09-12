@@ -1,7 +1,10 @@
 import * as he from "he";
+import { BaseScraperUtils } from "./baseScraperUtils";
 
-class BaseInfoScraper {
-    constructor(public document: Document) {}
+class BaseScraper extends BaseScraperUtils {
+    constructor(documents: Document) {
+        super(documents);
+    }
 
     private songCredentialBox: Element | null = null;
 
@@ -36,4 +39,4 @@ class BaseInfoScraper {
     };
 }
 
-export { BaseInfoScraper };
+export { BaseScraper, BaseScraperUtils };

@@ -1,6 +1,6 @@
-import { BaseInfoScraper } from "../../utils";
+import { BaseScraper } from "../../utils";
 
-class PodcastInfoScraper extends BaseInfoScraper {
+class PodcastInfoScraper extends BaseScraper {
     constructor(document: Document) {
         super(document);
     }

@@ -1,6 +1,6 @@
-import { BaseInfoScraper } from "./baseInfoScraper";
+import { BaseScraper } from "../BaseScraper";
 
-class MusicAndVideoScraper extends BaseInfoScraper {
+class MusicAndVideoScraper extends BaseScraper {
     constructor(public document: Document) {
         super(document);
     }
