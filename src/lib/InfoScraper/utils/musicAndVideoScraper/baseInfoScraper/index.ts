@@ -2,13 +2,19 @@ import * as he from "he";
 
 class BaseInfoScraper {
     constructor(public document: Document) {}
-    public getTitleAndArtist = (): { title: string; artist: string } => {
-        const songInfoDiv = this.document.querySelector(".songInfo")!;
-        const title = he.decode(songInfoDiv?.querySelector(".song")!.innerHTML);
-        const artist = he.decode(
-            songInfoDiv?.querySelector(".artist")!.innerHTML
+
+    private songCredentialBox: Element | null = null;
+
+    public getArtist = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        return he.decode(
+            songCredentialDiv?.querySelector(".artist")!.innerHTML
         );
-        return { title, artist };
+    };
+
+    public getTitle = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        return he.decode(songCredentialDiv.querySelector(".song")!.innerHTML);
     };
 
     public getLikes = (): number =>
@@ -22,6 +28,12 @@ class BaseInfoScraper {
             .querySelector(".views")!
             .innerHTML.split("Plays: ")[1]
             .replace(/,/g, "");
+
+    protected getSongCredentialsBox = (): Element => {
+        if (!this.songCredentialBox)
+            this.songCredentialBox = this.document.querySelector(".songInfo")!;
+        return this.songCredentialBox;
+    };
 }
 
 export { BaseInfoScraper };

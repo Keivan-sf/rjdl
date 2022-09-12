@@ -1,19 +1,23 @@
 import VideoInfoScraper from ".";
 import { JSDOM } from "jsdom";
 describe("Video info scraper", () => {
-    test("Should return artist and video name", () => {
+    test("Should return video name", () => {
         const mockSource = `<div class="songInfo">
-        <span class="artist">Donya</span>
         <span class="song">Bye Bye Bye</span>
-        <br><span class="artist farsiText" dir="rtl">دنیا</span>
         <span class="song farsiText" dir="rtl">بای بای بای</span>
         </div>`;
         const DOM = new JSDOM(mockSource).window.document;
-        const artistAndSongName = new VideoInfoScraper(DOM).getTitleAndArtist();
-        expect(artistAndSongName).toStrictEqual({
-            title: "Bye Bye Bye",
-            artist: "Donya",
-        });
+        const scraper = new VideoInfoScraper(DOM);
+        expect(scraper.getTitle()).toBe("Bye Bye Bye");
+    });
+    test("Should return video artist", () => {
+        const mockSource = `<div class="songInfo">
+        <span class="artist">Donya</span>
+        <br><span class="artist farsiText" dir="rtl">دنیا</span>
+        </div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new VideoInfoScraper(DOM);
+        expect(scraper.getArtist()).toBe("Donya");
     });
     test("Should return video views", () => {
         const mockSource = `<div class="views">Plays: 538,580</div>`;

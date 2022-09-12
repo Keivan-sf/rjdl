@@ -6,7 +6,8 @@ class MusicInfoScraper extends MusicAndVideoScraper {
     }
 
     public getId = (): string => {
-        const { title, artist } = this.getTitleAndArtist();
+        const title = this.getTitle();
+        const artist = this.getArtist();
         const id = this.getIdFromCredentials(title, artist);
         return id;
     };
