@@ -1,3 +1,4 @@
+import * as he from "he";
 import { BaseScraper } from "../../utils";
 
 class PodcastInfoScraper extends BaseScraper {
@@ -9,6 +10,18 @@ class PodcastInfoScraper extends BaseScraper {
         const artworkURL = this.getArtwork();
         const id = this.getIdFromArtworkURL(artworkURL);
         return id;
+    };
+
+    public getArtist = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        // Podcast `artist` and `song` fields are reversed in radio javan page
+        return he.decode(songCredentialDiv?.querySelector(".song")!.innerHTML);
+    };
+
+    public getTitle = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        // Podcast `artist` and `song` fields are reversed in radio javan page
+        return he.decode(songCredentialDiv.querySelector(".artist")!.innerHTML);
     };
 
     public getDate = (): Date =>
