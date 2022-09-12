@@ -1,5 +1,5 @@
 class BaseScraperUtils {
-    constructor(public document: Document) {}
+    constructor(public document: Document | Element) {}
 
     protected getIdFromCredentials = (title: string, artist: string) => {
         const artistAndName = artist + " " + title;

@@ -1,7 +1,10 @@
 import * as he from "he";
+import { BaseScraperUtils } from "../BaseScraper";
 
-class TrackInfoScraper {
-    constructor(public trackContainer: Element) {}
+class TrackInfoScraper extends BaseScraperUtils {
+    constructor(public trackContainer: Element) {
+        super(trackContainer);
+    }
 
     public getSongAndArtistName = (): { title: string; artist: string } => {
         const songInfo = this.trackContainer.querySelector(".songInfo")!;
@@ -19,8 +22,8 @@ class TrackInfoScraper {
     };
 
     public getId = (): string => {
-        const artworkURL = this.getArtwork();
-        const id = this.getIdFromArtworkURL(artworkURL);
+        const { title, artist } = this.getSongAndArtistName();
+        const id = this.getIdFromCredentials(title, artist);
         return id;
     };
 

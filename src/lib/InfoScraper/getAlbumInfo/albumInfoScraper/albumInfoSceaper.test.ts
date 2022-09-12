@@ -56,7 +56,7 @@ describe("playlist info scraper", () => {
             {
                 title: "Yebaram Man (Ft Arta, Behzad Leito, & Raha)",
                 artist: "Koorosh",
-                id: "koorosh-yebaram-man-(ft-arta-behzad-leito-raha)",
+                id: "Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)",
                 artwork:
                     "https://assets.rjassets.com/static/mp3/koorosh-yebaram-man-(ft-arta-behzad-leito-raha)/5cdfcb379855c7e-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=0",
@@ -65,7 +65,7 @@ describe("playlist info scraper", () => {
             {
                 title: "Jerzan (Ft Sami Low, Sijal, & Arta)",
                 artist: "Koorosh",
-                id: "koorosh-jerzan-(ft-sami-low-sijal-arta)",
+                id: "Koorosh-Jerzan-(Ft-Sami-Low-Sijal-Arta)",
                 artwork:
                     "https://assets.rjassets.com/static/mp3/koorosh-jerzan-(ft-sami-low-sijal-arta)/e6226a76f5056b6-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=1",

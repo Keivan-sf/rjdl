@@ -47,13 +47,14 @@ describe("Playlist track info scraper", () => {
         );
     });
     test("Should get song id", () => {
-        const mockedSourceCode = `<li>
-        <img src="images/blank.gif" data-src="https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg" alt="Shadmehr Aghili - &#39;Baroon Delam Khast&#39;" class="lazyload" />
-        </li>`;
+        const mockedSourceCode = `<li><div class="songInfo">
+        <span class="artist" title="Shadmehr Aghili">Shadmehr Aghili</span>
+        <span class="song" title="Baroon Delam Khast">Baroon Delam Khast</span>
+        </div></li>`;
         const containerElement = new JSDOM(
             mockedSourceCode
         ).window.document.querySelector("li")!;
         const scraper = new TrackInfoScraper(containerElement);
-        expect(scraper.getId()).toBe("shadmehr-aghili-baroon-delam-khast");
+        expect(scraper.getId()).toBe("Shadmehr-Aghili-Baroon-Delam-Khast");
     });
 });
