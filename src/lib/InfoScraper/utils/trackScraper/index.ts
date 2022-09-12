@@ -6,14 +6,18 @@ class TrackInfoScraper extends BaseScraperUtils {
         super(trackContainer);
     }
 
-    public getSongAndArtistName = (): { title: string; artist: string } => {
-        const songInfo = this.trackContainer.querySelector(".songInfo")!;
-        const title = he.decode(songInfo.querySelector(".song")!.innerHTML);
-        const artist = he.decode(songInfo.querySelector(".artist")!.innerHTML);
-        return {
-            title,
-            artist,
-        };
+    private songCredentialBox: Element | null = null;
+
+    public getArtist = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        return he.decode(
+            songCredentialDiv?.querySelector(".artist")!.innerHTML
+        );
+    };
+
+    public getTitle = (): string => {
+        const songCredentialDiv = this.getSongCredentialsBox();
+        return he.decode(songCredentialDiv.querySelector(".song")!.innerHTML);
     };
 
     public getUrl = (): string => {
@@ -22,7 +26,8 @@ class TrackInfoScraper extends BaseScraperUtils {
     };
 
     public getId = (): string => {
-        const { title, artist } = this.getSongAndArtistName();
+        const title = this.getTitle();
+        const artist = this.getArtist();
         const id = this.getIdFromCredentials(title, artist);
         return id;
     };
@@ -33,6 +38,12 @@ class TrackInfoScraper extends BaseScraperUtils {
     private getIdFromArtworkURL = (artworkURL: string): string => {
         const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
         return artworkURL.match(idSelectorRegex)![0];
+    };
+
+    private getSongCredentialsBox = (): Element => {
+        if (!this.songCredentialBox)
+            this.songCredentialBox = this.document.querySelector(".songInfo")!;
+        return this.songCredentialBox;
     };
 }
 
