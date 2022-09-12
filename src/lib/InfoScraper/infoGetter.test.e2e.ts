@@ -73,7 +73,7 @@ describe("Info getters", () => {
         };
 
         expect(staticInfo).toStrictEqual({
-            id: "dance-station-35",
+            id: "Dance-Station-35",
             title: "Dance Station 35",
             artist: "Hosein Aerial",
             date: new Date("Sep 2, 2022"),

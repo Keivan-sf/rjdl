@@ -7,8 +7,8 @@ class PodcastInfoScraper extends BaseScraper {
     }
 
     public getId = (): string => {
-        const artworkURL = this.getArtwork();
-        const id = this.getIdFromArtworkURL(artworkURL);
+        const title = this.getTitle();
+        const id = this.parseId(title);
         return id;
     };
 
