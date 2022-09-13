@@ -47,7 +47,7 @@ class PageScraper {
             .replace(/,/g, "");
 
     public getAltVersion = (): string | null => {
-        let url =
+        const url =
             this.document
                 .querySelector("#download")
                 ?.querySelector("a")

@@ -12,7 +12,9 @@ class TrackInfoScraper {
     public getTitle = (): string => this.pageScraper.getTitle();
 
     public getUrl = (): string => {
-        let url = this.trackContainer.querySelector("a")!.getAttribute("href")!;
+        const url = this.trackContainer
+            .querySelector("a")!
+            .getAttribute("href")!;
         return "https://www.radiojavan.com" + url;
     };
 
