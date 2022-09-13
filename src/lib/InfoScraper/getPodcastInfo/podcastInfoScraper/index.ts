@@ -1,35 +1,20 @@
-import * as he from "he";
-import { BaseScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
-class PodcastInfoScraper extends BaseScraper {
-    constructor(document: Document) {
-        super(document);
+class PodcastInfoScraper {
+    private pageScraper: PageScraper;
+
+    constructor(public document: Document) {
+        this.pageScraper = new PageScraper(document);
     }
 
-    public getId = (): string => {
-        const title = this.getTitle();
-        const id = this.parseId(title);
-        return id;
-    };
+    public getId = (): string => this.pageScraper.getPodcastID();
 
-    public getArtist = (): string => {
-        const songCredentialDiv = this.getSongCredentialsBox();
-        // Podcast `artist` and `song` fields are reversed in radio javan page
-        return he.decode(songCredentialDiv?.querySelector(".song")!.innerHTML);
-    };
+    // Artist and title fields are reversed in podcast page
+    public getArtist = (): string => this.pageScraper.getTitle();
 
-    public getTitle = (): string => {
-        const songCredentialDiv = this.getSongCredentialsBox();
-        // Podcast `artist` and `song` fields are reversed in radio javan page
-        return he.decode(songCredentialDiv.querySelector(".artist")!.innerHTML);
-    };
+    public getTitle = (): string => this.pageScraper.getArtist();
 
-    public getDate = (): Date =>
-        new Date(
-            this.document
-                .querySelector(".dateAdded")!
-                .innerHTML.split("Date added: ")[1]
-        );
+    public getDate = (): Date => this.pageScraper.getPodcastDate();
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;

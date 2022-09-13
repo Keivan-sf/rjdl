@@ -9,3 +9,8 @@ export const getMusicDate = (document: Document | Element): Date =>
     new Date(
         document.querySelector(".dateAdded")!.innerHTML.split("Date Added: ")[1]
     );
+
+export const getPodcastDate = (document: Document | Element): Date =>
+    new Date(
+        document.querySelector(".dateAdded")!.innerHTML.split("Date added: ")[1]
+    );

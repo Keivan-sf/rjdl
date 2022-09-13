@@ -12,9 +12,15 @@ class PageScraper {
 
     public getVideoID = (): string => IdScrapers.getVideoID(this.document);
 
+    public getPodcastID = (): string =>
+        IdScrapers.getPodcastID(this.getArtist());
+
     public getMusicDate = (): Date => DateScrapers.getMusicDate(this.document);
 
     public getVideoDate = (): Date => DateScrapers.getVideoDate(this.document);
+
+    public getPodcastDate = (): Date =>
+        DateScrapers.getPodcastDate(this.document);
 
     public getArtist = (): string => {
         const songCredentialDiv = this.getSongCredentialsBox();
@@ -55,6 +61,8 @@ class PageScraper {
             this.songCredentialBox = this.document.querySelector(".songInfo")!;
         return this.songCredentialBox;
     };
+
+    public static parseId = IdScrapers.parseId;
 }
 
 export { PageScraper };
