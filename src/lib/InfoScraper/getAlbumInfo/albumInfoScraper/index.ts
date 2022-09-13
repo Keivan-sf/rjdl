@@ -47,10 +47,9 @@ class AlbumInfoScraper {
         tracks: AlbumTrackInfoScraper[]
     ): AlbumTrack[] =>
         tracks.map((track) => {
-            const { title, artist } = track.getSongAndArtistName();
             return {
-                title,
-                artist,
+                title: track.getTitle(),
+                artist: track.getArtist(),
                 index: track.getTrackIndex(),
                 id: track.getId(),
                 artwork: track.getArtwork(),

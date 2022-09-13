@@ -17,5 +17,10 @@
     "markdown": {
         "hardwrap": false,
         "idInHeadings": true
+    },
+    "templates": {
+        "default": {
+            "outputSourceFiles": false
+        }
     }
 }

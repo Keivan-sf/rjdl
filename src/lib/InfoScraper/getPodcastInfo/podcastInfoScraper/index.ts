@@ -1,30 +1,27 @@
-import { BaseInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
-class PodcastInfoScraper extends BaseInfoScraper {
-    constructor(document: Document) {
-        super(document);
+class PodcastInfoScraper {
+    private pageScraper: PageScraper;
+
+    constructor(public document: Document) {
+        this.pageScraper = new PageScraper(document);
     }
 
-    public getId = (): string => {
-        const artworkURL = this.getArtwork();
-        const id = this.getIdFromArtworkURL(artworkURL);
-        return id;
-    };
+    public getId = (): string => this.pageScraper.getPodcastID();
 
-    public getDate = (): Date =>
-        new Date(
-            this.document
-                .querySelector(".dateAdded")!
-                .innerHTML.split("Date added: ")[1]
-        );
+    // Artist and title fields are reversed in podcast page
+    public getArtist = (): string => this.pageScraper.getTitle();
+
+    public getTitle = (): string => this.pageScraper.getArtist();
+
+    public getDate = (): Date => this.pageScraper.getPodcastDate();
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;
 
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/podcasts\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
+    public getLikes = (): number => this.pageScraper.getLikes();
+
+    public getPlays = (): number => this.pageScraper.getPlays();
 }
 
 export default PodcastInfoScraper;

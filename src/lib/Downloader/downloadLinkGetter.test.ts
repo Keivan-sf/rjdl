@@ -33,9 +33,20 @@ describe("Get download link", () => {
             const links = await getPodcastDownloadLinksViaID("test-id");
             expect(links).toStrictEqual({
                 midQuality:
-                    "https://host2.rj-mw1.com/media/podcast/mp3-256/test-id.mp3",
+                    "https://host2.rj-mw1.com/media/podcast/mp3-192/test-id.mp3",
                 highQuality:
                     "https://host2.rj-mw1.com/media/podcast/mp3-320/test-id.mp3",
+            });
+        });
+        test("Get podcast download links via url", async () => {
+            const links = await getPodcastDownloadLinksViaURL(
+                "https://www.radiojavan.com/podcasts/podcast/TranceForm-114"
+            );
+            expect(links).toStrictEqual({
+                midQuality:
+                    "https://host2.rj-mw1.com/media/podcast/mp3-192/TranceForm-114.mp3",
+                highQuality:
+                    "https://host2.rj-mw1.com/media/podcast/mp3-320/TranceForm-114.mp3",
             });
         });
         test("Get video download links via id", async () => {
@@ -69,17 +80,6 @@ describe("Get download link", () => {
                     "https://host2.rj-mw1.com/media/music_video/lq/donya-bye-bye-bye.mp4",
                 highQuality:
                     "https://host2.rj-mw1.com/media/music_video/hq/donya-bye-bye-bye.mp4",
-            });
-        });
-        test("Get podcast download links via url", async () => {
-            const links = await getPodcastDownloadLinksViaURL(
-                "https://www.radiojavan.com/podcasts/podcast/TranceForm-114"
-            );
-            expect(links).toStrictEqual({
-                midQuality:
-                    "https://host2.rj-mw1.com/media/podcast/mp3-256/TranceForm-114.mp3",
-                highQuality:
-                    "https://host2.rj-mw1.com/media/podcast/mp3-320/TranceForm-114.mp3",
             });
         });
     });

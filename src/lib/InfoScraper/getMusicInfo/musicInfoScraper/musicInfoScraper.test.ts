@@ -1,17 +1,21 @@
 import { JSDOM } from "jsdom";
 import MusicInfoScraper from ".";
 describe("Music info scraper", () => {
-    test("Should get music name and artist", () => {
+    test("Should get music name", () => {
         const mockSource = `<div class="songInfo">
         <div class="song">testName</div>
+        </div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getTitle()).toBe("testName");
+    });
+    test("Should get music artist", () => {
+        const mockSource = `<div class="songInfo">
         <div class="artist">testArtistName</div>
         </div>`;
         const DOM = new JSDOM(mockSource).window.document;
         const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getTitleAndArtist()).toStrictEqual({
-            title: "testName",
-            artist: "testArtistName",
-        });
+        expect(scraper.getArtist()).toBe("testArtistName");
     });
     test("Should get music likes", () => {
         const mockSource = `<div class="rating">331,122,199 likes</div>`;

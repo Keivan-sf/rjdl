@@ -1,40 +1,29 @@
-import { MusicAndVideoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
-class MusicInfoScraper extends MusicAndVideoScraper {
+class MusicInfoScraper {
+    private pageScraper: PageScraper;
+
     constructor(public document: Document) {
-        super(document);
+        this.pageScraper = new PageScraper(document);
     }
 
-    public getId = (): string => {
-        const { title, artist } = this.getTitleAndArtist();
-        const id = this.getIdFromCredentials(title, artist);
-        return id;
-    };
+    public getArtist = (): string => this.pageScraper.getArtist();
 
-    public getDate = (): Date =>
-        new Date(
-            this.document
-                .querySelector(".dateAdded")!
-                .innerHTML.split("Date Added: ")[1]
-        );
+    public getTitle = (): string => this.pageScraper.getTitle();
 
-    public getVideoVersion = (): string | null => this.getAltVersion();
+    public getLikes = (): number => this.pageScraper.getLikes();
+
+    public getPlays = (): number => this.pageScraper.getPlays();
+
+    public getId = (): string => this.pageScraper.getMusicID();
+
+    public getDate = (): Date => this.pageScraper.getMusicDate();
+
+    public getVideoVersion = (): string | null =>
+        this.pageScraper.getAltVersion();
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;
-
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
-
-    private getIdFromCredentials = (title: string, artist: string) => {
-        const artistAndName = artist + " " + title;
-        let id = artistAndName
-            .replace(/[^a-zA-Z\d\s\(\)]/g, "")
-            .replace(/\s+/g, "-");
-        return id;
-    };
 }
 
 export default MusicInfoScraper;

@@ -1,36 +1,27 @@
-import * as he from "he";
+import { PageScraper } from "../PageScraper";
 
 class TrackInfoScraper {
-    constructor(public trackContainer: Element) {}
+    private pageScraper: PageScraper;
 
-    public getSongAndArtistName = (): { title: string; artist: string } => {
-        const songInfo = this.trackContainer.querySelector(".songInfo")!;
-        const title = he.decode(songInfo.querySelector(".song")!.innerHTML);
-        const artist = he.decode(songInfo.querySelector(".artist")!.innerHTML);
-        return {
-            title,
-            artist,
-        };
-    };
+    constructor(public trackContainer: Element) {
+        this.pageScraper = new PageScraper(trackContainer);
+    }
+
+    public getArtist = (): string => this.pageScraper.getArtist();
+
+    public getTitle = (): string => this.pageScraper.getTitle();
 
     public getUrl = (): string => {
-        let url = this.trackContainer.querySelector("a")!.getAttribute("href")!;
+        const url = this.trackContainer
+            .querySelector("a")!
+            .getAttribute("href")!;
         return "https://www.radiojavan.com" + url;
     };
 
-    public getId = (): string => {
-        const artworkURL = this.getArtwork();
-        const id = this.getIdFromArtworkURL(artworkURL);
-        return id;
-    };
+    public getId = (): string => this.pageScraper.getMusicID();
 
     public getArtwork = (): string =>
         this.trackContainer.querySelector("img")!.getAttribute("data-src")!;
-
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
 }
 
 export { TrackInfoScraper };

@@ -2,10 +2,9 @@ import PodcastInfoScraper from "./podcastInfoScraper";
 
 export const getPodcastInfoFromDOM = (document: Document) => {
     const infoScraper = new PodcastInfoScraper(document);
-    const { artist, title } = infoScraper.getTitleAndArtist();
     return {
-        title,
-        artist,
+        title: infoScraper.getTitle(),
+        artist: infoScraper.getArtist(),
         likes: infoScraper.getLikes(),
         plays: infoScraper.getPlays(),
         date: infoScraper.getDate(),

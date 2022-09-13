@@ -15,7 +15,7 @@ export { formatURL };
  */
 export const getLinkType = (url: string): LinkType => {
     const RadioJavanURL = formatURL(url);
-    let type = getTypeFromValidURL(RadioJavanURL);
+    const type = getTypeFromValidURL(RadioJavanURL);
     return type;
 };
 

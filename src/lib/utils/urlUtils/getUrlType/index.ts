@@ -21,7 +21,7 @@ export const formatURL = (url: string): string => {
 };
 
 export const getTypeFromValidURL = (url: string): LinkType => {
-    for (let type of ExtendedLinkTypes) {
+    for (const type of ExtendedLinkTypes) {
         const match = url.match(typeRegexes[type]);
         if (match) return LinkType[simplifyLinkType(type)];
     }
@@ -33,7 +33,7 @@ function simplifyLinkType(type: ExtendedLinkType) {
 }
 
 export const getExtendedTypeFromValidURL = (url: string): ExtendedLinkType => {
-    for (let type of ExtendedLinkTypes) {
+    for (const type of ExtendedLinkTypes) {
         const match = url.match(typeRegexes[type]);
         if (match) return type;
     }

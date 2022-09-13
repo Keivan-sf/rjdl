@@ -55,10 +55,9 @@ class PlaylistInfoScraper {
         tracks: TrackInfoScraper[]
     ): Track[] =>
         tracks.map((track) => {
-            const { title, artist } = track.getSongAndArtistName();
             return {
-                title,
-                artist,
+                title: track.getTitle(),
+                artist: track.getArtist(),
                 id: track.getId(),
                 artwork: track.getArtwork(),
                 url: track.getUrl(),

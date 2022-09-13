@@ -50,7 +50,7 @@ describe("Playlist info getter", () => {
                 {
                     title: "Baroon Delam Khast",
                     artist: "Shadmehr Aghili",
-                    id: "shadmehr-aghili-baroon-delam-khast",
+                    id: "Shadmehr-Aghili-Baroon-Delam-Khast",
                     artwork:
                         "https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg",
                     url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=0",
@@ -58,7 +58,7 @@ describe("Playlist info getter", () => {
                 {
                     title: "Behet Ghol Midam (Live)",
                     artist: "Mohsen Yeganeh",
-                    id: "mohsen-yeganeh-behet-ghol-midam-(live)",
+                    id: "Mohsen-Yeganeh-Behet-Ghol-Midam-(Live)",
                     artwork:
                         "https://assets.rjassets.com/static/mp3/mohsen-yeganeh-behet-ghol-midam-(live)/8a56ed3d7f29c8c-thumb.jpg",
                     url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=1",

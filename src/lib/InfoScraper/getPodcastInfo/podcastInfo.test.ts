@@ -19,9 +19,9 @@ describe("Get podcast info", () => {
         const DOM = new JSDOM(mockSourceCode).window.document;
         const results = getPodcastInfoFromDOM(DOM);
         expect(results).toStrictEqual({
-            id: "tranceform-114",
-            title: "Releji",
-            artist: "TranceForm 114",
+            id: "TranceForm-114",
+            title: "TranceForm 114",
+            artist: "Releji",
             likes: 123,
             plays: 33641,
             artwork:

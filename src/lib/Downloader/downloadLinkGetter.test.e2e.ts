@@ -45,7 +45,7 @@ describe("Download link getter e2e test", () => {
         );
         expect(links).toStrictEqual({
             midQuality:
-                "https://host2.rj-mw1.com/media/podcast/mp3-256/Mohsens-House-99.mp3",
+                "https://host2.rj-mw1.com/media/podcast/mp3-192/Mohsens-House-99.mp3",
             highQuality:
                 "https://host2.rj-mw1.com/media/podcast/mp3-320/Mohsens-House-99.mp3",
         });
@@ -56,7 +56,7 @@ describe("Download link getter e2e test", () => {
         );
         expect(links).toStrictEqual({
             midQuality:
-                "https://host2.rj-mw1.com/media/podcast/mp3-256/TranceForm-114.mp3",
+                "https://host2.rj-mw1.com/media/podcast/mp3-192/TranceForm-114.mp3",
             highQuality:
                 "https://host2.rj-mw1.com/media/podcast/mp3-320/TranceForm-114.mp3",
         });

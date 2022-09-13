@@ -47,10 +47,12 @@ export const getVideoDownloadLinksViaURL = (
 /**
  * Used to get podcast download links via its url
  *
+ * *Bear in mind that sometimes mid and high qualities can be the same*
+ *
  * @example
  * const links = await Rj.getPodcastDownloadLinksViaURL("https://radiojavan.com/podcasts/podcast/Dance-Station-35")
  *
- * // mid quality download link (256)
+ * // mid quality download link (192)
  * console.log(links.midQuality)
  *
  * // high quality download link (320)
@@ -80,7 +82,7 @@ export const getPodcastDownloadLinksViaID = async (
 ): Promise<DownloadLinks> => {
     const host = await getPodcastHost(id);
     return {
-        midQuality: `${host}/media/podcast/mp3-256/${id}.mp3`,
+        midQuality: `${host}/media/podcast/mp3-192/${id}.mp3`,
         highQuality: `${host}/media/podcast/mp3-320/${id}.mp3`,
     };
 };
