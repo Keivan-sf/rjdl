@@ -1,36 +1,22 @@
-import * as he from "he";
-import { BaseScraperUtils } from "../BaseScraper";
+import { PageScraper } from "../PageScraper";
 
-class TrackInfoScraper extends BaseScraperUtils {
+class TrackInfoScraper {
+    private pageScraper: PageScraper;
+
     constructor(public trackContainer: Element) {
-        super(trackContainer);
+        this.pageScraper = new PageScraper(trackContainer);
     }
 
-    private songCredentialBox: Element | null = null;
+    public getArtist = (): string => this.pageScraper.getArtist();
 
-    public getArtist = (): string => {
-        const songCredentialDiv = this.getSongCredentialsBox();
-        return he.decode(
-            songCredentialDiv?.querySelector(".artist")!.innerHTML
-        );
-    };
-
-    public getTitle = (): string => {
-        const songCredentialDiv = this.getSongCredentialsBox();
-        return he.decode(songCredentialDiv.querySelector(".song")!.innerHTML);
-    };
+    public getTitle = (): string => this.pageScraper.getTitle();
 
     public getUrl = (): string => {
         let url = this.trackContainer.querySelector("a")!.getAttribute("href")!;
         return "https://www.radiojavan.com" + url;
     };
 
-    public getId = (): string => {
-        const title = this.getTitle();
-        const artist = this.getArtist();
-        const id = this.parseId(artist + " " + title);
-        return id;
-    };
+    public getId = (): string => this.pageScraper.getMusicID();
 
     public getArtwork = (): string =>
         this.trackContainer.querySelector("img")!.getAttribute("data-src")!;
@@ -38,12 +24,6 @@ class TrackInfoScraper extends BaseScraperUtils {
     private getIdFromArtworkURL = (artworkURL: string): string => {
         const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
         return artworkURL.match(idSelectorRegex)![0];
-    };
-
-    private getSongCredentialsBox = (): Element => {
-        if (!this.songCredentialBox)
-            this.songCredentialBox = this.document.querySelector(".songInfo")!;
-        return this.songCredentialBox;
     };
 }
 
