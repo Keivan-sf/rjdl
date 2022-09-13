@@ -5,7 +5,11 @@ import * as DateScrapers from "./dateScrapers";
 class PageScraper {
     constructor(public document: Document | Element) {}
 
-    private songCredentialBox: Element | null = null;
+    private cache: {
+        title?: string;
+        artist?: string;
+        songCredentialBox?: Element;
+    } = {};
 
     public getMusicID = (): string =>
         IdScrapers.getMusicID(this.getTitle(), this.getArtist());
@@ -23,15 +27,21 @@ class PageScraper {
         DateScrapers.getPodcastDate(this.document);
 
     public getArtist = (): string => {
+        if (this.cache.artist) return this.cache.artist;
         const songCredentialDiv = this.getSongCredentialsBox();
-        return he.decode(
+        this.cache.artist = he.decode(
             songCredentialDiv?.querySelector(".artist")!.innerHTML
         );
+        return this.cache.artist;
     };
 
     public getTitle = (): string => {
+        if (this.cache.title) return this.cache.title;
         const songCredentialDiv = this.getSongCredentialsBox();
-        return he.decode(songCredentialDiv.querySelector(".song")!.innerHTML);
+        this.cache.title = he.decode(
+            songCredentialDiv.querySelector(".song")!.innerHTML
+        );
+        return this.cache.title;
     };
 
     public getLikes = (): number =>
@@ -57,9 +67,10 @@ class PageScraper {
     };
 
     public getSongCredentialsBox = (): Element => {
-        if (!this.songCredentialBox)
-            this.songCredentialBox = this.document.querySelector(".songInfo")!;
-        return this.songCredentialBox;
+        if (!this.cache.songCredentialBox)
+            this.cache.songCredentialBox =
+                this.document.querySelector(".songInfo")!;
+        return this.cache.songCredentialBox;
     };
 
     public static parseId = IdScrapers.parseId;
