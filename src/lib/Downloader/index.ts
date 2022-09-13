@@ -47,7 +47,7 @@ export const getVideoDownloadLinksViaURL = (
 /**
  * Used to get podcast download links via its url
  *
- * - Bear in mind that sometimes mid and high qualities can be the same
+ * *Bear in mind that sometimes mid and high qualities can be the same*
  *
  * @example
  * const links = await Rj.getPodcastDownloadLinksViaURL("https://radiojavan.com/podcasts/podcast/Dance-Station-35")
