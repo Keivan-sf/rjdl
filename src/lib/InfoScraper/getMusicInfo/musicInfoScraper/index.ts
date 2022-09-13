@@ -24,11 +24,6 @@ class MusicInfoScraper {
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;
-
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
 }
 
 export default MusicInfoScraper;

@@ -20,11 +20,6 @@ class TrackInfoScraper {
 
     public getArtwork = (): string =>
         this.trackContainer.querySelector("img")!.getAttribute("data-src")!;
-
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/mp3\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
 }
 
 export { TrackInfoScraper };

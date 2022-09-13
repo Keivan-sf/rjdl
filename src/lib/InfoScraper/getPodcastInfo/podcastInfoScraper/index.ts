@@ -22,11 +22,6 @@ class PodcastInfoScraper {
     public getLikes = (): number => this.pageScraper.getLikes();
 
     public getPlays = (): number => this.pageScraper.getPlays();
-
-    private getIdFromArtworkURL = (artworkURL: string): string => {
-        const idSelectorRegex = /(?<=static\/podcasts\/)[^\/]+(?=\/)/g;
-        return artworkURL.match(idSelectorRegex)![0];
-    };
 }
 
 export default PodcastInfoScraper;
