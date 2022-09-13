@@ -1,23 +1,26 @@
-import { MusicAndVideoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
-class VideoInfoScraper extends MusicAndVideoScraper {
+class VideoInfoScraper {
+    private pageScraper: PageScraper;
+
     constructor(public document: Document) {
-        super(document);
+        this.pageScraper = new PageScraper(document);
     }
 
-    public getDate = (): Date =>
-        new Date(
-            this.document
-                .querySelector(".date_added")!
-                .innerHTML.split("Date added: ")[1]
-        );
+    public getArtist = (): string => this.pageScraper.getArtist();
 
-    public getId = (): string =>
-        this.document
-            .querySelector("#playlist_item_permlink")!
-            .getAttribute("value")!;
+    public getTitle = (): string => this.pageScraper.getTitle();
 
-    public getMusicVersion = (): string | null => this.getAltVersion();
+    public getLikes = (): number => this.pageScraper.getLikes();
+
+    public getPlays = (): number => this.pageScraper.getPlays();
+
+    public getId = (): string => this.pageScraper.getVideoID();
+
+    public getDate = (): Date => this.pageScraper.getVideoDate();
+
+    public getMusicVersion = (): string | null =>
+        this.pageScraper.getAltVersion();
 
     public getThumbnail = (): string =>
         this.document
