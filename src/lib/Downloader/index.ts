@@ -80,7 +80,7 @@ export const getPodcastDownloadLinksViaID = async (
 ): Promise<DownloadLinks> => {
     const host = await getPodcastHost(id);
     return {
-        midQuality: `${host}/media/podcast/mp3-256/${id}.mp3`,
+        midQuality: `${host}/media/podcast/mp3-192/${id}.mp3`,
         highQuality: `${host}/media/podcast/mp3-320/${id}.mp3`,
     };
 };
