@@ -119,3 +119,5 @@ export const getPodcastInfo = async (url: string): Promise<PodcastInfo> => {
     };
     return infoAndUrl;
 };
+
+export * from "./interfaces";
