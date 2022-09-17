@@ -23,19 +23,15 @@ const rjType = Rj.getLinkType(
     "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
 );
 
-if (rjType === Rj.LinkType.Music) {
-    const links = await Rj.getMusicDownloadLinksViaURL(
-        "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
-    );
+console.log(rjType === Rj.LinkType.Music); // true
 
-    console.log(links.midQuality);
+const links = await Rj.getMusicDownloadLinksViaURL(
+    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+); // {midQuality: ... , highQuality: ...}
 
-    const songInfo = await Rj.getMusicInfo(
-        "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
-    );
-
-    console.log(songInfo.title);
-}
+const songInfo = await Rj.getMusicInfo(
+    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+); // {title: ... , artist: ... , ...}
 ```
 
 ### Getting link type
@@ -60,6 +56,7 @@ import * as Rj from "node-rjdl";
 const songInfo = await Rj.getMusicInfo(
     "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
 );
+// {title: "Bye Bye Bye" , artist: "Donya" , ...}
 ```
 
 ### Getting download links
@@ -75,9 +72,11 @@ const links = await Rj.getMusicDownloadLinksViaURL(
     "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
 );
 
-console.log(links.midQuality); // https://host2.rj-mw1.com/media/mp3/mp3-256/Donya-Bye-Bye-Bye.mp3
+console.log(links.midQuality);
+// https://host2.rj-mw1.com/media/mp3/mp3-256/Donya-Bye-Bye-Bye.mp3
 
-console.log(links.highQuality); // https://host2.rj-mw1.com/media/mp3/mp3-320/Donya-Bye-Bye-Bye.mp3
+console.log(links.highQuality);
+// https://host2.rj-mw1.com/media/mp3/mp3-320/Donya-Bye-Bye-Bye.mp3
 ```
 
 ### Validating URL
