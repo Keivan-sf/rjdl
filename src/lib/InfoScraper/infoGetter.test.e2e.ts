@@ -59,6 +59,8 @@ describe("Info getters", () => {
         expect(typeof info.likes).toBe("number");
         expect(typeof info.plays).not.toBeNaN();
         expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedVideos)).toBe(true);
+        expect(typeof info.relatedVideos[0].title).toBe("string");
     });
     test("Should return podcast info with url", async () => {
         // https://www.radiojavan.com/podcasts/podcast/Dance-Station-35

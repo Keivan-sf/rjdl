@@ -14,6 +14,7 @@ export interface MusicInfo extends MusicAndVideoCommonInfo {
 }
 export interface VideoInfo extends MusicAndVideoCommonInfo {
     thumbnail: string;
+    relatedVideos: Track[];
     song: string | null;
 }
 
