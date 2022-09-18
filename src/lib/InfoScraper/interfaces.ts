@@ -66,6 +66,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
  * @prop {string|null} video Music video link if there is any
+ * @prop {Track[]} relatedTracks
  */
 
 /**
@@ -80,7 +81,6 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {number} plays
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
- * @prop {Track[]} relatedTracks
  */
 
 /**
