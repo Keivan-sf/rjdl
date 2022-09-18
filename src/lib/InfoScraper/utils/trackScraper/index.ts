@@ -2,9 +2,11 @@ import { PageScraper } from "../PageScraper";
 
 class TrackInfoScraper {
     private pageScraper: PageScraper;
+    readonly isPlayingNow: boolean;
 
     constructor(public trackContainer: Element) {
         this.pageScraper = new PageScraper(trackContainer);
+        this.isPlayingNow = trackContainer.classList.contains("active");
     }
 
     public getArtist = (): string => this.pageScraper.getArtist();
