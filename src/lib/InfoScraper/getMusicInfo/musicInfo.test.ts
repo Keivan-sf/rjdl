@@ -1,6 +1,6 @@
 import { getMusicInfoFromDOM } from ".";
 import { JSDOM } from "jsdom";
-import { getSourceCodeDOMDocument } from "../utils";
+
 const mockSourceCode = `
 <div class="artwork">
 <img alt="Donya" class="" src="https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg"></div>
@@ -70,6 +70,7 @@ const mockSourceCode = `
 </ul>
 </div>
 `;
+
 describe("Get music info", () => {
     test("Get music info from dom", () => {
         const DOM = new JSDOM(mockSourceCode).window.document;
