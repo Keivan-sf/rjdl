@@ -1,4 +1,5 @@
-import { PageScraper } from "../../utils";
+import { Track } from "../..";
+import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class MusicInfoScraper {
     private pageScraper: PageScraper;
@@ -24,6 +25,44 @@ class MusicInfoScraper {
 
     public getArtwork = (): string =>
         this.document.querySelector(".artwork img")!.getAttribute("src")!;
+
+    public getRelatedTracks = (): Track[] => {
+        const tracks = this.getTrackElementScrapers();
+        return this.getTrackInfoFromTrackScraper(tracks);
+    };
+
+    private getTrackElementScrapers = () => {
+        const trackContainers = this.getTrackElements();
+        return this.convertTrackElementsToScraper(trackContainers);
+    };
+
+    private getTrackElements = () =>
+        this.document
+            .querySelector(".sidePanel .listView")!
+            .querySelectorAll("li")!;
+
+    private convertTrackElementsToScraper = (
+        elements: NodeListOf<HTMLLIElement>
+    ): TrackInfoScraper[] => {
+        const scrapers: TrackInfoScraper[] = [];
+        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
+        return scrapers;
+    };
+
+    private getTrackInfoFromTrackScraper = (
+        tracks: TrackInfoScraper[]
+    ): Track[] => {
+        const relatedTracks = tracks.filter((track) => !track.isPlayingNow);
+        return relatedTracks.map((track) => {
+            return {
+                title: track.getTitle(),
+                artist: track.getArtist(),
+                id: track.getId(),
+                artwork: track.getArtwork(),
+                url: track.getUrl(),
+            };
+        });
+    };
 }
 
 export default MusicInfoScraper;
