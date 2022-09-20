@@ -6,8 +6,6 @@ import {
     getVideoDownloadLinksViaID,
     getVideoDownloadLinksViaURL,
 } from ".";
-import * as hostGetters from "./getHost";
-import * as idGetters from "./getId";
 jest.mock("./getHost", () => ({
     getMusicHost: () => Promise.resolve("https://host2.rj-mw1.com"),
     getPodcastHost: () => Promise.resolve("https://host2.rj-mw1.com"),

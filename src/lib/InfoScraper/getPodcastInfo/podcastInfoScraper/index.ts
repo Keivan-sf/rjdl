@@ -1,5 +1,4 @@
 import { Track } from "../..";
-import { LinkType } from "../../..";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class PodcastInfoScraper {
