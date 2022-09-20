@@ -51,6 +51,7 @@ export interface AlbumInfo {
 
 export interface PodcastInfo extends MusicAndVideoCommonInfo {
     artwork: string;
+    relatedTracks: Track[];
 }
 
 /**
@@ -81,6 +82,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {number} plays
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
+ * @prop {Track[]} relatedTracks
  */
 
 /**

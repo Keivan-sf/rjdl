@@ -90,5 +90,7 @@ describe("Info getters", () => {
         expect(typeof info.likes).toBe("number");
         expect(typeof info.plays).not.toBeNaN();
         expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedTracks)).toBe(true);
+        expect(typeof info.relatedTracks[0].title).toBe("string");
     });
 });
