@@ -10,5 +10,6 @@ export const getPodcastInfoFromDOM = (document: Document) => {
         date: infoScraper.getDate(),
         artwork: infoScraper.getArtwork(),
         id: infoScraper.getId(),
+        relatedTracks: infoScraper.getRelatedTracks(),
     };
 };
