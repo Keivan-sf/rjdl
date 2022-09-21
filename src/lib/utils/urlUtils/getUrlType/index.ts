@@ -1,4 +1,9 @@
-import { ExtendedLinkTypes, ExtendedLinkType, LinkType } from "../interfaces";
+import {
+    ExtendedLinkTypes,
+    ExtendedLinkType,
+    LinkType,
+    complexToSimpleTypes,
+} from "../interfaces";
 import { radioJavanLinkRegex, typeRegexes } from "./regexes";
 
 /**
@@ -21,13 +26,14 @@ export const formatURL = (url: string): string => {
 export const getTypeFromValidURL = (url: string): LinkType => {
     for (const type of ExtendedLinkTypes) {
         const match = url.match(typeRegexes[type]);
-        if (match) return LinkType[simplifyLinkType(type)];
+        if (match) return simplifyLinkType(type);
     }
     throw new Error("INVALID_TYPE");
 };
 
-function simplifyLinkType(type: ExtendedLinkType) {
-    return type === "AlbumTrack" || type === "PlaylistTrack" ? "Music" : type;
+function simplifyLinkType(type: ExtendedLinkType): LinkType {
+    const simpleType = complexToSimpleTypes[type];
+    return simpleType;
 }
 
 export const getExtendedTypeFromValidURL = (url: string): ExtendedLinkType => {

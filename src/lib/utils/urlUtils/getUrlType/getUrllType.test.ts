@@ -130,5 +130,25 @@ describe("Radio javan link type utils", () => {
             );
             expect(type).toBe(LinkType.Music);
         });
+        test("Should return rj.app music type", () => {
+            const type = getTypeFromValidURL("https://rj.app/m/nv0a9WYE");
+            expect(type).toBe(LinkType.Music);
+        });
+        test("Should return rj.app podcast type", () => {
+            const type = getTypeFromValidURL("https://rj.app/p/br3gnprw");
+            expect(type).toBe(LinkType.Podcast);
+        });
+        test("Should return rj.app album type", () => {
+            const type = getTypeFromValidURL("https://rj.app/ma/D18eAKwY");
+            expect(type).toBe(LinkType.Album);
+        });
+        test("Should return rj.app playlist type", () => {
+            const type = getTypeFromValidURL("rj.app/pm/RjVqX8X4");
+            expect(type).toBe(LinkType.Playlist);
+        });
+        test("Should return rj.app video type", () => {
+            const type = getTypeFromValidURL("https://rj.app/v/dP5nz3NO");
+            expect(type).toBe(LinkType.Video);
+        });
     });
 });
