@@ -1,4 +1,4 @@
-import { getMusicInfo } from "../../InfoScraper";
+import { getMusicInfo, getPodcastInfo, getVideoInfo } from "../../InfoScraper";
 import {
     getMusicIdFromURL,
     getPodcastIdFromURL,
@@ -14,16 +14,18 @@ export const getMusicID = async (url: string): Promise<string> => {
     return (await getMusicInfo(url)).id;
 };
 
-export const getVideoID = (url: string): string => {
+export const getVideoID = async (url: string): Promise<string> => {
     const type = getExtendedTypeFromValidURL(url);
     throwOnNonVideoTypes(type);
-    return getVideoIdFromURL(url);
+    if (type === "Video") return getVideoIdFromURL(url);
+    return (await getVideoInfo(url)).id;
 };
 
-export const getPodcastID = (url: string): string => {
+export const getPodcastID = async (url: string): Promise<string> => {
     const type = getExtendedTypeFromValidURL(url);
     throwOnNonPodcastTypes(type);
-    return getPodcastIdFromURL(url);
+    if (type === "Podcast") return getPodcastIdFromURL(url);
+    return (await getPodcastInfo(url)).id;
 };
 
 function throwOnNonMusicTypes(type: ExtendedLinkType) {
@@ -31,14 +33,17 @@ function throwOnNonMusicTypes(type: ExtendedLinkType) {
         "PlaylistTrack",
         "AlbumTrack",
         "Music",
+        "APPMusic",
     ];
     if (!allowedTypes.includes(type)) throw new Error("NOT_A_MUSIC_LINK");
 }
 
 function throwOnNonVideoTypes(type: ExtendedLinkType) {
-    if (type !== "Video") throw new Error("NOT_A_VIDEO_LINK");
+    const allowedTypes: ExtendedLinkType[] = ["Video", "APPVideo"];
+    if (!allowedTypes.includes(type)) throw new Error("NOT_A_VIDEO_LINK");
 }
 
 function throwOnNonPodcastTypes(type: ExtendedLinkType) {
-    if (type !== "Podcast") throw new Error("NOT_A_PODCAST_LINK");
+    const allowedTypes: ExtendedLinkType[] = ["Podcast", "APPPodcast"];
+    if (!allowedTypes.includes(type)) throw new Error("NOT_A_PODCAST_LINK");
 }
