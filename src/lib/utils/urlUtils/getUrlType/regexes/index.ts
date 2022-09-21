@@ -1,7 +1,7 @@
 import { ExtendedLinkType } from "../../interfaces";
 
 export const radioJavanLinkRegex =
-    /^(https:\/\/|http:\/\/)?(www\.)?(radiojavan\.com)\/.*/g;
+    /^(https:\/\/|http:\/\/)?(www\.)?(radiojavan\.com|rj\.app)\/.*/g;
 
 export const typeRegexes: { [key in ExtendedLinkType]: RegExp } = {
     Music: /radiojavan\.com\/mp3s\/mp3\/[^\/]+[\/]?$/g,

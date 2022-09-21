@@ -32,6 +32,21 @@ describe("Radio javan link type utils", () => {
                 "https://radiojavan.com/random"
             );
         });
+        test("Should validate url with origin of rj.app", () => {
+            expect(formatURL("https://rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
+        test("Should format a url with origin of rj.app wo prefix", () => {
+            expect(formatURL("rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
+        test("Should format a url with origin of rj.app wo prefix and with www", () => {
+            expect(formatURL("www.rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
     });
     describe("Link Type Identifier", () => {
         test("Should return music type", () => {

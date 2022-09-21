@@ -11,12 +11,10 @@ import { radioJavanLinkRegex, typeRegexes } from "./regexes";
  * @returns {string} Formatted url
  */
 export const formatURL = (url: string): string => {
+    const origin = url.includes("radiojavan") ? "radiojavan.com" : "rj.app";
     const matches = url.match(radioJavanLinkRegex);
     if (!matches || matches?.length < 1) throw new Error("Invalid url");
-    const standardURL = [
-        "https://",
-        matches[0].split("radiojavan.com")[1],
-    ].join("radiojavan.com");
+    const standardURL = ["https://", matches[0].split(origin)[1]].join(origin);
     return standardURL;
 };
 
