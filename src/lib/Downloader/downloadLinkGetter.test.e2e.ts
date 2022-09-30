@@ -61,4 +61,37 @@ describe("Download link getter e2e test", () => {
                 "https://host2.rj-mw1.com/media/podcast/mp3-320/TranceForm-114.mp3",
         });
     });
+    test("Should get download links of rj.app music", async () => {
+        const links = await getMusicDownloadLinksViaURL(
+            "https://rj.app/m/2qKkkB8q"
+        );
+        expect(links).toStrictEqual({
+            midQuality:
+                "https://host2.rj-mw1.com/media/mp3/mp3-256/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha).mp3",
+            highQuality:
+                "https://host2.rj-mw1.com/media/mp3/mp3-320/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha).mp3",
+        });
+    });
+    test("Should get download links of rj.app video", async () => {
+        const links = await getVideoDownloadLinksViaURL(
+            "https://rj.app/v/dP5nz3NO"
+        );
+        expect(links).toStrictEqual({
+            midQuality:
+                "https://host2.rj-mw1.com/media/music_video/lq/sahar-kavir-(live-in-istanbul).mp4",
+            highQuality:
+                "https://host2.rj-mw1.com/media/music_video/hq/sahar-kavir-(live-in-istanbul).mp4",
+        });
+    });
+    test("Should get download links of rj.app podcast", async () => {
+        const links = await getPodcastDownloadLinksViaURL(
+            "https://rj.app/p/krQgdJ8N"
+        );
+        expect(links).toStrictEqual({
+            midQuality:
+                "https://host2.rj-mw1.com/media/podcast/mp3-192/Flybeat-3.mp3",
+            highQuality:
+                "https://host2.rj-mw1.com/media/podcast/mp3-320/Flybeat-3.mp3",
+        });
+    });
 });

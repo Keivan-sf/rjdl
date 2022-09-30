@@ -1,4 +1,3 @@
-import { PlaylistInfo } from "../interfaces";
 import PlaylistInfoScraper from "./playlistInfoScraper";
 
 export const getPlaylistInfoFromDOM = (document: Document) => {

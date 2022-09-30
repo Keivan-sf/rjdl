@@ -32,6 +32,21 @@ describe("Radio javan link type utils", () => {
                 "https://radiojavan.com/random"
             );
         });
+        test("Should validate url with origin of rj.app", () => {
+            expect(formatURL("https://rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
+        test("Should format a url with origin of rj.app wo prefix", () => {
+            expect(formatURL("rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
+        test("Should format a url with origin of rj.app wo prefix and with www", () => {
+            expect(formatURL("www.rj.app/m/nv0a9WYE")).toBe(
+                "https://rj.app/m/nv0a9WYE"
+            );
+        });
     });
     describe("Link Type Identifier", () => {
         test("Should return music type", () => {
@@ -114,6 +129,26 @@ describe("Radio javan link type utils", () => {
                 "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3/"
             );
             expect(type).toBe(LinkType.Music);
+        });
+        test("Should return rj.app music type", () => {
+            const type = getTypeFromValidURL("https://rj.app/m/nv0a9WYE");
+            expect(type).toBe(LinkType.Music);
+        });
+        test("Should return rj.app podcast type", () => {
+            const type = getTypeFromValidURL("https://rj.app/p/br3gnprw");
+            expect(type).toBe(LinkType.Podcast);
+        });
+        test("Should return rj.app album type", () => {
+            const type = getTypeFromValidURL("https://rj.app/ma/D18eAKwY");
+            expect(type).toBe(LinkType.Album);
+        });
+        test("Should return rj.app playlist type", () => {
+            const type = getTypeFromValidURL("rj.app/pm/RjVqX8X4");
+            expect(type).toBe(LinkType.Playlist);
+        });
+        test("Should return rj.app video type", () => {
+            const type = getTypeFromValidURL("https://rj.app/v/dP5nz3NO");
+            expect(type).toBe(LinkType.Video);
         });
     });
 });
