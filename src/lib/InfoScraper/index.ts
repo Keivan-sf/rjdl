@@ -16,6 +16,8 @@ import { getSourceCodeDOMDocument } from "./utils";
 /**
  * Used to get music info based on its url
  *
+ * @deprecated Ues `getMusic` instead
+ *
  * @example
  * const info = await Rj.getMusicInfo("https://radiojavan.com/mp3s/mp3/Sogand-Tehran")
  * console.log(info.title) // "Tehran"
@@ -37,6 +39,8 @@ export const getMusicInfo = async (url: string): Promise<MusicInfo> => {
 /**
  * Used to get video info based on its url
  *
+ * @deprecated Ues `getVideo` instead
+ *
  * @example
  * const info = await Rj.getVideoInfo("https://radiojavan.com/videos/video/siavash-ghomayshi-barax")
  * console.log(info.title) // "Barax"
@@ -57,6 +61,8 @@ export const getVideoInfo = async (url: string): Promise<VideoInfo> => {
 
 /**
  * Used to get playlist info based on its url
+ *
+ * @deprecated Ues `getPlaylist` instead
  *
  * @example
  * const info = await Rj.getPlaylistInfo("https://radiojavan.com/playlists/playlist/mp3/dec52eeff468")
@@ -80,6 +86,8 @@ export const getPlaylistInfo = async (url: string): Promise<PlaylistInfo> => {
 /**
  * Used to get album info based on its url
  *
+ * @deprecated Ues `getAlbum` instead
+ *
  * @example
  * const info = await Rj.getAlbumInfo("https://radiojavan.com/mp3s/album/Koorosh-420")
  * console.log(info.title) // "420"
@@ -101,6 +109,8 @@ export const getAlbumInfo = async (url: string): Promise<AlbumInfo> => {
 
 /**
  * Used to get podcast info based on its url
+ *
+ * @deprecated Ues `getPodcast` instead
  *
  * @example
  * const info = await Rj.getPodcastInfo("https://radiojavan.com/podcasts/podcast/Mohsens-House-99")
