@@ -8,9 +8,9 @@
         "build": "tsc && npm run doc",
         "doc": "jsdoc -c ./jsdoc.config.json",
         "style": "npx prettier ./src --write",
-        "test": "jest -c jest.config.ts",
-        "e2eTest": "jest -c jest.config.e2e.ts",
-        "unitTest": "jest -c jest.config.unit.ts"
+        "test": "npx jest -c jest.config.ts",
+        "e2eTest": "npx jest -c jest.config.e2e.ts",
+        "unitTest": "npx jest -c jest.config.unit.ts"
     },
     "author": "keivan",
     "keywords": [
