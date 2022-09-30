@@ -75,4 +75,65 @@ describe("Music info scraper", () => {
         const scraper = new MusicInfoScraper(DOM);
         expect(scraper.getVideoVersion()).toBeNull();
     });
+    test("Should return related tracks", () => {
+        const mockSource = `<div class="sidePanel"><ul class="listView">
+        <li>
+        <a href="/mp3s/mp3/Sogand-Daad-Nazan?start=109320&amp;index=0">
+        <img src="https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg" data-src="https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg" alt="Sogand - 'Daad Nazan'" class=" lazyloaded">
+        <div class="songInfo">
+        <span class="artist" title="Sogand">Sogand</span>
+        <span class="song" title="Daad Nazan">Daad Nazan</span>
+        </div>
+        </a>
+        <button class="" mp3id="109320"><svg xmlns="" xmlns:xlink="" viewBox="" class=""><path d=""></path></svg></button>
+        </li>
+        </ul></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getRelatedTracks()).toStrictEqual([
+            {
+                title: "Daad Nazan",
+                artist: "Sogand",
+                artwork:
+                    "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg",
+                id: "Sogand-Daad-Nazan",
+                url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
+            },
+        ]);
+    });
+    test("Should return related tracks while ignoring the active track", () => {
+        const mockSource = `<div class="sidePanel"><ul class="listView">
+        <li class="active">
+        <a href="/mp3s/mp3/Sogand-Talkh-(Ft-Zakhmi)?start=109320&amp;index=3">
+        <img src="images/blank.gif" data-src="https://assets.rjassets.com/static/mp3/sogand-talkh-(ft-zakhmi)/6890060b960db50-thumb.jpg" alt="Sogand - &#39;Talkh (Ft Zakhmi)&#39;" class="lazyload" />
+        <div class="songInfo">
+        <span class="artist" title="Sogand">Sogand</span>
+        <span class="song" title="Talkh (Ft Zakhmi)">Talkh (Ft Zakhmi)</span>
+        </div></a>
+        <button class="" mp3id="109668"><svg xmlns="" xmlns:xlink="" viewBox="" class=""><path d="" id=""></path></svg></button>
+        </li>
+        <li>
+        <a href="/mp3s/mp3/Sogand-Daad-Nazan?start=109320&amp;index=0">
+        <img src="https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg" data-src="https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg" alt="Sogand - 'Daad Nazan'" class=" lazyloaded">
+        <div class="songInfo">
+        <span class="artist" title="Sogand">Sogand</span>
+        <span class="song" title="Daad Nazan">Daad Nazan</span>
+        </div>
+        </a>
+        <button class="" mp3id="109320"><svg xmlns="" xmlns:xlink="" viewBox="" class=""><path d=""></path></svg></button>
+        </li>
+        </ul></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const scraper = new MusicInfoScraper(DOM);
+        expect(scraper.getRelatedTracks()).toStrictEqual([
+            {
+                title: "Daad Nazan",
+                artist: "Sogand",
+                artwork:
+                    "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg",
+                id: "Sogand-Daad-Nazan",
+                url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
+            },
+        ]);
+    });
 });

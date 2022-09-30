@@ -29,6 +29,8 @@ describe("Info getters", () => {
         expect(typeof info.likes).toBe("number");
         expect(typeof info.plays).not.toBeNaN();
         expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedTracks)).toBe(true);
+        expect(typeof info.relatedTracks[0].title).toBe("string");
     });
     test("Should return video info with url", async () => {
         const info = await getVideoInfo(
@@ -57,6 +59,8 @@ describe("Info getters", () => {
         expect(typeof info.likes).toBe("number");
         expect(typeof info.plays).not.toBeNaN();
         expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedVideos)).toBe(true);
+        expect(typeof info.relatedVideos[0].title).toBe("string");
     });
     test("Should return podcast info with url", async () => {
         // https://www.radiojavan.com/podcasts/podcast/Dance-Station-35
@@ -86,5 +90,36 @@ describe("Info getters", () => {
         expect(typeof info.likes).toBe("number");
         expect(typeof info.plays).not.toBeNaN();
         expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedTracks)).toBe(true);
+        expect(typeof info.relatedTracks[0].title).toBe("string");
+    });
+
+    test("Should get podcast info with app url", async () => {
+        const info = await getPodcastInfo("https://rj.app/p/krQgdJ8N");
+        const staticInfo: Partial<PodcastInfo> = {
+            id: info.id,
+            title: info.title,
+            artist: info.artist,
+            date: info.date,
+            url: info.url,
+            artwork: info.artwork,
+        };
+
+        expect(staticInfo).toStrictEqual({
+            id: "Flybeat-3",
+            title: "Flybeat 3",
+            artist: "DJ Mani TK",
+            date: new Date("Sep 20, 2022"),
+            url: "https://rj.app/p/krQgdJ8N",
+            artwork:
+                "https://assets.rjassets.com/static/podcasts/flybeat-3/88945d7771884ed.jpg",
+        });
+
+        expect(typeof info.likes).not.toBeNaN();
+        expect(typeof info.likes).toBe("number");
+        expect(typeof info.plays).not.toBeNaN();
+        expect(typeof info.plays).toBe("number");
+        expect(Array.isArray(info.relatedTracks)).toBe(true);
+        expect(typeof info.relatedTracks[0].title).toBe("string");
     });
 });

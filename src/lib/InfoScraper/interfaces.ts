@@ -9,10 +9,12 @@ interface MusicAndVideoCommonInfo {
 }
 export interface MusicInfo extends MusicAndVideoCommonInfo {
     artwork: string;
+    relatedTracks: Track[];
     video: string | null;
 }
 export interface VideoInfo extends MusicAndVideoCommonInfo {
     thumbnail: string;
+    relatedVideos: Track[];
     song: string | null;
 }
 
@@ -49,6 +51,7 @@ export interface AlbumInfo {
 
 export interface PodcastInfo extends MusicAndVideoCommonInfo {
     artwork: string;
+    relatedTracks: Track[];
 }
 
 /**
@@ -64,6 +67,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
  * @prop {string|null} video Music video link if there is any
+ * @prop {Track[]} relatedTracks
  */
 
 /**
@@ -78,6 +82,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {number} plays
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
+ * @prop {Track[]} relatedTracks
  */
 
 /**
@@ -93,6 +98,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {Date} date When the video was added to Radio javan
  * @prop {string} url
  * @prop {string|null} song Song link if there is any
+ * @prop {Track[]} relatedVideos
  */
 
 /**

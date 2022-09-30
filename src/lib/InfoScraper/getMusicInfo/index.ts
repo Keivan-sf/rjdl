@@ -11,5 +11,6 @@ export const getMusicInfoFromDOM = (document: Document) => {
         artwork: infoScraper.getArtwork(),
         id: infoScraper.getId(),
         video: infoScraper.getVideoVersion(),
+        relatedTracks: infoScraper.getRelatedTracks(),
     };
 };
