@@ -27,6 +27,27 @@ export const ExtendedLinkTypes = [
     "Video",
     "Podcast",
     "TV",
+    "APPMusic",
+    "APPVideo",
+    "APPPodcast",
+    "APPPlaylist",
+    "APPAlbum",
 ] as const;
 
 export type ExtendedLinkType = typeof ExtendedLinkTypes[number];
+
+export const complexToSimpleTypes: { [key in ExtendedLinkType]: LinkType } = {
+    Music: LinkType.Music,
+    PlaylistTrack: LinkType.Music,
+    AlbumTrack: LinkType.Music,
+    APPMusic: LinkType.Music,
+    Podcast: LinkType.Podcast,
+    APPPodcast: LinkType.Podcast,
+    Video: LinkType.Video,
+    APPVideo: LinkType.Video,
+    Playlist: LinkType.Playlist,
+    APPPlaylist: LinkType.Playlist,
+    Album: LinkType.Album,
+    APPAlbum: LinkType.Album,
+    TV: LinkType.TV,
+};

@@ -37,10 +37,10 @@ export const getMusicDownloadLinksViaURL = async (
  * @param {string} url Video's url
  * @returns {Promise<DownloadLinks>}
  */
-export const getVideoDownloadLinksViaURL = (
+export const getVideoDownloadLinksViaURL = async (
     url: string
 ): Promise<DownloadLinks> => {
-    const id = getVideoID(url);
+    const id = await getVideoID(url);
     return getVideoDownloadLinksViaID(id);
 };
 
@@ -60,10 +60,10 @@ export const getVideoDownloadLinksViaURL = (
  * @param {string} url Podcast's url
  * @returns {Promise<DownloadLinks>}
  */
-export const getPodcastDownloadLinksViaURL = (
+export const getPodcastDownloadLinksViaURL = async (
     url: string
 ): Promise<DownloadLinks> => {
-    const id = getPodcastID(url);
+    const id = await getPodcastID(url);
     return getPodcastDownloadLinksViaID(id);
 };
 

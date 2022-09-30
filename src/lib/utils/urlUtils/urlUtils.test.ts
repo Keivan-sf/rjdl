@@ -20,5 +20,14 @@ describe("Url utils", () => {
         test("Should validate the link and return false", () => {
             expect(validateURL("ss")).toBe(false);
         });
+        test("Should validate rj.app links", () => {
+            expect(validateURL("https://rj.app/m/2qKkkB8q")).toBe(true);
+        });
+        test("Should validate rj.app links", () => {
+            expect(validateURL("rj.app/m/2qKkkB8q")).toBe(true);
+        });
+        test("Should validate rj.app link and return false", () => {
+            expect(validateURL("https://rj.app/")).toBe(false);
+        });
     });
 });

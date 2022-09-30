@@ -68,4 +68,52 @@ describe("Video info scraper", () => {
         const song = new VideoInfoScraper(DOM).getMusicVersion();
         expect(song).toBe(null);
     });
+    test("Should return related videos", () => {
+        const mockSource = `<div class="sidePanel">
+        <ul class="listView">
+        <li>
+        <a href="/videos/video/donya-bye-bye-bye" data-no-turbolink="">
+        <img src="https://assets.rjassets.com/static/musicvideos/images/1860382b80a06ed-original.jpeg" data-src="https://assets.rjassets.com/static/musicvideos/images/1860382b80a06ed-original.jpeg" alt="Donya - 'Bye Bye Bye'" class=" ls-is-cached lazyloaded">
+        <div class="songInfo">
+        <span class="artist" title="Donya">Donya</span>
+        <span class="song" title="Bye Bye Bye">Bye Bye Bye</span>
+        </div>
+        </a>
+        
+        <button class="button primaryButton video_playlist_add add_playlist" videoid="9496" aria-describedby="ui-tooltip-19">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="addSognIcon icon">
+        <path d="M13,11 L21.0081969,11 C21.5446944,11 22,11.4477153 22,12 C22,12.5561352 21.5559546,13 21.0081969,13 L13,13 L13,21.0081969 C13,21.5446944 12.5522847,22 12,22 C11.4438648,22 11,21.5559546 11,21.0081969 L11,13 L2.99180311,13 C2.45530558,13 2,12.5522847 2,12 C2,11.4438648 2.44404538,11 2.99180311,11 L11,11 L11,2.99180311 C11,2.45530558 11.4477153,2 12,2 C12.5561352,2 13,2.44404538 13,2.99180311 L13,11 Z" id="path-1"></path>
+        </svg>
+        </button>
+        </li>
+        <li>
+
+        <a href="/videos/video/donya-abie-asemoon" data-no-turbolink="">
+        <img src="https://assets.rjassets.com/static/musicvideos/images/be9294bd8474fde-original.jpeg" data-src="https://assets.rjassets.com/static/musicvideos/images/be9294bd8474fde-original.jpeg" alt="Donya - 'Abie Asemoon'" class=" ls-is-cached lazyloaded">
+        <div class="songInfo">
+        <span class="artist" title="Donya">Donya</span>
+        <span class="song" title="Abie Asemoon">Abie Asemoon</span>
+        </div>
+        </a>
+
+        <button class="button primaryButton video_playlist_add add_playlist" videoid="9330" aria-describedby="ui-tooltip-20">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" class="addSognIcon icon">
+        <path d="M13,11 L21.0081969,11 C21.5446944,11 22,11.4477153 22,12 C22,12.5561352 21.5559546,13 21.0081969,13 L13,13 L13,21.0081969 C13,21.5446944 12.5522847,22 12,22 C11.4438648,22 11,21.5559546 11,21.0081969 L11,13 L2.99180311,13 C2.45530558,13 2,12.5522847 2,12 C2,11.4438648 2.44404538,11 2.99180311,11 L11,11 L11,2.99180311 C11,2.45530558 11.4477153,2 12,2 C12.5561352,2 13,2.44404538 13,2.99180311 L13,11 Z" id="path-1"></path>
+        </svg>
+        </button>
+        </li>
+        </ul></div>`;
+        const DOM = new JSDOM(mockSource).window.document;
+        const related = new VideoInfoScraper(DOM).getRelatedVideos();
+        expect(related).toStrictEqual([
+            {
+                title: "Abie Asemoon",
+                artist: "Donya",
+                artwork:
+                    "https://assets.rjassets.com/static/musicvideos/images/be9294bd8474fde-original.jpeg",
+                url: "https://www.radiojavan.com/videos/video/donya-abie-asemoon",
+                id: "Donya-Abie-Asemoon",
+            },
+        ]);
+    });
 });
