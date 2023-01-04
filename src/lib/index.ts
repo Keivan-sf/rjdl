@@ -99,7 +99,7 @@ export const getPodcast = async (url: string): Promise<Podcast> => {
  * Used to get album info based on its url
  *
  * @example
- * const info = await Rj.getAlbumInfo("https://radiojavan.com/mp3s/album/Koorosh-420")
+ * const info = await Rj.getAlbum("https://radiojavan.com/mp3s/album/Koorosh-420")
  * console.log(info.title) // "420"
  * console.log(info.artist) // "Koorosh"
  * console.log(info.tracks) // [ AlbumTrack , ... ]
@@ -113,7 +113,7 @@ export const getAlbum = async (url: string): Promise<AlbumInfo> =>
  * Used to get playlist info based on its url
  *
  * @example
- * const info = await Rj.getPlaylistInfo("https://radiojavan.com/playlists/playlist/mp3/dec52eeff468")
+ * const info = await Rj.getPlaylist("https://radiojavan.com/playlists/playlist/mp3/dec52eeff468")
  * console.log(info.title) // "Acoustic"
  * console.log(info.creator) // "Radio Javan"
  * console.log(info.tracks) // [ Track , ... ]
