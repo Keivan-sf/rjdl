@@ -90,7 +90,8 @@ describe("Music info scraper", () => {
         </ul></div>`;
         const DOM = new JSDOM(mockSource).window.document;
         const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getRelatedTracks()).toStrictEqual([
+        const tracks = scraper.getRelatedTracks();
+        expect(tracks).toStrictEqual([
             {
                 title: "Daad Nazan",
                 artist: "Sogand",
@@ -98,6 +99,7 @@ describe("Music info scraper", () => {
                     "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg",
                 id: "Sogand-Daad-Nazan",
                 url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
+                getDownloadLinks: tracks[0].getDownloadLinks,
             },
         ]);
     });
@@ -125,7 +127,8 @@ describe("Music info scraper", () => {
         </ul></div>`;
         const DOM = new JSDOM(mockSource).window.document;
         const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getRelatedTracks()).toStrictEqual([
+        const tracks = scraper.getRelatedTracks();
+        expect(tracks).toStrictEqual([
             {
                 title: "Daad Nazan",
                 artist: "Sogand",
@@ -133,6 +136,7 @@ describe("Music info scraper", () => {
                     "https://assets.rjassets.com/static/mp3/sogand-daad-nazan/d94422270015b20-thumb.jpg",
                 id: "Sogand-Daad-Nazan",
                 url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
+                getDownloadLinks: tracks[0].getDownloadLinks,
             },
         ]);
     });

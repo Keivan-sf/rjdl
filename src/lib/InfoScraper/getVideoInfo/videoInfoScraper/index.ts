@@ -1,4 +1,5 @@
 import { Track } from "../..";
+import { getVideoDownloadLinksViaID } from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class VideoInfoScraper {
@@ -57,12 +58,14 @@ class VideoInfoScraper {
         // in related videos section, first video is currently being played
         tracks.shift();
         return tracks.map((track) => {
+            const id = track.getId();
             return {
                 title: track.getTitle(),
                 artist: track.getArtist(),
-                id: track.getId(),
+                id,
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
+                getDownloadLinks: () => getVideoDownloadLinksViaID(id),
             };
         });
     };

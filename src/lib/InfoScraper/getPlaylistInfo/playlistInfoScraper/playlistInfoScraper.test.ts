@@ -38,7 +38,8 @@ describe("playlist info scraper", () => {
     const DOM = new JSDOM(mockSourceCode).window.document;
     const playlistScraper = new PlaylistInfoScraper(DOM);
     test("Should return track list of playlist", () => {
-        expect(playlistScraper.getTracks()).toStrictEqual([
+        const tracks = playlistScraper.getTracks();
+        expect(tracks).toStrictEqual([
             {
                 title: "Baroon Delam Khast",
                 artist: "Shadmehr Aghili",
@@ -46,6 +47,7 @@ describe("playlist info scraper", () => {
                 artwork:
                     "https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=0",
+                getDownloadLinks: tracks[0].getDownloadLinks,
             },
             {
                 title: "Behet Ghol Midam (Live)",
@@ -54,6 +56,7 @@ describe("playlist info scraper", () => {
                 artwork:
                     "https://assets.rjassets.com/static/mp3/mohsen-yeganeh-behet-ghol-midam-(live)/8a56ed3d7f29c8c-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=1",
+                getDownloadLinks: tracks[1].getDownloadLinks,
             },
         ]);
     });

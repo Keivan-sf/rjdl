@@ -104,8 +104,8 @@ describe("Video info scraper", () => {
         </li>
         </ul></div>`;
         const DOM = new JSDOM(mockSource).window.document;
-        const related = new VideoInfoScraper(DOM).getRelatedVideos();
-        expect(related).toStrictEqual([
+        const tracks = new VideoInfoScraper(DOM).getRelatedVideos();
+        expect(tracks).toStrictEqual([
             {
                 title: "Abie Asemoon",
                 artist: "Donya",
@@ -113,6 +113,7 @@ describe("Video info scraper", () => {
                     "https://assets.rjassets.com/static/musicvideos/images/be9294bd8474fde-original.jpeg",
                 url: "https://www.radiojavan.com/videos/video/donya-abie-asemoon",
                 id: "Donya-Abie-Asemoon",
+                getDownloadLinks: tracks[0].getDownloadLinks,
             },
         ]);
     });

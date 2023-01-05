@@ -1,3 +1,5 @@
+import { DownloadLinks } from "../Downloader/interfaces";
+
 interface MusicAndVideoCommonInfo {
     id: string;
     title: string;
@@ -24,6 +26,7 @@ export interface Track {
     artist: string;
     artwork: string;
     url: string;
+    getDownloadLinks(): Promise<DownloadLinks>;
 }
 
 export interface AlbumTrack extends Track {

@@ -52,7 +52,8 @@ describe("playlist info scraper", () => {
     const DOM = new JSDOM(mockSourceCode).window.document;
     const albumScraper = new AlbumInfoScraper(DOM);
     test("Should return track list of album", () => {
-        expect(albumScraper.getTracks()).toStrictEqual([
+        const tracks = albumScraper.getTracks();
+        expect(tracks).toStrictEqual([
             {
                 title: "Yebaram Man (Ft Arta, Behzad Leito, & Raha)",
                 artist: "Koorosh",
@@ -60,6 +61,7 @@ describe("playlist info scraper", () => {
                 artwork:
                     "https://assets.rjassets.com/static/mp3/koorosh-yebaram-man-(ft-arta-behzad-leito-raha)/5cdfcb379855c7e-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=0",
+                getDownloadLinks: tracks[0].getDownloadLinks,
                 index: 1,
             },
             {
@@ -69,6 +71,7 @@ describe("playlist info scraper", () => {
                 artwork:
                     "https://assets.rjassets.com/static/mp3/koorosh-jerzan-(ft-sami-low-sijal-arta)/e6226a76f5056b6-thumb.jpg",
                 url: "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=1",
+                getDownloadLinks: tracks[1].getDownloadLinks,
                 index: 2,
             },
         ]);

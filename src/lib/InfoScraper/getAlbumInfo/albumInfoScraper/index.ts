@@ -1,6 +1,7 @@
 import { AlbumTrack } from "../../interfaces";
 import AlbumTrackInfoScraper from "./albumTrackInfoScraper";
 import * as he from "he";
+import { getMusicDownloadLinksViaID } from "../../../Downloader";
 
 class AlbumInfoScraper {
     constructor(public document: Document) {}
@@ -47,13 +48,15 @@ class AlbumInfoScraper {
         tracks: AlbumTrackInfoScraper[]
     ): AlbumTrack[] =>
         tracks.map((track) => {
+            const id = track.getId();
             return {
                 title: track.getTitle(),
                 artist: track.getArtist(),
                 index: track.getTrackIndex(),
-                id: track.getId(),
+                id,
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
+                getDownloadLinks: () => getMusicDownloadLinksViaID(id),
             };
         });
 }
