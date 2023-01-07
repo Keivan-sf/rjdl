@@ -113,6 +113,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {string} artist
  * @prop {string} artwork
  * @prop {string} url
+ * @prop {function} getDownloadLinks
  */
 
 /**
@@ -125,6 +126,7 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {string} artwork
  * @prop {number} index Track index in the album
  * @prop {string} url
+ * @prop {function} getDownloadLinks
  */
 
 /**
