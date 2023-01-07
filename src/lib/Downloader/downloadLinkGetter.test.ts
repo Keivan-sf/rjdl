@@ -4,23 +4,26 @@ import {
     downloadPodcastViaID,
     downloadVideoViaID,
     getMusicDownloadLinksViaID,
-    getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaID,
-    getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaID,
+} from "./utils";
+import {
+    getMusicDownloadLinksViaURL,
+    getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
 } from ".";
-jest.mock("./getHost", () => ({
+
+jest.mock("./utils/getHost", () => ({
     getMusicHost: () => Promise.resolve("https://host2.rj-mw1.com"),
     getPodcastHost: () => Promise.resolve("https://host2.rj-mw1.com"),
     getVideoHost: () => Promise.resolve("https://host2.rj-mw1.com"),
 }));
-jest.mock("./getId", () => ({
+jest.mock("./utils/getId", () => ({
     getMusicID: (url: string) => Promise.resolve(url.split("/").pop()),
     getVideoID: (url: string) => url.split("/").pop(),
     getPodcastID: (url: string) => url.split("/").pop(),
 }));
-jest.mock("./getStreamFromUrl", () => {
+jest.mock("./utils/getStreamFromUrl", () => {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const { Readable } = require("stream");
     return {

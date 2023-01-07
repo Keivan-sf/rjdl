@@ -1,11 +1,11 @@
-import { getMusicInfo, getPodcastInfo, getVideoInfo } from "../../InfoScraper";
+import { getMusicInfo, getPodcastInfo, getVideoInfo } from "../../../";
 import {
     getMusicIdFromURL,
     getPodcastIdFromURL,
     getVideoIdFromURL,
-} from "../../utils/urlUtils";
-import { getExtendedTypeFromValidURL } from "../../utils/urlUtils/getUrlType";
-import { ExtendedLinkType } from "../../utils/urlUtils/interfaces";
+} from "../../../utils/urlUtils";
+import { getExtendedTypeFromValidURL } from "../../../utils/urlUtils/getUrlType";
+import { ExtendedLinkType } from "../../../utils/urlUtils/interfaces";
 
 export const getMusicID = async (url: string): Promise<string> => {
     const type = getExtendedTypeFromValidURL(url);

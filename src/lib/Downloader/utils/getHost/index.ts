@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DownloadableTypes } from "../interfaces";
+import { DownloadableTypes } from "../../interfaces";
 
 const hostProviders: { [key in DownloadableTypes]: string } = {
     Music: "https://www.radiojavan.com/mp3s/mp3_host",
