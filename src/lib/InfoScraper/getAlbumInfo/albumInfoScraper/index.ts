@@ -1,7 +1,10 @@
 import { AlbumTrack } from "../../interfaces";
 import AlbumTrackInfoScraper from "./albumTrackInfoScraper";
 import * as he from "he";
-import { getMusicDownloadLinksViaID } from "../../../Downloader";
+import {
+    downloadMusicViaID,
+    getMusicDownloadLinksViaID,
+} from "../../../Downloader";
 
 class AlbumInfoScraper {
     constructor(public document: Document) {}
@@ -57,6 +60,8 @@ class AlbumInfoScraper {
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
                 getDownloadLinks: () => getMusicDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadMusicViaID(id, quality),
             };
         });
 }

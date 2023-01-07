@@ -1,5 +1,8 @@
 import { Track } from "../..";
-import { getMusicDownloadLinksViaID } from "../../../Downloader";
+import {
+    downloadMusicViaID,
+    getMusicDownloadLinksViaID,
+} from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class MusicInfoScraper {
@@ -63,6 +66,8 @@ class MusicInfoScraper {
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
                 getDownloadLinks: () => getMusicDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadMusicViaID(id, quality),
             };
         });
     };

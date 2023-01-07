@@ -114,6 +114,7 @@ describe("Video info scraper", () => {
                 url: "https://www.radiojavan.com/videos/video/donya-abie-asemoon",
                 id: "Donya-Abie-Asemoon",
                 getDownloadLinks: tracks[0].getDownloadLinks,
+                download: tracks[0].download,
             },
         ]);
     });

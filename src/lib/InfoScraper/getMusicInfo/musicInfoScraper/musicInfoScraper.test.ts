@@ -100,6 +100,7 @@ describe("Music info scraper", () => {
                 id: "Sogand-Daad-Nazan",
                 url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
                 getDownloadLinks: tracks[0].getDownloadLinks,
+                download: tracks[0].download,
             },
         ]);
     });
@@ -137,6 +138,7 @@ describe("Music info scraper", () => {
                 id: "Sogand-Daad-Nazan",
                 url: "https://www.radiojavan.com/mp3s/mp3/Sogand-Daad-Nazan?start=109320&index=0",
                 getDownloadLinks: tracks[0].getDownloadLinks,
+                download: tracks[0].download,
             },
         ]);
     });

@@ -1,6 +1,5 @@
 import { getPodcastInfoFromDOM } from ".";
 import { JSDOM } from "jsdom";
-import { getPodcastDownloadLinksViaID } from "../../Downloader";
 const mockSourceCode = `
 <div class="artwork">
 <img alt="Releji - 'TranceForm 114'" class="cover" src="https://assets.rjassets.com/static/podcasts/tranceform-114/59c077fed000038.jpg">
@@ -83,6 +82,7 @@ describe("Get podcast info", () => {
                         "https://assets.rjassets.com/static/podcasts/naab-8/93c8a9e02afe1b1-thumb.jpg",
                     url: "https://www.radiojavan.com/podcasts/podcast/Naab-8?start=3614&index=1",
                     getDownloadLinks: results.relatedTracks[0].getDownloadLinks,
+                    download: results.relatedTracks[0].download,
                 },
                 {
                     title: "Naab 7",
@@ -92,6 +92,7 @@ describe("Get podcast info", () => {
                         "https://assets.rjassets.com/static/podcasts/naab-7/7ba1f4b6d2f5629-thumb.jpg",
                     url: "https://www.radiojavan.com/podcasts/podcast/Naab-7?start=3614&index=2",
                     getDownloadLinks: results.relatedTracks[1].getDownloadLinks,
+                    download: results.relatedTracks[1].download,
                 },
             ],
         });

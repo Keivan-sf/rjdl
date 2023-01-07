@@ -1,5 +1,8 @@
 import { Track } from "../..";
-import { getPodcastDownloadLinksViaID } from "../../../Downloader";
+import {
+    downloadPodcastViaID,
+    getPodcastDownloadLinksViaID,
+} from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class PodcastInfoScraper {
@@ -62,6 +65,8 @@ class PodcastInfoScraper {
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
                 getDownloadLinks: () => getPodcastDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadPodcastViaID(id, quality),
             };
         });
     };

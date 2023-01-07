@@ -1,5 +1,8 @@
 import { Track } from "../..";
-import { getVideoDownloadLinksViaID } from "../../../Downloader";
+import {
+    downloadVideoViaID,
+    getVideoDownloadLinksViaID,
+} from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class VideoInfoScraper {
@@ -66,6 +69,8 @@ class VideoInfoScraper {
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
                 getDownloadLinks: () => getVideoDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadVideoViaID(id, quality),
             };
         });
     };

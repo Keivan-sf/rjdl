@@ -93,6 +93,7 @@ describe("Get video info", () => {
                     artwork:
                         "https://assets.rjassets.com/static/musicvideos/images/4b6a7322182a064-original.jpeg",
                     getDownloadLinks: results.relatedVideos[0].getDownloadLinks,
+                    download: results.relatedVideos[0].download,
                 },
                 {
                     title: "Boom Boom",
@@ -102,6 +103,7 @@ describe("Get video info", () => {
                     artwork:
                         "https://assets.rjassets.com/static/musicvideos/images/f89b8151c74f74f-original.jpeg",
                     getDownloadLinks: results.relatedVideos[1].getDownloadLinks,
+                    download: results.relatedVideos[1].download,
                 },
             ],
         });

@@ -94,6 +94,7 @@ describe("Get music info", () => {
                     url: "https://www.radiojavan.com/mp3s/mp3/Deon-Almas?start=109868&index=1",
                     id: "Deon-Almas",
                     getDownloadLinks: results.relatedTracks[0].getDownloadLinks,
+                    download: results.relatedTracks[0].download,
                 },
                 {
                     title: "Bi To Sarde (Ft Deon)",
@@ -103,6 +104,7 @@ describe("Get music info", () => {
                     url: "https://www.radiojavan.com/mp3s/mp3/Satin-Bi-To-Sarde-(Ft-Deon)?start=109868&index=3",
                     id: "Satin-Bi-To-Sarde-(Ft-Deon)",
                     getDownloadLinks: results.relatedTracks[1].getDownloadLinks,
+                    download: results.relatedTracks[1].download,
                 },
             ],
         });
