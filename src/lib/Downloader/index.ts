@@ -1,5 +1,7 @@
+import { Readable } from "stream";
 import { getMusicHost, getPodcastHost, getVideoHost } from "./getHost";
 import { getMusicID, getPodcastID, getVideoID } from "./getId";
+import { getReadableStreamFromUrl } from "./getStreamFromUrl";
 import { DownloadLinks } from "./interfaces";
 
 /**
@@ -65,6 +67,33 @@ export const getPodcastDownloadLinksViaURL = async (
 ): Promise<DownloadLinks> => {
     const id = await getPodcastID(url);
     return getPodcastDownloadLinksViaID(id);
+};
+
+export const downloadMusicViaID = async (
+    id: string,
+    quality: "hq" | "lq" = "hq"
+): Promise<Readable> => {
+    const { highQuality, midQuality } = await getMusicDownloadLinksViaID(id);
+    const downloadLink = quality === "lq" ? midQuality : highQuality;
+    return getReadableStreamFromUrl(downloadLink);
+};
+
+export const downloadVideoViaID = async (
+    id: string,
+    quality: "hq" | "lq" = "hq"
+): Promise<Readable> => {
+    const { highQuality, midQuality } = await getVideoDownloadLinksViaID(id);
+    const downloadLink = quality === "lq" ? midQuality : highQuality;
+    return getReadableStreamFromUrl(downloadLink);
+};
+
+export const downloadPodcastViaID = async (
+    id: string,
+    quality: "hq" | "lq" = "hq"
+): Promise<Readable> => {
+    const { highQuality, midQuality } = await getPodcastDownloadLinksViaID(id);
+    const downloadLink = quality === "lq" ? midQuality : highQuality;
+    return getReadableStreamFromUrl(downloadLink);
 };
 
 export const getMusicDownloadLinksViaID = async (
