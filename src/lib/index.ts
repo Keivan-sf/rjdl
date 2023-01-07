@@ -9,6 +9,9 @@ import {
     downloadMusicViaURL,
     downloadPodcastViaURL,
     downloadVideoViaURL,
+    downloadMusicViaID,
+    downloadPodcastViaID,
+    downloadVideoViaID,
 } from "./Downloader";
 import { DownloadLinks } from "./Downloader/interfaces";
 import {
@@ -56,6 +59,8 @@ export const getMusic = async (url: string): Promise<Music> => {
     return {
         ...info,
         getDownloadLinks: () => getMusicDownloadLinksViaID(info.id),
+        download: (quality?: "lq" | "hq") =>
+            downloadMusicViaID(info.id, quality),
     };
 };
 
@@ -77,6 +82,8 @@ export const getVideo = async (url: string): Promise<Video> => {
     return {
         ...info,
         getDownloadLinks: () => getVideoDownloadLinksViaID(info.id),
+        download: (quality?: "lq" | "hq") =>
+            downloadVideoViaID(info.id, quality),
     };
 };
 
@@ -98,6 +105,8 @@ export const getPodcast = async (url: string): Promise<Podcast> => {
     return {
         ...info,
         getDownloadLinks: () => getPodcastDownloadLinksViaID(info.id),
+        download: (quality?: "lq" | "hq") =>
+            downloadPodcastViaID(info.id, quality),
     };
 };
 

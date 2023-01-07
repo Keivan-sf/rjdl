@@ -1,16 +1,20 @@
+import { Readable } from "stream";
 import { DownloadLinks } from "./Downloader/interfaces";
 import { MusicInfo, PodcastInfo, VideoInfo } from "./InfoScraper/interfaces";
 
 export interface Music extends MusicInfo {
     getDownloadLinks(): Promise<DownloadLinks>;
+    download(quality?: "lq" | "hq"): Promise<Readable>;
 }
 
 export interface Video extends VideoInfo {
     getDownloadLinks(): Promise<DownloadLinks>;
+    download(quality?: "lq" | "hq"): Promise<Readable>;
 }
 
 export interface Podcast extends PodcastInfo {
     getDownloadLinks(): Promise<DownloadLinks>;
+    download(quality?: "lq" | "hq"): Promise<Readable>;
 }
 
 /**
@@ -28,6 +32,7 @@ export interface Podcast extends PodcastInfo {
  * @prop {string|null} video Music video link if there is any
  * @prop {Track[]} relatedTracks
  * @prop {function} getDownloadLinks
+ * @prop {function} download
  */
 
 /**
@@ -44,6 +49,7 @@ export interface Podcast extends PodcastInfo {
  * @prop {string} url
  * @prop {Track[]} relatedTracks
  * @prop {function} getDownloadLinks
+ * @prop {function} download
  */
 
 /**
@@ -61,4 +67,5 @@ export interface Podcast extends PodcastInfo {
  * @prop {string|null} song Song link if there is any
  * @prop {Track[]} relatedVideos
  * @prop {function} getDownloadLinks
+ * @prop {function} download
  */

@@ -135,6 +135,9 @@ export const downloadPodcastViaURL = async (
 };
 
 export {
+    downloadMusicViaID,
+    downloadPodcastViaID,
+    downloadVideoViaID,
     getMusicDownloadLinksViaID,
     getVideoDownloadLinksViaID,
     getPodcastDownloadLinksViaID,
