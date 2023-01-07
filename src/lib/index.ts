@@ -6,6 +6,9 @@ import {
     getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaID,
     getVideoDownloadLinksViaURL,
+    downloadMusicViaURL,
+    downloadPodcastViaURL,
+    downloadVideoViaURL,
 } from "./Downloader";
 import { DownloadLinks } from "./Downloader/interfaces";
 import {
@@ -26,6 +29,9 @@ export {
     getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
+    downloadMusicViaURL,
+    downloadPodcastViaURL,
+    downloadVideoViaURL,
     DownloadLinks,
 };
 export * from "./interfaces";

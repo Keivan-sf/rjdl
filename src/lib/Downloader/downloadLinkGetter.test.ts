@@ -11,6 +11,9 @@ import {
     getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
+    downloadMusicViaURL,
+    downloadPodcastViaURL,
+    downloadVideoViaURL,
 } from ".";
 
 jest.mock("./utils/getHost", () => ({
@@ -86,6 +89,21 @@ describe("Get download link", () => {
             expect(stream instanceof Readable).toBe(true);
         });
     });
+    describe("Download via url", () => {
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadMusicViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for video", async () => {
+            const stream = await downloadVideoViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadPodcastViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+    });
+
     describe("get download links via url", () => {
         test("Get music download links via url", async () => {
             const links = await getMusicDownloadLinksViaURL(
