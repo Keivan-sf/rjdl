@@ -1,4 +1,8 @@
 import { Track } from "../..";
+import {
+    downloadPodcastViaID,
+    getPodcastDownloadLinksViaID,
+} from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class PodcastInfoScraper {
@@ -52,13 +56,17 @@ class PodcastInfoScraper {
     ): Track[] => {
         const relatedTracks = tracks.filter((track) => !track.isPlayingNow);
         return relatedTracks.map((track) => {
+            const id = track.getId(true);
             // Artist and title fields are reversed in podcast related tracks
             return {
                 title: track.getArtist(),
                 artist: track.getTitle(),
-                id: track.getId(true),
+                id,
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
+                getDownloadLinks: () => getPodcastDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadPodcastViaID(id, quality),
             };
         });
     };

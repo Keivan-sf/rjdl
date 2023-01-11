@@ -27,6 +27,13 @@ const downloadLinks = await song.getDownloadLinks();
 // {midQuality: ... , highQuality: ...}
 ```
 
+You can use `download()` as well, for example
+
+```ts
+const readable = await song.download("hq")
+readable.pipe(fs.createWriteStream("song-name.mp3")
+```
+
 ### Getting link type
 
 Supported for `Playlists` , `Albums` , `Podcasts` , `Videos` , `Musics` , `TV`
@@ -65,6 +72,15 @@ console.log(links.midQuality);
 
 console.log(links.highQuality);
 // https://host2.rj-mw1.com/media/mp3/mp3-320/Donya-Bye-Bye-Bye.mp3
+```
+
+You can also use `downloadMusicViaURL` and similar functions if you prefer to get `Readable` object
+
+```ts
+const readable = await Rj.downloadMusicViaURL(
+    "https://www.radiojavan.com/mp3s/mp3/Koorosh-Un-Momento-(Ft-Raha)"
+);
+readable.pipe(fs.createWriteStream("Koorosh-Un-Momento.mp3"));
 ```
 
 ### Validating URL

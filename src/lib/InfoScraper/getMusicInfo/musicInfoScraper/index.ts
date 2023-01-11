@@ -1,4 +1,8 @@
 import { Track } from "../..";
+import {
+    downloadMusicViaID,
+    getMusicDownloadLinksViaID,
+} from "../../../Downloader";
 import { PageScraper, TrackInfoScraper } from "../../utils";
 
 class MusicInfoScraper {
@@ -54,12 +58,16 @@ class MusicInfoScraper {
     ): Track[] => {
         const relatedTracks = tracks.filter((track) => !track.isPlayingNow);
         return relatedTracks.map((track) => {
+            const id = track.getId();
             return {
                 title: track.getTitle(),
                 artist: track.getArtist(),
-                id: track.getId(),
+                id,
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
+                getDownloadLinks: () => getMusicDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadMusicViaID(id, quality),
             };
         });
     };

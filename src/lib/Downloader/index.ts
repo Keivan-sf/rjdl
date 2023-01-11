@@ -1,6 +1,16 @@
-import { getMusicHost, getPodcastHost, getVideoHost } from "./getHost";
-import { getMusicID, getPodcastID, getVideoID } from "./getId";
+import {
+    getMusicID,
+    getPodcastID,
+    getVideoID,
+    getMusicDownloadLinksViaID,
+    getVideoDownloadLinksViaID,
+    getPodcastDownloadLinksViaID,
+    downloadMusicViaID,
+    downloadPodcastViaID,
+    downloadVideoViaID,
+} from "./utils";
 import { DownloadLinks } from "./interfaces";
+import { Readable } from "stream";
 
 /**
  * Used to get music download links via its url
@@ -67,32 +77,68 @@ export const getPodcastDownloadLinksViaURL = async (
     return getPodcastDownloadLinksViaID(id);
 };
 
-export const getMusicDownloadLinksViaID = async (
-    id: string
-): Promise<DownloadLinks> => {
-    const host = await getMusicHost(id);
-    return {
-        midQuality: `${host}/media/mp3/mp3-256/${id}.mp3`,
-        highQuality: `${host}/media/mp3/mp3-320/${id}.mp3`,
-    };
+/**
+ * Used to download music via its URL
+ *
+ * @example
+ * const readable = await Rj.downloadMusicViaURL("https://www.radiojavan.com/mp3s/mp3/Koorosh-Un-Momento-(Ft-Raha)")
+ * readable.pipe(fs.createWriteStream("Koorosh-Un-Momento.mp3"))
+ *
+ * @param {string} url Music's url
+ * @param {"hq" | "lq"} [quality] Music quality
+ * @returns {Promise<Readable>}
+ */
+export const downloadMusicViaURL = async (
+    url: string,
+    quality: "hq" | "lq" = "hq"
+): Promise<Readable> => {
+    const id = await getMusicID(url);
+    return downloadMusicViaID(id, quality);
 };
 
-export const getPodcastDownloadLinksViaID = async (
-    id: string
-): Promise<DownloadLinks> => {
-    const host = await getPodcastHost(id);
-    return {
-        midQuality: `${host}/media/podcast/mp3-192/${id}.mp3`,
-        highQuality: `${host}/media/podcast/mp3-320/${id}.mp3`,
-    };
+/**
+ * Used to download video via its URL
+ *
+ * @example
+ * const readable = await Rj.downloadVideoViaURL("https://www.radiojavan.com/videos/video/gdaal-madgal-banafsh")
+ * readable.pipe(fs.createWriteStream("gdaal-madgal-banafsh.mp4")
+ *
+ * @param {string} url Video's url
+ * @param {"hq" | "lq"} [quality] Video quality
+ * @returns {Promise<Readable>}
+ */
+export const downloadVideoViaURL = async (
+    url: string,
+    quality: "hq" | "lq" = "hq"
+) => {
+    const id = await getVideoID(url);
+    return downloadVideoViaID(id, quality);
 };
 
-export const getVideoDownloadLinksViaID = async (
-    id: string
-): Promise<DownloadLinks> => {
-    const host = await getVideoHost(id);
-    return {
-        midQuality: `${host}/media/music_video/lq/${id}.mp4`,
-        highQuality: `${host}/media/music_video/hq/${id}.mp4`,
-    };
+/**
+ * Used to download podcast via its URL
+ *
+ * @example
+ * const readable = await Rj.downloadPodcastViaURL("https://www.radiojavan.com/podcasts/podcast/Abo-Atash-119")
+ * readable.pipe(fs.createWriteStream("Abo-Atash-119.mp3")
+ *
+ * @param {string} url Podcast's url
+ * @param {"hq" | "lq"} [quality] Podcast quality *Bear in mind that sometimes `lq` and `hq` qualities can be the same*
+ * @returns {Promise<Readable>}
+ */
+export const downloadPodcastViaURL = async (
+    url: string,
+    quality: "hq" | "lq" = "hq"
+) => {
+    const id = await getPodcastID(url);
+    return downloadPodcastViaID(id, quality);
+};
+
+export {
+    downloadMusicViaID,
+    downloadPodcastViaID,
+    downloadVideoViaID,
+    getMusicDownloadLinksViaID,
+    getVideoDownloadLinksViaID,
+    getPodcastDownloadLinksViaID,
 };

@@ -54,6 +54,8 @@ describe("Playlist info getter", () => {
                     artwork:
                         "https://assets.rjassets.com/static/mp3/shadmehr-aghili-baroon-delam-khast/2a449b8099a18de-thumb.jpg",
                     url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=0",
+                    getDownloadLinks: info.tracks[0].getDownloadLinks,
+                    download: info.tracks[0].download,
                 },
                 {
                     title: "Behet Ghol Midam (Live)",
@@ -62,6 +64,8 @@ describe("Playlist info getter", () => {
                     artwork:
                         "https://assets.rjassets.com/static/mp3/mohsen-yeganeh-behet-ghol-midam-(live)/8a56ed3d7f29c8c-thumb.jpg",
                     url: "https://www.radiojavan.com/mp3s/playlist_start?id=14af15307e15&index=1",
+                    getDownloadLinks: info.tracks[1].getDownloadLinks,
+                    download: info.tracks[1].download,
                 },
             ],
         });

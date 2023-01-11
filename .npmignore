@@ -1,2 +1,6 @@
 todo.md
 .githooks
+pnpm-lock.yaml
+*.ts
+src/
+!*.d.ts

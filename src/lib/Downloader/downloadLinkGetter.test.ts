@@ -1,21 +1,39 @@
+import { Readable } from "stream";
 import {
+    downloadMusicViaID,
+    downloadPodcastViaID,
+    downloadVideoViaID,
     getMusicDownloadLinksViaID,
-    getMusicDownloadLinksViaURL,
     getPodcastDownloadLinksViaID,
-    getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaID,
+} from "./utils";
+import {
+    getMusicDownloadLinksViaURL,
+    getPodcastDownloadLinksViaURL,
     getVideoDownloadLinksViaURL,
+    downloadMusicViaURL,
+    downloadPodcastViaURL,
+    downloadVideoViaURL,
 } from ".";
-jest.mock("./getHost", () => ({
+
+jest.mock("./utils/getHost", () => ({
     getMusicHost: () => Promise.resolve("https://host2.rj-mw1.com"),
     getPodcastHost: () => Promise.resolve("https://host2.rj-mw1.com"),
     getVideoHost: () => Promise.resolve("https://host2.rj-mw1.com"),
 }));
-jest.mock("./getId", () => ({
+jest.mock("./utils/getId", () => ({
     getMusicID: (url: string) => Promise.resolve(url.split("/").pop()),
     getVideoID: (url: string) => url.split("/").pop(),
     getPodcastID: (url: string) => url.split("/").pop(),
 }));
+jest.mock("./utils/getStreamFromUrl", () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const { Readable } = require("stream");
+    return {
+        getReadableStreamFromUrl: (id: string) =>
+            Promise.resolve(new Readable()),
+    };
+});
 describe("Get download link", () => {
     describe("Get download links via id", () => {
         test("Get music download links via id", async () => {
@@ -57,6 +75,35 @@ describe("Get download link", () => {
             });
         });
     });
+    describe("Download via id", () => {
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadMusicViaID("test-id");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for video", async () => {
+            const stream = await downloadVideoViaID("test-id");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadPodcastViaID("test-id");
+            expect(stream instanceof Readable).toBe(true);
+        });
+    });
+    describe("Download via url", () => {
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadMusicViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for video", async () => {
+            const stream = await downloadVideoViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+        test("Should return readable stream for music", async () => {
+            const stream = await downloadPodcastViaURL("test-url");
+            expect(stream instanceof Readable).toBe(true);
+        });
+    });
+
     describe("get download links via url", () => {
         test("Get music download links via url", async () => {
             const links = await getMusicDownloadLinksViaURL(

@@ -1,3 +1,6 @@
+import { Readable } from "stream";
+import { DownloadLinks } from "../Downloader/interfaces";
+
 interface MusicAndVideoCommonInfo {
     id: string;
     title: string;
@@ -24,6 +27,8 @@ export interface Track {
     artist: string;
     artwork: string;
     url: string;
+    getDownloadLinks(): Promise<DownloadLinks>;
+    download(quality?: "lq" | "hq"): Promise<Readable>;
 }
 
 export interface AlbumTrack extends Track {
@@ -110,6 +115,8 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {string} artist
  * @prop {string} artwork
  * @prop {string} url
+ * @prop {function} getDownloadLinks
+ * @prop {function} download
  */
 
 /**
@@ -122,6 +129,8 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
  * @prop {string} artwork
  * @prop {number} index Track index in the album
  * @prop {string} url
+ * @prop {function} getDownloadLinks
+ * @prop {function} download
  */
 
 /**

@@ -1,6 +1,10 @@
 import { Track } from "../../interfaces";
 import { TrackInfoScraper } from "../../utils";
 import * as he from "he";
+import {
+    downloadMusicViaID,
+    getMusicDownloadLinksViaID,
+} from "../../../Downloader";
 
 class PlaylistInfoScraper {
     constructor(public document: Document) {}
@@ -55,12 +59,16 @@ class PlaylistInfoScraper {
         tracks: TrackInfoScraper[]
     ): Track[] =>
         tracks.map((track) => {
+            const id = track.getId();
             return {
                 title: track.getTitle(),
                 artist: track.getArtist(),
-                id: track.getId(),
+                id,
                 artwork: track.getArtwork(),
                 url: track.getUrl(),
+                getDownloadLinks: () => getMusicDownloadLinksViaID(id),
+                download: (quality?: "lq" | "hq") =>
+                    downloadMusicViaID(id, quality),
             };
         });
 }
