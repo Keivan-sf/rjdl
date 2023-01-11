@@ -4,3 +4,4 @@ pnpm-lock.yaml
 *.ts
 src/
 !*.d.ts
+docs/
