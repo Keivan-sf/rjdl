@@ -30,8 +30,8 @@ const downloadLinks = await song.getDownloadLinks();
 You can use `download()` as well, for example
 
 ```ts
-const readable = await song.download("hq")
-readable.pipe(fs.createWriteStream("song-name.mp3")
+const readable = await song.download("hq");
+readable.pipe(fs.createWriteStream("song-name.mp3"));
 ```
 
 ### Getting link type
