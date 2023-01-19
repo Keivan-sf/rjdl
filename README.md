@@ -3,6 +3,10 @@ Checkout [#Mahsa_Amini](https://twitter.com/search?q=%23mahsa_amini), Support wo
 
 # Node rjdl
 
+> **Warning**
+> #### Please know that this pcakge currently wont work due to Radio javan new design. It'll be some time untill the next release.
+> - see [This issue](https://github.com/Keivan-sf/rjdl/issues/12)
+
 Radio javan scraper / downloader
 
 **Docs [keivan-sf.github.io/rjdl](https://keivan-sf.github.io/rjdl)**
