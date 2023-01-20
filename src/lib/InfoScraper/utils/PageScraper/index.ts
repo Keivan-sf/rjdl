@@ -32,12 +32,7 @@ class PageScraper {
         DateScrapers.getPodcastDate(this.document);
 
     public getArtist = (): string => {
-        if (this.cache.artist) return this.cache.artist;
-        const songCredentialDiv = this.getSongCredentialsBox();
-        this.cache.artist = he.decode(
-            songCredentialDiv?.querySelector(".artist")!.innerHTML
-        );
-        return this.cache.artist;
+        return this.mediaData.artist;
     };
 
     public getTitle = (): string => {
