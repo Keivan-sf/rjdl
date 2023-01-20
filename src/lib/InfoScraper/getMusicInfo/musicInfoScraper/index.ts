@@ -27,8 +27,7 @@ class MusicInfoScraper {
     public getVideoVersion = (): string | null =>
         this.pageScraper.getAltVersion();
 
-    public getArtwork = (): string =>
-        this.document.querySelector(".artwork img")!.getAttribute("src")!;
+    public getArtwork = (): string => this.pageScraper.getMusicArtwork();
 
     public getRelatedTracks = (): Track[] => {
         const tracks = this.getTrackElementScrapers();

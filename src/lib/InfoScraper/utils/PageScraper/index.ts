@@ -16,8 +16,7 @@ class PageScraper {
         songCredentialBox?: Element;
     } = {};
 
-    public getMusicID = (): string =>
-        IdScrapers.getMusicID(this.getTitle(), this.getArtist());
+    public getMusicID = (): string => this.mediaData.permlink;
 
     public getVideoID = (): string => IdScrapers.getVideoID(this.document);
 
@@ -30,6 +29,8 @@ class PageScraper {
 
     public getPodcastDate = (): Date =>
         DateScrapers.getPodcastDate(this.document);
+
+    public getMusicArtwork = (): string => this.mediaData.photo;
 
     public getArtist = (): string => {
         return this.mediaData.artist;

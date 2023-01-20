@@ -23,28 +23,14 @@ describe("Music info scraper", () => {
         expect(scraper.getDate()).toStrictEqual(new Date("Jun 4, 2019"));
     });
     test("Should get music artwork", () => {
-        const mockSource = `<div class="artwork">
-        <img alt="Donya - Bye Bye Bye Song | دنیا بای بای بای'" class="" src="https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg">
-        <div class="songInfo">
-        <span class="artist">Donya</span><span class="song">Bye Bye Bye</span>
-        <div style="padding-top: 20px" class="farsiText"><h1><span class="artist">دنیا</span><br>
-        <span class="song" dir="rtl">بای بای بای</span></h1></div></div></div>`;
-        const DOM = new JSDOM(mockSource).window.document;
-        const scraper = new MusicInfoScraper(DOM);
         expect(scraper.getArtwork()).toBe(
-            "https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg"
+            "https://assets.rjassets.com/static/mp3/koorosh-yebaram-man-(ft-arta-behzad-leito-raha)/5cdfcb379855c7e.jpg"
         );
     });
     test("Should get music id", () => {
-        const mockSource = `<div class="artwork">
-        <img alt="Donya - Bye Bye Bye Song | دنیا بای بای بای'" class="" src="https://assets.rjassets.com/static/mp3/donya-bye-bye-bye/8f00d1ab6a8c19a.jpg">
-        <div class="songInfo">
-        <span class="artist">Donya</span><span class="song">Bye Bye Bye</span>
-        <div style="padding-top: 20px" class="farsiText"><h1><span class="artist">دنیا</span><br>
-        <span class="song" dir="rtl">بای بای بای</span></h1></div></div></div>`;
-        const DOM = new JSDOM(mockSource).window.document;
-        const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getId()).toBe("Donya-Bye-Bye-Bye");
+        expect(scraper.getId()).toBe(
+            "Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)"
+        );
     });
     test("Should get music video", () => {
         const mockSource = `<div id="download" class="watch">
