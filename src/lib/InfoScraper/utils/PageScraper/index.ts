@@ -1,6 +1,4 @@
-import * as he from "he";
 import * as IdScrapers from "./idScrapers";
-import * as DateScrapers from "./dateScrapers";
 
 class PageScraper {
     private mediaData: any;
