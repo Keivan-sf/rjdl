@@ -20,25 +20,29 @@ class PageScraper {
 
     public getVideoID = (): string => IdScrapers.getVideoID(this.document);
 
-    public getPodcastID = (): string =>
-        IdScrapers.getPodcastID(this.getArtist());
+    public getPodcastID = (): string => this.mediaData.permlink;
 
     public getMusicDate = (): Date => new Date(this.mediaData.date);
 
     public getVideoDate = (): Date => DateScrapers.getVideoDate(this.document);
 
-    public getPodcastDate = (): Date =>
-        DateScrapers.getPodcastDate(this.document);
+    public getPodcastDate = (): Date => new Date(this.mediaData["date_added"]);
 
     public getMusicArtwork = (): string => this.mediaData.photo;
+
+    public getPodcastArtwork = (): string => this.mediaData.photo;
 
     public getArtist = (): string => {
         return this.mediaData.artist;
     };
 
+    public getPodcastArtist = (): string => this.mediaData["podcast_artist"];
+
     public getTitle = (): string => {
         return this.mediaData.song;
     };
+
+    public getPodcastTitle = (): string => this.mediaData.title;
 
     public getLikes = (): number => +this.mediaData.likes.replace(/,/g, "");
 
