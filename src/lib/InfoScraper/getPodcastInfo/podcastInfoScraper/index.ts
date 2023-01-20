@@ -3,7 +3,7 @@ import {
     downloadPodcastViaID,
     getPodcastDownloadLinksViaID,
 } from "../../../Downloader";
-import { PageScraper, TrackInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
 class PodcastInfoScraper {
     private pageScraper: PageScraper;

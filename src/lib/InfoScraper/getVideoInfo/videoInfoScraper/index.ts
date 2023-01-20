@@ -3,7 +3,7 @@ import {
     downloadVideoViaID,
     getVideoDownloadLinksViaID,
 } from "../../../Downloader";
-import { PageScraper, TrackInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
 class VideoInfoScraper {
     private pageScraper: PageScraper;

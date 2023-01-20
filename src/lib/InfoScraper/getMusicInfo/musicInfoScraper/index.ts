@@ -3,7 +3,7 @@ import {
     downloadMusicViaID,
     getMusicDownloadLinksViaID,
 } from "../../../Downloader";
-import { PageScraper, TrackInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
 class MusicInfoScraper {
     private pageScraper: PageScraper;
