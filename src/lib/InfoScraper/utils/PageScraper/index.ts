@@ -44,6 +44,8 @@ class PageScraper {
 
     public getPlays = (): number => +this.mediaData.plays.replace(/,/g, "");
 
+    public getRelatedTracks = (): any[] => this.mediaData.related;
+
     public getAltVersion = (): string | null => {
         const url =
             this.document
