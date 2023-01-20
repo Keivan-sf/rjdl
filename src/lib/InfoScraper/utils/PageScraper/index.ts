@@ -18,13 +18,13 @@ class PageScraper {
 
     public getMusicID = (): string => this.mediaData.permlink;
 
-    public getVideoID = (): string => IdScrapers.getVideoID(this.document);
+    public getVideoID = (): string => this.mediaData.permlink;
 
     public getPodcastID = (): string => this.mediaData.permlink;
 
     public getMusicDate = (): Date => new Date(this.mediaData.date);
 
-    public getVideoDate = (): Date => DateScrapers.getVideoDate(this.document);
+    public getVideoDate = (): Date => new Date(this.mediaData.date);
 
     public getPodcastDate = (): Date => new Date(this.mediaData["date_added"]);
 
@@ -32,11 +32,13 @@ class PageScraper {
 
     public getPodcastArtwork = (): string => this.mediaData.photo;
 
-    public getArtist = (): string => {
-        return this.mediaData.artist;
-    };
+    public getVideoArtwork = (): string => this.mediaData.photo;
+
+    public getArtist = (): string => this.mediaData.artist;
 
     public getPodcastArtist = (): string => this.mediaData["podcast_artist"];
+
+    public getVideoArtist = (): string => this.mediaData.artist;
 
     public getTitle = (): string => {
         return this.mediaData.song;
@@ -44,9 +46,14 @@ class PageScraper {
 
     public getPodcastTitle = (): string => this.mediaData.title;
 
+    public getVideoTitle = (): string => this.mediaData.song;
+
     public getLikes = (): number => +this.mediaData.likes.replace(/,/g, "");
 
     public getPlays = (): number => +this.mediaData.plays.replace(/,/g, "");
+
+    public getVideoPlays = (): number =>
+        +this.mediaData.views.replace(/,/g, "");
 
     public getRelatedTracks = (): any[] => this.mediaData.related;
 

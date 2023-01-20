@@ -12,59 +12,34 @@ class VideoInfoScraper {
         this.pageScraper = new PageScraper(document);
     }
 
-    public getArtist = (): string => this.pageScraper.getArtist();
+    public getArtist = (): string => this.pageScraper.getVideoArtist();
 
-    public getTitle = (): string => this.pageScraper.getTitle();
+    public getTitle = (): string => this.pageScraper.getVideoTitle();
 
     public getLikes = (): number => this.pageScraper.getLikes();
 
-    public getPlays = (): number => this.pageScraper.getPlays();
+    public getPlays = (): number => this.pageScraper.getVideoPlays();
 
     public getId = (): string => this.pageScraper.getVideoID();
 
     public getDate = (): Date => this.pageScraper.getVideoDate();
 
-    public getThumbnail = (): string =>
-        this.document
-            .querySelector("meta[property='og:image']")!
-            .getAttribute("content")!;
+    public getThumbnail = (): string => this.pageScraper.getVideoArtwork();
 
     public getRelatedVideos = (): Track[] => {
-        const tracks = this.getTrackElementScrapers();
-        return this.getTrackInfoFromTrackScraper(tracks);
+        const tracks = this.pageScraper.getRelatedTracks();
+        return this.getTracks(tracks);
     };
 
-    private getTrackElementScrapers = () => {
-        const trackContainers = this.getTrackElements();
-        return this.convertTrackElementsToScraper(trackContainers);
-    };
-
-    private getTrackElements = () =>
-        this.document
-            .querySelector(".sidePanel .listView")!
-            .querySelectorAll("li")!;
-
-    private convertTrackElementsToScraper = (
-        elements: NodeListOf<HTMLLIElement>
-    ): TrackInfoScraper[] => {
-        const scrapers: TrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
-        return scrapers;
-    };
-
-    private getTrackInfoFromTrackScraper = (
-        tracks: TrackInfoScraper[]
-    ): Track[] => {
-        // in related videos section, first video is currently being played
-        tracks.shift();
+    private getTracks = (tracks: any[]): Track[] => {
         return tracks.map((track) => {
-            const id = track.getId();
+            const id = track.permlink;
             return {
-                title: track.getTitle(),
-                artist: track.getArtist(),
+                title: track.song,
+                artist: track.artist,
                 id,
-                artwork: track.getArtwork(),
-                url: track.getUrl(),
+                artwork: track.photo,
+                url: track.share_link,
                 getDownloadLinks: () => getVideoDownloadLinksViaID(id),
                 download: (quality?: "lq" | "hq") =>
                     downloadVideoViaID(id, quality),
