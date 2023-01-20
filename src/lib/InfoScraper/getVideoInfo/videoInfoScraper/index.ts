@@ -24,9 +24,6 @@ class VideoInfoScraper {
 
     public getDate = (): Date => this.pageScraper.getVideoDate();
 
-    public getMusicVersion = (): string | null =>
-        this.pageScraper.getAltVersion();
-
     public getThumbnail = (): string =>
         this.document
             .querySelector("meta[property='og:image']")!
