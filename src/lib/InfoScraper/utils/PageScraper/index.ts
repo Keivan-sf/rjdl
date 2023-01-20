@@ -3,7 +3,12 @@ import * as IdScrapers from "./idScrapers";
 import * as DateScrapers from "./dateScrapers";
 
 class PageScraper {
-    constructor(public document: Document | Element) {}
+    private mediaData: any;
+    constructor(public document: Document | Element) {
+        const rawData = document.querySelector("#__NEXT_DATA__")!.innerHTML;
+        const data = JSON.parse(rawData);
+        this.mediaData = data.props.pageProps.media;
+    }
 
     private cache: {
         title?: string;
@@ -36,12 +41,7 @@ class PageScraper {
     };
 
     public getTitle = (): string => {
-        if (this.cache.title) return this.cache.title;
-        const songCredentialDiv = this.getSongCredentialsBox();
-        this.cache.title = he.decode(
-            songCredentialDiv.querySelector(".song")!.innerHTML
-        );
-        return this.cache.title;
+        return this.mediaData.song;
     };
 
     public getLikes = (): number =>

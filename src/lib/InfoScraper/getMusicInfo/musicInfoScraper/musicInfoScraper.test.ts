@@ -1,13 +1,14 @@
 import { JSDOM } from "jsdom";
 import MusicInfoScraper from ".";
+import fs from "fs";
+const mockSource = fs.readFileSync(__dirname + "/mockSource.test.html");
 describe("Music info scraper", () => {
     test("Should get music name", () => {
-        const mockSource = `<div class="songInfo">
-        <div class="song">testName</div>
-        </div>`;
         const DOM = new JSDOM(mockSource).window.document;
         const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getTitle()).toBe("testName");
+        expect(scraper.getTitle()).toBe(
+            "Yebaram Man (Ft Arta, Behzad Leito, & Raha)"
+        );
     });
     test("Should get music artist", () => {
         const mockSource = `<div class="songInfo">
