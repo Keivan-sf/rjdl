@@ -24,7 +24,7 @@ class PageScraper {
     public getPodcastID = (): string =>
         IdScrapers.getPodcastID(this.getArtist());
 
-    public getMusicDate = (): Date => DateScrapers.getMusicDate(this.document);
+    public getMusicDate = (): Date => new Date(this.mediaData.date);
 
     public getVideoDate = (): Date => DateScrapers.getVideoDate(this.document);
 
@@ -39,17 +39,9 @@ class PageScraper {
         return this.mediaData.song;
     };
 
-    public getLikes = (): number =>
-        +this.document
-            .querySelector(".rating")!
-            .innerHTML.split(" likes")[0]
-            .replace(/,/g, "");
+    public getLikes = (): number => +this.mediaData.likes.replace(/,/g, "");
 
-    public getPlays = (): number =>
-        +this.document
-            .querySelector(".views")!
-            .innerHTML.split("Plays: ")[1]
-            .replace(/,/g, "");
+    public getPlays = (): number => +this.mediaData.plays.replace(/,/g, "");
 
     public getAltVersion = (): string | null => {
         const url =

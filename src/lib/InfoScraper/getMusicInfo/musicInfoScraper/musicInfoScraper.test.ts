@@ -14,22 +14,13 @@ describe("Music info scraper", () => {
         expect(scraper.getArtist()).toBe("Koorosh");
     });
     test("Should get music likes", () => {
-        const mockSource = `<div class="rating">331,122,199 likes</div>`;
-        const DOM = new JSDOM(mockSource).window.document;
-        const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getLikes()).toBe(331122199);
+        expect(scraper.getLikes()).toBe(49383);
     });
     test("Should get music plays", () => {
-        const mockSource = `<div class="views">Plays: 107,541,122</div>`;
-        const DOM = new JSDOM(mockSource).window.document;
-        const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getPlays()).toBe(107541122);
+        expect(scraper.getPlays()).toBe(47349386);
     });
     test("Should get music date", () => {
-        const mockSource = `<div class="dateAdded">Date Added: Aug 22, 2022</div>`;
-        const DOM = new JSDOM(mockSource).window.document;
-        const scraper = new MusicInfoScraper(DOM);
-        expect(scraper.getDate()).toStrictEqual(new Date("Aug 22, 2022"));
+        expect(scraper.getDate()).toStrictEqual(new Date("Jun 4, 2019"));
     });
     test("Should get music artwork", () => {
         const mockSource = `<div class="artwork">
