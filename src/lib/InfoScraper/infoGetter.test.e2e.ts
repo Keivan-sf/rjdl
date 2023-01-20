@@ -41,7 +41,6 @@ describe("Info getters", () => {
             date: info.date,
             url: info.url,
             thumbnail: info.thumbnail,
-            song: info.song,
         };
         expect(staticInfo).toStrictEqual({
             id: "koorosh-abnormal-(ft-arta-montiego)",
