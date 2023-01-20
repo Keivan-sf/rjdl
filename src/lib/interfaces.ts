@@ -29,7 +29,6 @@ export interface Podcast extends PodcastInfo {
  * @prop {number} plays
  * @prop {Date} date  When the music was added to Radio javan
  * @prop {string} url
- * @prop {string|null} video Music video link if there is any
  * @prop {Track[]} relatedTracks
  * @prop {function} getDownloadLinks
  * @prop {function} download

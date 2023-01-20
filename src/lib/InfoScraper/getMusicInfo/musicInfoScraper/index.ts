@@ -24,9 +24,6 @@ class MusicInfoScraper {
 
     public getDate = (): Date => this.pageScraper.getMusicDate();
 
-    public getVideoVersion = (): string | null =>
-        this.pageScraper.getAltVersion();
-
     public getArtwork = (): string => this.pageScraper.getMusicArtwork();
 
     public getRelatedTracks = (): Track[] => {
