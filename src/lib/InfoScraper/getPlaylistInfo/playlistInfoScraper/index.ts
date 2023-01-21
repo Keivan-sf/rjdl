@@ -1,71 +1,41 @@
 import { Track } from "../../interfaces";
-import { TrackInfoScraper } from "../../utils";
-import * as he from "he";
 import {
     downloadMusicViaID,
     getMusicDownloadLinksViaID,
 } from "../../../Downloader";
 
 class PlaylistInfoScraper {
-    constructor(public document: Document) {}
+    private playlist;
+    constructor(public document: Document) {
+        const rawData = document.querySelector("#__NEXT_DATA__")!.innerHTML;
+        const data = JSON.parse(rawData);
+        this.playlist = data.props.pageProps.playlist;
+    }
 
-    public getId = (): string =>
-        this.document.querySelector("#follow_playlist")!.getAttribute("item")!;
+    public getId = (): string => this.playlist.id;
 
-    public getName = (): string =>
-        he.decode(this.document.querySelector(".songInfo .title")!.innerHTML);
+    public getName = (): string => this.playlist.title;
 
-    public getFollowers = (): number =>
-        +this.document
-            .querySelector("#follower_count")!
-            .innerHTML.split(" followers")[0]
-            .replace(/,/g, "");
+    public getFollowers = (): number => this.playlist.followers;
 
-    public getCreator = (): string =>
-        he.decode(
-            this.document.querySelectorAll(".songInfo > span > span")[0]
-                .innerHTML
-        );
+    public getCreator = (): string => this.playlist.created_title;
 
-    public getArtwork = (): string =>
-        this.document
-            .querySelector(".artworkContainer #playlist_image")!
-            .getAttribute("src")!;
+    public getArtwork = (): string => this.playlist.photo;
 
     public getTracks = (): Track[] => {
-        const tracks = this.getTrackElementScrapers();
-        return this.getTrackInfoFromTrackScraper(tracks);
+        const tracks = this.playlist.items as any[];
+        return this.getTracksInfo(tracks);
     };
 
-    private getTrackElementScrapers = () => {
-        const trackContainers = this.getTrackElements();
-        return this.convertTrackElementsToScraper(trackContainers);
-    };
-
-    private getTrackElements = () =>
-        this.document
-            .querySelector(".sidePanel .listView")!
-            .querySelectorAll("li")!;
-
-    private convertTrackElementsToScraper = (
-        elements: NodeListOf<HTMLLIElement>
-    ): TrackInfoScraper[] => {
-        const scrapers: TrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
-        return scrapers;
-    };
-
-    private getTrackInfoFromTrackScraper = (
-        tracks: TrackInfoScraper[]
-    ): Track[] =>
+    private getTracksInfo = (tracks: any[]): Track[] =>
         tracks.map((track) => {
-            const id = track.getId();
+            const id = track.permlink;
             return {
-                title: track.getTitle(),
-                artist: track.getArtist(),
+                title: track.song,
+                artist: track.artist,
                 id,
-                artwork: track.getArtwork(),
-                url: track.getUrl(),
+                artwork: track.photo,
+                url: track["share_link"],
                 getDownloadLinks: () => getMusicDownloadLinksViaID(id),
                 download: (quality?: "lq" | "hq") =>
                     downloadMusicViaID(id, quality),
