@@ -3,71 +3,52 @@ import {
     getVideoIdFromURL,
     getAlbumIdFromURL,
     getIdFromPlaylistURL,
-    getIdFromPlaylistTrackURL,
     getPodcastIdFromURL,
 } from "./index";
 describe("Id extractor", () => {
     test("Should return music id", () => {
         const id = getMusicIdFromURL(
-            "https://www.radiojavan.com/mp3s/mp3/Sogand-Tehran"
+            "https://play.radiojavan.com/song/the-don-saaghi-(ft-koorosh)/"
         );
-        expect(id).toBe("Sogand-Tehran");
+        expect(id).toBe("the-don-saaghi-(ft-koorosh)");
     });
     test("Should throw with invalid music link", () => {
         expect(() => getMusicIdFromURL("bla")).toThrow();
     });
     test("Should return music id", () => {
         const id = getMusicIdFromURL(
-            "https://www.radiojavan.com/mp3s/mp3/Sogand-Tehran"
+            "https://www.play.radiojavan.com/song/the-don-saaghi-(ft-koorosh)"
         );
-        expect(id).toBe("Sogand-Tehran");
+        expect(id).toBe("the-don-saaghi-(ft-koorosh)");
     });
     test("Should return music id with query-included url", () => {
         const id = getMusicIdFromURL(
-            "https://www.radiojavan.com/mp3s/mp3/Sogand-Baroon?start=109320&index=2"
+            "https://play.radiojavan.com/song/the-don-saaghi-(ft-koorosh)?start=109320&index=2"
         );
-        expect(id).toBe("Sogand-Baroon");
+        expect(id).toBe("the-don-saaghi-(ft-koorosh)");
     });
     test("Should return the video id", () => {
         const id = getVideoIdFromURL(
-            "https://www.radiojavan.com/videos/video/donya-bye-bye-bye"
+            "https://play.radiojavan.com/video/parsalip-100-(ft-rudebeny)"
         );
-        expect(id).toBe("donya-bye-bye-bye");
+        expect(id).toBe("parsalip-100-(ft-rudebeny)");
     });
     test("should return the album id", () => {
         const id = getAlbumIdFromURL(
-            "https://www.radiojavan.com/mp3s/album/Koorosh-420"
+            "https://play.radiojavan.com/album/sepehr-khalse-yadegari"
         );
-        expect(id).toBe("Koorosh-420");
-    });
-    test("Should return the album id from albumTrack", () => {
-        const id = getAlbumIdFromURL(
-            "https://www.radiojavan.com/mp3s/album/Koorosh-420?index=3"
-        );
-        expect(id).toBe("Koorosh-420");
+        expect(id).toBe("sepehr-khalse-yadegari");
     });
     test("Should return the playlistID from playlist url", () => {
         const id = getIdFromPlaylistURL(
-            "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
+            "https://play.radiojavan.com/playlist/mp3/c3cf0d8a9baa/"
         );
-        expect(id).toBe("1249011caf74");
-    });
-    test("Should return the playlistID from playlistTrack url", () => {
-        const id = getIdFromPlaylistTrackURL(
-            "https://www.radiojavan.com/mp3s/playlist_start?id=1249011caf74&index=2"
-        );
-        expect(id).toBe("1249011caf74");
+        expect(id).toBe("c3cf0d8a9baa");
     });
     test("Should return the podcast id from url", () => {
         const id = getPodcastIdFromURL(
-            "https://www.radiojavan.com/podcasts/podcast/Dubways-133"
+            "https://play.radiojavan.com/podcast/dynatomix-47"
         );
-        expect(id).toBe("Dubways-133");
-    });
-    test("Should return the podcast id from related PodcastUrl", () => {
-        const id = getPodcastIdFromURL(
-            "https://www.radiojavan.com/podcasts/podcast/Dubways-129?start=3594&index=4"
-        );
-        expect(id).toBe("Dubways-129");
+        expect(id).toBe("dynatomix-47");
     });
 });

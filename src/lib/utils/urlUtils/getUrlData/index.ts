@@ -12,8 +12,5 @@ export const getAlbumIdFromURL = (url: string): string =>
 export const getIdFromPlaylistURL = (url: string): string =>
     url.match(nameExtractorRegexes.playlistName)![0];
 
-export const getIdFromPlaylistTrackURL = (url: string): string =>
-    url.match(nameExtractorRegexes.playlistNameFromTrack)![0];
-
 export const getPodcastIdFromURL = (url: string): string =>
     url.match(nameExtractorRegexes.podcastName)![0];
