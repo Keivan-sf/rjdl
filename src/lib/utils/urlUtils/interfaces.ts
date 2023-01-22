@@ -21,9 +21,7 @@ export enum LinkType {
 export const ExtendedLinkTypes = [
     "Music",
     "Playlist",
-    "PlaylistTrack",
     "Album",
-    "AlbumTrack",
     "Video",
     "Podcast",
     "TV",
@@ -38,8 +36,6 @@ export type ExtendedLinkType = typeof ExtendedLinkTypes[number];
 
 export const complexToSimpleTypes: { [key in ExtendedLinkType]: LinkType } = {
     Music: LinkType.Music,
-    PlaylistTrack: LinkType.Music,
-    AlbumTrack: LinkType.Music,
     APPMusic: LinkType.Music,
     Podcast: LinkType.Podcast,
     APPPodcast: LinkType.Podcast,
