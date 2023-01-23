@@ -3,7 +3,7 @@ import AlbumInfoScraper from ".";
 import fs from "fs";
 const mockSourceCode = fs.readFileSync(__dirname + "/mockSource.test.html");
 
-describe("playlist info scraper", () => {
+describe("album info scraper", () => {
     const DOM = new JSDOM(mockSourceCode).window.document;
     const albumScraper = new AlbumInfoScraper(DOM);
     test("Should return track list of album", () => {
