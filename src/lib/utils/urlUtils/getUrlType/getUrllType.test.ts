@@ -47,19 +47,19 @@ describe("Radio javan link type utils", () => {
     describe("Link Type Identifier", () => {
         test("Should return music type", () => {
             const type = getTypeFromValidURL(
-                "https://www.radiojavan.com/mp3s/mp3/Anita-Nafas"
+                "https://www.play.radiojavan.com/song/Anita-Nafas"
             );
             expect(type).toBe(LinkType.Music);
         });
         test("Should return music type without prefixes", () => {
             const type = getTypeFromValidURL(
-                "radiojavan.com/mp3s/mp3/Anita-Nafas"
+                "play.radiojavan.com/song/Anita-Nafas"
             );
             expect(type).toBe(LinkType.Music);
         });
         test("Should return video type", () => {
             const type = getTypeFromValidURL(
-                "https://www.radiojavan.com/videos/video/puzzle-shab-neshin"
+                "https://www.play.radiojavan.com/video/puzzle-shab-neshin"
             );
             expect(type).toBe(LinkType.Video);
         });
@@ -70,23 +70,25 @@ describe("Radio javan link type utils", () => {
         });
         test("Should return podcast type", () => {
             const type = getTypeFromValidURL(
-                "https://www.radiojavan.com/podcasts/podcast/Abo-Atash-123"
+                "https://www.play.radiojavan.com/podcast/Abo-Atash-123"
             );
             expect(type).toBe(LinkType.Podcast);
         });
         test("Should return playlist type", () => {
             const type = getTypeFromValidURL(
-                "https://www.radiojavan.com/playlists/playlist/mp3/1249011caf74"
+                "https://www.play.radiojavan.com/playlist/mp3/1249011caf74"
             );
             expect(type).toBe(LinkType.Playlist);
         });
         test("Should return Tv type", () => {
-            const type = getTypeFromValidURL("https://www.radiojavan.com/tv");
+            const type = getTypeFromValidURL(
+                "https://www.play.radiojavan.com/tv"
+            );
             expect(type).toBe(LinkType.TV);
         });
         test("Should return album type", () => {
             const type = getTypeFromValidURL(
-                "https://www.radiojavan.com/mp3s/album/Koorosh-420/"
+                "https://www.play.radiojavan.com/album/Koorosh-420/"
             );
             expect(type).toBe(LinkType.Album);
         });
