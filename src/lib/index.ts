@@ -53,7 +53,7 @@ export { LinkType } from "./utils/urlUtils/interfaces";
  * Used to get music info and provide an optimized `getDownloadLinks` function
  *
  * @example
- * const music = await Rj.getMusic("https://radiojavan.com/mp3s/mp3/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)");
+ * const music = await Rj.getMusic("https://play.radiojavan.com/song/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)");
  * console.log(music.title); // Yebaram Man
  *
  * const downloadLinks = await music.getDownloadLinks();
@@ -76,7 +76,7 @@ export const getMusic = async (url: string): Promise<Music> => {
  * Used to get video info and provide an optimized `getDownloadLinks` function
  *
  * @example
- * const video = await Rj.getVideo("https://radiojavan.com/videos/video/donya-bye-bye-bye");
+ * const video = await Rj.getVideo("https://play.radiojavan.com/video/donya-bye-bye-bye");
  * console.log(video.title); // Bye Bye Bye
  *
  * const downloadLinks = await video.getDownloadLinks();
@@ -99,7 +99,7 @@ export const getVideo = async (url: string): Promise<Video> => {
  * Used to get podcast info and provide an optimized `getDownloadLinks` function
  *
  * @example
- * const podcast = await Rj.getPodcast("https://radiojavan.com/podcasts/podcast/Dance-Station-35");
+ * const podcast = await Rj.getPodcast("https://play.radiojavan.com/podcast/Dance-Station-35");
  * console.log(podcast.title); // Dance Station 35
  *
  * const downloadLinks = await podcast.getDownloadLinks();
@@ -122,7 +122,7 @@ export const getPodcast = async (url: string): Promise<Podcast> => {
  * Used to get album info based on its url
  *
  * @example
- * const info = await Rj.getAlbum("https://radiojavan.com/mp3s/album/Koorosh-420")
+ * const info = await Rj.getAlbum("https://play.radiojavan.com/album/Koorosh-420")
  * console.log(info.title) // "420"
  * console.log(info.artist) // "Koorosh"
  * console.log(info.tracks) // [ AlbumTrack , ... ]
@@ -136,7 +136,7 @@ export const getAlbum = async (url: string): Promise<AlbumInfo> =>
  * Used to get playlist info based on its url
  *
  * @example
- * const info = await Rj.getPlaylist("https://radiojavan.com/playlists/playlist/mp3/dec52eeff468")
+ * const info = await Rj.getPlaylist("https://play.radiojavan.com/playlist/mp3/dec52eeff468")
  * console.log(info.title) // "Acoustic"
  * console.log(info.creator) // "Radio Javan"
  * console.log(info.tracks) // [ Track , ... ]

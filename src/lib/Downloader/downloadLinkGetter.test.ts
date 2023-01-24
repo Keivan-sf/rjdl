@@ -56,7 +56,7 @@ describe("Get download link", () => {
         });
         test("Get podcast download links via url", async () => {
             const links = await getPodcastDownloadLinksViaURL(
-                "https://www.radiojavan.com/podcasts/podcast/TranceForm-114"
+                "https://play.radiojavan.com/podcast/TranceForm-114"
             );
             expect(links).toStrictEqual({
                 midQuality:
@@ -118,7 +118,7 @@ describe("Get download link", () => {
         });
         test("Get video download links via url", async () => {
             const links = await getVideoDownloadLinksViaURL(
-                "https://www.radiojavan.com/videos/video/donya-bye-bye-bye"
+                "https://play.radiojavan.com/video/donya-bye-bye-bye"
             );
             expect(links).toStrictEqual({
                 midQuality:
