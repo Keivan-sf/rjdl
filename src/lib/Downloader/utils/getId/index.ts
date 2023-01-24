@@ -1,4 +1,8 @@
-import { getMusicInfo, getPodcastInfo, getVideoInfo } from "../../../";
+import {
+    getMusicInfo,
+    getPodcastInfo,
+    getVideoInfo,
+} from "../../../InfoScraper";
 import {
     getMusicIdFromURL,
     getPodcastIdFromURL,

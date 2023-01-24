@@ -38,7 +38,15 @@ export {
     DownloadLinks,
 };
 export * from "./interfaces";
-export * from "./InfoScraper";
+export {
+    AlbumInfo,
+    AlbumTrack,
+    MusicInfo,
+    PlaylistInfo,
+    PodcastInfo,
+    Track,
+    VideoInfo,
+} from "./InfoScraper";
 export { LinkType } from "./utils/urlUtils/interfaces";
 
 /**
