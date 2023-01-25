@@ -9,7 +9,7 @@
         "doc": "jsdoc -c ./jsdoc.config.json",
         "style": "npx prettier ./src --write",
         "test": "npx jest -c jest.config.ts",
-        "e2eTest": "npx jest -c jest.config.e2e.ts",
+        "test:e2e": "npx jest -c jest.config.e2e.ts",
         "unitTest": "npx jest -c jest.config.unit.ts"
     },
     "author": "keivan",
