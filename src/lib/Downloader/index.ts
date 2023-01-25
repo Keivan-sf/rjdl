@@ -16,7 +16,7 @@ import { Readable } from "stream";
  * Used to get music download links via its url
  *
  * @example
- * const links = await Rj.getMusicDownloadLinksViaURL("https://radiojavan.com/mp3s/mp3/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)")
+ * const links = await Rj.getMusicDownloadLinksViaURL("https://play.radiojavan.com/song/Koorosh-Yebaram-Man-(Ft-Arta-Behzad-Leito-Raha)")
  *
  * // mid quality download link (256)
  * console.log(links.midQuality)
@@ -37,7 +37,7 @@ export const getMusicDownloadLinksViaURL = async (
  * Used to get video download links via its url
  *
  * @example
- * const links = await Rj.getVideoDownloadLinksViaURL("https://radiojavan.com/videos/video/donya-bye-bye-bye")
+ * const links = await Rj.getVideoDownloadLinksViaURL("https://play.radiojavan.com/video/donya-bye-bye-bye")
  *
  * // mid quality download link
  * console.log(links.midQuality)
@@ -60,7 +60,7 @@ export const getVideoDownloadLinksViaURL = async (
  * *Bear in mind that sometimes mid and high qualities can be the same*
  *
  * @example
- * const links = await Rj.getPodcastDownloadLinksViaURL("https://radiojavan.com/podcasts/podcast/Dance-Station-35")
+ * const links = await Rj.getPodcastDownloadLinksViaURL("https://play.radiojavan.com/podcast/Dance-Station-35")
  *
  * // mid quality download link (192)
  * console.log(links.midQuality)
@@ -81,7 +81,7 @@ export const getPodcastDownloadLinksViaURL = async (
  * Used to download music via its URL
  *
  * @example
- * const readable = await Rj.downloadMusicViaURL("https://www.radiojavan.com/mp3s/mp3/Koorosh-Un-Momento-(Ft-Raha)")
+ * const readable = await Rj.downloadMusicViaURL("https://play.radiojavan.com/song/Koorosh-Un-Momento-(Ft-Raha)")
  * readable.pipe(fs.createWriteStream("Koorosh-Un-Momento.mp3"))
  *
  * @param {string} url Music's url
@@ -100,7 +100,7 @@ export const downloadMusicViaURL = async (
  * Used to download video via its URL
  *
  * @example
- * const readable = await Rj.downloadVideoViaURL("https://www.radiojavan.com/videos/video/gdaal-madgal-banafsh")
+ * const readable = await Rj.downloadVideoViaURL("https://play.radiojavan.com/video/gdaal-madgal-banafsh")
  * readable.pipe(fs.createWriteStream("gdaal-madgal-banafsh.mp4")
  *
  * @param {string} url Video's url
@@ -119,7 +119,7 @@ export const downloadVideoViaURL = async (
  * Used to download podcast via its URL
  *
  * @example
- * const readable = await Rj.downloadPodcastViaURL("https://www.radiojavan.com/podcasts/podcast/Abo-Atash-119")
+ * const readable = await Rj.downloadPodcastViaURL("https://play.radiojavan.com/podcast/Abo-Atash-119")
  * readable.pipe(fs.createWriteStream("Abo-Atash-119.mp3")
  *
  * @param {string} url Podcast's url

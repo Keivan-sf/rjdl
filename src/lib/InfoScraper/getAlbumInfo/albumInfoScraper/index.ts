@@ -1,64 +1,40 @@
 import { AlbumTrack } from "../../interfaces";
-import AlbumTrackInfoScraper from "./albumTrackInfoScraper";
-import * as he from "he";
 import {
     downloadMusicViaID,
     getMusicDownloadLinksViaID,
 } from "../../../Downloader";
 
 class AlbumInfoScraper {
-    constructor(public document: Document) {}
+    private album;
+    constructor(public document: Document) {
+        const rawData = document.querySelector("#__NEXT_DATA__")!.innerHTML;
+        const data = JSON.parse(rawData);
+        this.album = data.props.pageProps.media;
+    }
 
-    public getId = (): string =>
-        this.document
-            .querySelector("meta[property='og:url']")!
-            .getAttribute("content")!
-            .match(/(?<=\/mp3s\/album\/)[^\/]+/g)![0];
+    public getId = (): string => this.album.permlink;
 
-    public getName = (): string =>
-        he.decode(this.document.querySelector(".songInfo .album")!.innerHTML);
+    public getName = (): string => this.album.song;
 
-    public getArtist = (): string =>
-        he.decode(this.document.querySelector(".songInfo .artist")!.innerHTML);
+    public getArtist = (): string => this.album.artist;
 
-    public getArtwork = (): string =>
-        this.document
-            .querySelector(".artworkContainer .artwork img")!
-            .getAttribute("src")!;
+    public getArtwork = (): string => this.album.photo;
 
     public getTracks = (): AlbumTrack[] => {
-        const tracks = this.getTrackElementScrapers();
-        return this.getTrackInfoFromTrackScraper(tracks);
+        const tracks = this.album["album_tracks"] as any[];
+        return this.getTracksInfo(tracks);
     };
 
-    private getTrackElementScrapers = () => {
-        const trackContainers = this.getTrackElements();
-        return this.convertTrackElementsToScraper(trackContainers);
-    };
-
-    private getTrackElements = () =>
-        this.document.querySelector(".listView")!.querySelectorAll("li")!;
-
-    private convertTrackElementsToScraper = (
-        elements: NodeListOf<HTMLLIElement>
-    ): AlbumTrackInfoScraper[] => {
-        const scrapers: AlbumTrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new AlbumTrackInfoScraper(e)));
-        return scrapers;
-    };
-
-    private getTrackInfoFromTrackScraper = (
-        tracks: AlbumTrackInfoScraper[]
-    ): AlbumTrack[] =>
-        tracks.map((track) => {
-            const id = track.getId();
+    private getTracksInfo = (tracks: any[]): AlbumTrack[] =>
+        tracks.map((track, i) => {
+            const id = track.permlink;
             return {
-                title: track.getTitle(),
-                artist: track.getArtist(),
-                index: track.getTrackIndex(),
+                title: track.song,
+                artist: track.artist,
+                index: i + 1,
                 id,
-                artwork: track.getArtwork(),
-                url: track.getUrl(),
+                artwork: track.photo,
+                url: track.share_link,
                 getDownloadLinks: () => getMusicDownloadLinksViaID(id),
                 download: (quality?: "lq" | "hq") =>
                     downloadMusicViaID(id, quality),

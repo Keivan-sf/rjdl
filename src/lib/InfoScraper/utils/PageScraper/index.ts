@@ -1,9 +1,12 @@
-import * as he from "he";
 import * as IdScrapers from "./idScrapers";
-import * as DateScrapers from "./dateScrapers";
 
 class PageScraper {
-    constructor(public document: Document | Element) {}
+    private mediaData: any;
+    constructor(public document: Document | Element) {
+        const rawData = document.querySelector("#__NEXT_DATA__")!.innerHTML;
+        const data = JSON.parse(rawData);
+        this.mediaData = data.props.pageProps.media;
+    }
 
     private cache: {
         title?: string;
@@ -11,60 +14,46 @@ class PageScraper {
         songCredentialBox?: Element;
     } = {};
 
-    public getMusicID = (): string =>
-        IdScrapers.getMusicID(this.getTitle(), this.getArtist());
+    public getMusicID = (): string => this.mediaData.permlink;
 
-    public getVideoID = (): string => IdScrapers.getVideoID(this.document);
+    public getVideoID = (): string => this.mediaData.permlink;
 
-    public getPodcastID = (): string =>
-        IdScrapers.getPodcastID(this.getArtist());
+    public getPodcastID = (): string => this.mediaData.permlink;
 
-    public getMusicDate = (): Date => DateScrapers.getMusicDate(this.document);
+    public getMusicDate = (): Date => new Date(this.mediaData.date);
 
-    public getVideoDate = (): Date => DateScrapers.getVideoDate(this.document);
+    public getVideoDate = (): Date => new Date(this.mediaData.date);
 
-    public getPodcastDate = (): Date =>
-        DateScrapers.getPodcastDate(this.document);
+    public getPodcastDate = (): Date => new Date(this.mediaData["date_added"]);
 
-    public getArtist = (): string => {
-        if (this.cache.artist) return this.cache.artist;
-        const songCredentialDiv = this.getSongCredentialsBox();
-        this.cache.artist = he.decode(
-            songCredentialDiv?.querySelector(".artist")!.innerHTML
-        );
-        return this.cache.artist;
-    };
+    public getMusicArtwork = (): string => this.mediaData.photo;
+
+    public getPodcastArtwork = (): string => this.mediaData.photo;
+
+    public getVideoArtwork = (): string => this.mediaData.photo;
+
+    public getArtist = (): string => this.mediaData.artist;
+
+    public getPodcastArtist = (): string => this.mediaData["podcast_artist"];
+
+    public getVideoArtist = (): string => this.mediaData.artist;
 
     public getTitle = (): string => {
-        if (this.cache.title) return this.cache.title;
-        const songCredentialDiv = this.getSongCredentialsBox();
-        this.cache.title = he.decode(
-            songCredentialDiv.querySelector(".song")!.innerHTML
-        );
-        return this.cache.title;
+        return this.mediaData.song;
     };
 
-    public getLikes = (): number =>
-        +this.document
-            .querySelector(".rating")!
-            .innerHTML.split(" likes")[0]
-            .replace(/,/g, "");
+    public getPodcastTitle = (): string => this.mediaData.title;
 
-    public getPlays = (): number =>
-        +this.document
-            .querySelector(".views")!
-            .innerHTML.split("Plays: ")[1]
-            .replace(/,/g, "");
+    public getVideoTitle = (): string => this.mediaData.song;
 
-    public getAltVersion = (): string | null => {
-        const url =
-            this.document
-                .querySelector("#download")
-                ?.querySelector("a")
-                ?.getAttribute("href") ?? null;
-        if (!url) return url;
-        return "https://www.radiojavan.com" + url;
-    };
+    public getLikes = (): number => +this.mediaData.likes.replace(/,/g, "");
+
+    public getPlays = (): number => +this.mediaData.plays.replace(/,/g, "");
+
+    public getVideoPlays = (): number =>
+        +this.mediaData.views.replace(/,/g, "");
+
+    public getRelatedTracks = (): any[] => this.mediaData.related;
 
     public getSongCredentialsBox = (): Element => {
         if (!this.cache.songCredentialBox)

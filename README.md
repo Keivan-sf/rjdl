@@ -3,10 +3,6 @@ Checkout [#Mahsa_Amini](https://twitter.com/search?q=%23mahsa_amini), Support wo
 
 # Node rjdl
 
-> **Warning**
-> #### Please know that this pcakge currently wont work due to Radio javan new design. It'll be some time untill the next release.
-> - see [This issue](https://github.com/Keivan-sf/rjdl/issues/12)
-
 Radio javan scraper / downloader
 
 **Docs [keivan-sf.github.io/rjdl](https://keivan-sf.github.io/rjdl)**
@@ -44,7 +40,7 @@ Supported for `Playlists` , `Albums` , `Podcasts` , `Videos` , `Musics` , `TV`
 
 ```ts
 const rjType = Rj.getLinkType(
-    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+    "https://play.radiojavan.com/song/Donya-Bye-Bye-Bye"
 );
 console.log(rjType === Rj.LinkType.Music); // true
 ```
@@ -55,7 +51,7 @@ Supported for `Playlists` , `Albums` , `Podcasts` , `Musics` , `Videos`
 
 ```ts
 const songInfo = await Rj.getMusic(
-    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+    "https://play.radiojavan.com/song/Donya-Bye-Bye-Bye"
 );
 // {title: "Bye Bye Bye" , artist: "Donya" , getDownloadLinks() , ...}
 ```
@@ -68,7 +64,7 @@ Supported for `Musics` , `Podcasts` , `Videos`
 
 ```ts
 const links = await Rj.getMusicDownloadLinksViaURL(
-    "https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"
+    "https://play.radiojavan.com/song/Donya-Bye-Bye-Bye"
 );
 
 console.log(links.midQuality);
@@ -82,7 +78,7 @@ You can also use `downloadMusicViaURL` and similar functions if you prefer to ge
 
 ```ts
 const readable = await Rj.downloadMusicViaURL(
-    "https://www.radiojavan.com/mp3s/mp3/Koorosh-Un-Momento-(Ft-Raha)"
+    "https://www.play.radiojavan.com/song/Koorosh-Un-Momento-(Ft-Raha)"
 );
 readable.pipe(fs.createWriteStream("Koorosh-Un-Momento.mp3"));
 ```
@@ -92,7 +88,7 @@ readable.pipe(fs.createWriteStream("Koorosh-Un-Momento.mp3"));
 Only the URLs which their link type is recognizable will be considered valid
 
 ```ts
-Rj.validateURL("https://radiojavan.com/mp3s/mp3/Donya-Bye-Bye-Bye"); // true
+Rj.validateURL("https://play.radiojavan.com/song/Donya-Bye-Bye-Bye"); // true
 
 Rj.validateURL("https://rj.app/ma/D18eAKwY"); // true
 

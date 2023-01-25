@@ -3,7 +3,7 @@ import {
     downloadPodcastViaID,
     getPodcastDownloadLinksViaID,
 } from "../../../Downloader";
-import { PageScraper, TrackInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
 class PodcastInfoScraper {
     private pageScraper: PageScraper;
@@ -14,56 +14,32 @@ class PodcastInfoScraper {
 
     public getId = (): string => this.pageScraper.getPodcastID();
 
-    // Artist and title fields are reversed in podcast page
-    public getArtist = (): string => this.pageScraper.getTitle();
+    public getArtist = (): string => this.pageScraper.getPodcastArtist();
 
-    public getTitle = (): string => this.pageScraper.getArtist();
+    public getTitle = (): string => this.pageScraper.getPodcastTitle();
 
     public getDate = (): Date => this.pageScraper.getPodcastDate();
 
-    public getArtwork = (): string =>
-        this.document.querySelector(".artwork img")!.getAttribute("src")!;
+    public getArtwork = (): string => this.pageScraper.getPodcastArtwork();
 
     public getLikes = (): number => this.pageScraper.getLikes();
 
     public getPlays = (): number => this.pageScraper.getPlays();
 
     public getRelatedTracks = (): Track[] => {
-        const tracks = this.getTrackElementScrapers();
-        return this.getTrackInfoFromTrackScraper(tracks);
+        const tracks = this.pageScraper.getRelatedTracks();
+        return this.getTracks(tracks);
     };
 
-    private getTrackElementScrapers = () => {
-        const trackContainers = this.getTrackElements();
-        return this.convertTrackElementsToScraper(trackContainers);
-    };
-
-    private getTrackElements = () =>
-        this.document
-            .querySelector(".sidePanel .listView")!
-            .querySelectorAll("li")!;
-
-    private convertTrackElementsToScraper = (
-        elements: NodeListOf<HTMLLIElement>
-    ): TrackInfoScraper[] => {
-        const scrapers: TrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
-        return scrapers;
-    };
-
-    private getTrackInfoFromTrackScraper = (
-        tracks: TrackInfoScraper[]
-    ): Track[] => {
-        const relatedTracks = tracks.filter((track) => !track.isPlayingNow);
-        return relatedTracks.map((track) => {
-            const id = track.getId(true);
-            // Artist and title fields are reversed in podcast related tracks
+    private getTracks = (tracks: any[]): Track[] => {
+        return tracks.map((track) => {
+            const id = track.permlink;
             return {
-                title: track.getArtist(),
-                artist: track.getTitle(),
+                title: track.title,
+                artist: track["podcast_artist"],
                 id,
-                artwork: track.getArtwork(),
-                url: track.getUrl(),
+                artwork: track.photo,
+                url: track.share_link,
                 getDownloadLinks: () => getPodcastDownloadLinksViaID(id),
                 download: (quality?: "lq" | "hq") =>
                     downloadPodcastViaID(id, quality),

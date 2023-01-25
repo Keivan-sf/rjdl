@@ -4,7 +4,7 @@ describe("Info getters", () => {
     jest.setTimeout(15000);
     test("Should return music info with url", async () => {
         const info = await getMusicInfo(
-            "https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)"
+            "https://play.radiojavan.com/song/wantons-boome-naghashi"
         );
         const staticInfo: Partial<MusicInfo> = {
             id: info.id,
@@ -13,17 +13,15 @@ describe("Info getters", () => {
             date: info.date,
             url: info.url,
             artwork: info.artwork,
-            video: info.video,
         };
         expect(staticInfo).toStrictEqual({
-            id: "Koorosh-Abnormal-(Ft-Arta-Montiego)",
-            title: "Abnormal (Ft Arta & Montiego)",
-            artist: "Koorosh",
-            date: new Date("Jun 4, 2019"),
-            url: "https://radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)",
+            id: "Wantons-Boome-Naghashi",
+            title: "Boome Naghashi",
+            artist: "Wantons",
+            date: new Date("Nov 24, 2018"),
+            url: "https://play.radiojavan.com/song/wantons-boome-naghashi",
             artwork:
-                "https://assets.rjassets.com/static/mp3/koorosh-abnormal-(ft-arta-montiego)/1e3cd7f1402539b.jpg",
-            video: "https://www.radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)",
+                "https://assets.rjassets.com/static/mp3/wantons-boome-naghashi/1e884d210774864.jpg",
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");
@@ -34,7 +32,7 @@ describe("Info getters", () => {
     });
     test("Should return video info with url", async () => {
         const info = await getVideoInfo(
-            "https://www.radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)"
+            "https://play.radiojavan.com/video/koorosh-abnormal-(ft-arta-montiego)"
         );
         const staticInfo: Partial<VideoInfo> = {
             id: info.id,
@@ -43,17 +41,15 @@ describe("Info getters", () => {
             date: info.date,
             url: info.url,
             thumbnail: info.thumbnail,
-            song: info.song,
         };
         expect(staticInfo).toStrictEqual({
             id: "koorosh-abnormal-(ft-arta-montiego)",
             title: "Abnormal (Ft Arta & Montiego)",
             artist: "Koorosh",
             date: new Date("Sep 21, 2019"),
-            url: "https://radiojavan.com/videos/video/koorosh-abnormal-(ft-arta-montiego)",
+            url: "https://play.radiojavan.com/video/koorosh-abnormal-(ft-arta-montiego)",
             thumbnail:
                 "https://assets.rjassets.com/static/musicvideos/images/cad8a3f0821dc46-original-larger.jpeg",
-            song: "https://www.radiojavan.com/mp3s/mp3/Koorosh-Abnormal-(Ft-Arta-Montiego)",
         });
         expect(typeof info.likes).not.toBeNaN();
         expect(typeof info.likes).toBe("number");
@@ -63,9 +59,8 @@ describe("Info getters", () => {
         expect(typeof info.relatedVideos[0].title).toBe("string");
     });
     test("Should return podcast info with url", async () => {
-        // https://www.radiojavan.com/podcasts/podcast/Dance-Station-35
         const info = await getPodcastInfo(
-            "https://www.radiojavan.com/podcasts/podcast/Dance-Station-35"
+            "https://play.radiojavan.com/podcast/naab-10"
         );
         const staticInfo: Partial<PodcastInfo> = {
             id: info.id,
@@ -77,13 +72,13 @@ describe("Info getters", () => {
         };
 
         expect(staticInfo).toStrictEqual({
-            id: "Dance-Station-35",
-            title: "Dance Station 35",
-            artist: "Hosein Aerial",
-            date: new Date("Sep 2, 2022"),
-            url: "https://radiojavan.com/podcasts/podcast/Dance-Station-35",
+            id: "Naab-10",
+            title: "Naab 10",
+            artist: "DJ Shahin",
+            date: new Date("Jan 9, 2023"),
+            url: "https://play.radiojavan.com/podcast/naab-10",
             artwork:
-                "https://assets.rjassets.com/static/podcasts/dance-station-35/05c1d5eb3e4303e.jpg",
+                "https://assets.rjassets.com/static/podcasts/naab-10/89229ca872e593c.jpg",
         });
 
         expect(typeof info.likes).not.toBeNaN();
@@ -95,7 +90,7 @@ describe("Info getters", () => {
     });
 
     test("Should get podcast info with app url", async () => {
-        const info = await getPodcastInfo("https://rj.app/p/krQgdJ8N");
+        const info = await getPodcastInfo("https://rj.app/p/VrWJLPxN");
         const staticInfo: Partial<PodcastInfo> = {
             id: info.id,
             title: info.title,
@@ -106,13 +101,13 @@ describe("Info getters", () => {
         };
 
         expect(staticInfo).toStrictEqual({
-            id: "Flybeat-3",
-            title: "Flybeat 3",
-            artist: "DJ Mani TK",
-            date: new Date("Sep 20, 2022"),
-            url: "https://rj.app/p/krQgdJ8N",
+            id: "Abo-Atash-123",
+            title: "Abo Atash 123",
+            artist: "DJ Taba",
+            date: new Date("Aug 7, 2022"),
+            url: "https://rj.app/p/VrWJLPxN",
             artwork:
-                "https://assets.rjassets.com/static/podcasts/flybeat-3/88945d7771884ed.jpg",
+                "https://assets.rjassets.com/static/podcasts/abo-atash-123/3d06b3737b376b1.jpg",
         });
 
         expect(typeof info.likes).not.toBeNaN();

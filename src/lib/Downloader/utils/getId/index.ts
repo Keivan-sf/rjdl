@@ -1,4 +1,8 @@
-import { getMusicInfo, getPodcastInfo, getVideoInfo } from "../../../";
+import {
+    getMusicInfo,
+    getPodcastInfo,
+    getVideoInfo,
+} from "../../../InfoScraper";
 import {
     getMusicIdFromURL,
     getPodcastIdFromURL,
@@ -29,12 +33,7 @@ export const getPodcastID = async (url: string): Promise<string> => {
 };
 
 function throwOnNonMusicTypes(type: ExtendedLinkType) {
-    const allowedTypes: ExtendedLinkType[] = [
-        "PlaylistTrack",
-        "AlbumTrack",
-        "Music",
-        "APPMusic",
-    ];
+    const allowedTypes: ExtendedLinkType[] = ["Music", "APPMusic"];
     if (!allowedTypes.includes(type)) throw new Error("NOT_A_MUSIC_LINK");
 }
 

@@ -3,7 +3,7 @@ import {
     downloadMusicViaID,
     getMusicDownloadLinksViaID,
 } from "../../../Downloader";
-import { PageScraper, TrackInfoScraper } from "../../utils";
+import { PageScraper } from "../../utils";
 
 class MusicInfoScraper {
     private pageScraper: PageScraper;
@@ -24,47 +24,22 @@ class MusicInfoScraper {
 
     public getDate = (): Date => this.pageScraper.getMusicDate();
 
-    public getVideoVersion = (): string | null =>
-        this.pageScraper.getAltVersion();
-
-    public getArtwork = (): string =>
-        this.document.querySelector(".artwork img")!.getAttribute("src")!;
+    public getArtwork = (): string => this.pageScraper.getMusicArtwork();
 
     public getRelatedTracks = (): Track[] => {
-        const tracks = this.getTrackElementScrapers();
-        return this.getTrackInfoFromTrackScraper(tracks);
+        const tracks = this.pageScraper.getRelatedTracks();
+        return this.getTracks(tracks);
     };
 
-    private getTrackElementScrapers = () => {
-        const trackContainers = this.getTrackElements();
-        return this.convertTrackElementsToScraper(trackContainers);
-    };
-
-    private getTrackElements = () =>
-        this.document
-            .querySelector(".sidePanel .listView")!
-            .querySelectorAll("li")!;
-
-    private convertTrackElementsToScraper = (
-        elements: NodeListOf<HTMLLIElement>
-    ): TrackInfoScraper[] => {
-        const scrapers: TrackInfoScraper[] = [];
-        elements.forEach((e) => scrapers.push(new TrackInfoScraper(e)));
-        return scrapers;
-    };
-
-    private getTrackInfoFromTrackScraper = (
-        tracks: TrackInfoScraper[]
-    ): Track[] => {
-        const relatedTracks = tracks.filter((track) => !track.isPlayingNow);
-        return relatedTracks.map((track) => {
-            const id = track.getId();
+    private getTracks = (tracks: any[]): Track[] => {
+        return tracks.map((track) => {
+            const id = track.permlink;
             return {
-                title: track.getTitle(),
-                artist: track.getArtist(),
+                title: track.song,
+                artist: track.artist,
                 id,
-                artwork: track.getArtwork(),
-                url: track.getUrl(),
+                artwork: track.photo,
+                url: track.share_link,
                 getDownloadLinks: () => getMusicDownloadLinksViaID(id),
                 download: (quality?: "lq" | "hq") =>
                     downloadMusicViaID(id, quality),
