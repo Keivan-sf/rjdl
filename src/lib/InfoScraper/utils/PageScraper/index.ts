@@ -55,16 +55,6 @@ class PageScraper {
 
     public getRelatedTracks = (): any[] => this.mediaData.related;
 
-    public getAltVersion = (): string | null => {
-        const url =
-            this.document
-                .querySelector("#download")
-                ?.querySelector("a")
-                ?.getAttribute("href") ?? null;
-        if (!url) return url;
-        return "https://www.radiojavan.com" + url;
-    };
-
     public getSongCredentialsBox = (): Element => {
         if (!this.cache.songCredentialBox)
             this.cache.songCredentialBox =
