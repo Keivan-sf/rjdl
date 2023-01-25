@@ -68,4 +68,5 @@ export const getPodcastInfo = async (url: string): Promise<PodcastInfo> => {
     return infoAndUrl;
 };
 
+export {setRequestHeaders} from "./utils"
 export * from "./interfaces";

@@ -24,6 +24,7 @@ import {
     AlbumInfo,
 } from "./InfoScraper";
 import { Music, Podcast, Video } from "./interfaces";
+import { setRequestHeaders } from './InfoScraper/utils/index';
 
 export {
     formatURL,
@@ -145,3 +146,5 @@ export const getAlbum = async (url: string): Promise<AlbumInfo> =>
  */
 export const getPlaylist = async (url: string): Promise<PlaylistInfo> =>
     getPlaylistInfo(url);
+
+export {setRequestHeaders} from "./InfoScraper"
