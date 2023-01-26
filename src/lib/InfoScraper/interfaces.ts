@@ -57,6 +57,9 @@ export interface PodcastInfo extends MusicAndVideoCommonInfo {
     relatedTracks: Track[];
 }
 
+export type headersInputType = {[key in string]:string}
+
+
 /**
  * Music details
  *
