@@ -52,35 +52,6 @@ h1 {
     font-size: 30pt;
 }
 
-.MahsaAmini {
-    display: flex;
-    justify-content: center;
-    margin: 30px 0px 0px 0px;
-}
-
-.MahsaAmini>a>div {
-    display: inline-block;
-    margin: auto;
-    padding: 10px 15px;
-    background: #040505;
-    color: #ffffff;
-    border-radius: 25px;
-    font-size: 10pt;
-    transition: 0.2s;
-}
-
-.MahsaAmini>a>div>div {
-    display: inline-block;
-    color: rgb(173, 173, 173);
-    font-size: 9pt;
-    margin-left: 5px;
-}
-
-.MahsaAmini>a>div:hover {
-    box-shadow: 0px 0px 15px 8px #04050554;
-}
-
-
 .description {
     color: #fff;
     text-align: center;
