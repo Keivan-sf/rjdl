@@ -1,5 +1,7 @@
 ![node rjdl](https://raw.githubusercontent.com/Keivan-sf/rjdl/gh-pages/images/page.jpg)
 
+>⚠️ This library currently does not work due to Rj latest changes
+
 # Node rjdl
 
 Radio javan scraper / downloader
